@@ -1,2 +1,16 @@
 .wrapper
   +wrapper
+
+.main-header
+  padding: $space 0
+  background: map-get($colors, red)
+  margin-bottom: $space
+
+  +gt($tablet)
+    padding: $space*2 0
+    margin-bottom: $space*2
+
+  h1
+    +heading_xs
+    color: white
+
