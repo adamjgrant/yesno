@@ -16,6 +16,7 @@ gem 'sidekiq'
 gem 'redis'
 gem 'devise'
 gem 'kickstart_rails'
+gem 'autoprefixer_rails'
 
 group :development do
   gem 'sqlite3'
