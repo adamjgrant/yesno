@@ -1,0 +1,12 @@
+[data-component="yes/no buttons"]
+  li
+    a
+      +button
+
+    &:first-child
+      a
+        +button-color(map-get($colors, green))
+
+    &:last-child
+      a
+        +button-color(map-get($colors, red))
