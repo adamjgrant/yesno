@@ -30,3 +30,7 @@ Is either a yes or no (Yes attribute is true or false.)
 
 ## Users
 Has many Opinions
+
+# References
+
+- Integrating social login: [sourcey.com](http://sourcey.com/rails-4-omniauth-using-devise-with-twitter-facebook-and-linkedin/)
