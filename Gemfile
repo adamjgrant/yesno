@@ -17,6 +17,8 @@ gem 'redis'
 gem 'devise'
 gem 'kickstart_rails'
 gem 'autoprefixer-rails'
+gem 'omniauth'
+gem 'omniauth-twitter'
 
 group :development do
   gem 'sqlite3'
