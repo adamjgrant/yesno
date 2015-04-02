@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :admins
-  devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
+  devise_for :admins, :controllers => { sessions: 'admins/sessions' }
+  devise_for :users, :controllers => {
+    omniauth_callbacks: 'omniauth_callbacks' ,
+    sessions: 'users/sessions'
+  }
+
   resources :issues
 
   root 'issues#index'

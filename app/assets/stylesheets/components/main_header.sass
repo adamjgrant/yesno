@@ -1,0 +1,30 @@
+[data-component="main header"]
+  padding: $space 0
+  background: map-get($colors, red)
+  margin-bottom: $space
+
+  +gt($tablet)
+    padding: $space*2 0
+    margin-bottom: $space*2
+
+  h1
+    +heading_xs
+    color: white
+
+    a
+      color: white
+
+  header
+    +row
+
+    h1, .authentication
+      +column('half')
+
+    .authentication
+      form
+        text-align: right
+
+        input[type="submit"]
+          +button-color(transparent)
+          color: white
+

@@ -7,13 +7,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body data-controller="<%= controller_name %>" data-action="<%= action_name %>">
-  <header class="main-header">
+  <header data-component="main header">
     <div class="wrapper">
-      <h1><a href="/">yesno.vote</a></h1>
+      <header>
+        <h1 class="logo"><a href="/">yesno.vote</a></h1>
+        <div class="authentication">
+          <% if user_signed_in? %>
+            <%= form_for(current_user, as: @user, url: destroy_user_session_path, html: { method: :delete }) do |f| %>
+              <%= f.submit "Log out" %>
+            <% end %>
+          <% else %>
+            <%= link_to "Sign in with Twitter", omniauth_authorize_path('user', 'twitter') %><br />
+          <% end %>
+        </div>
+      </header>
     </div>
   </header>
 
   <div class="wrapper">
+
     <%= yield %>
 
     <p class="notice"><%= notice %></p>

@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable, :confirmable
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 
@@ -20,7 +21,7 @@ class User < ActiveRecord::Base
 
       if user.nil?
         user = User.new(
-          name: auth.extra.raw_info.name,
+          handle: auth.extra.raw_info.screen_name,
           email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
           password: Devise.friendly_token[0,20]
         )
