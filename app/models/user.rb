@@ -9,7 +9,6 @@ class User < ActiveRecord::Base
          :omniauthable, :confirmable
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
-  validates_presence_of :identity
 
   has_one :identity
 

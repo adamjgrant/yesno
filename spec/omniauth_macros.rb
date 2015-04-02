@@ -7,9 +7,17 @@ module OmniauthMacros
         'name' => 'mockuser',
         'image' => 'mock_user_thumbnail_url'
       },
+      'info' => { 
+        'email' => 'foo@example.com',
+      },
       'credentials' => {
         'token' => 'mock_token',
         'secret' => 'mock_secret'
+      },
+      'extra' => {
+        'raw_info' => {
+          'screen_name' => 'mockuser'
+        }
       }
     })
   end
