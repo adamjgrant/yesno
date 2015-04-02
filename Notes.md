@@ -1,4 +1,5 @@
-# Just tweet to sign up
+# Credo
 
-Totally new paradigm for user authentication: Users just tweet with the right link and hashtag to add their opinion to the board.
-We can scan for new entries via redis/sidekiq
+1. Extremely shareable
+2. Everything can be [voted on](https://github.com/ryanto/acts_as_votable)
+3. Clear insight into the winning side ("51% YES" without saying "49% NO")
