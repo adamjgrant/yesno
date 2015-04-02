@@ -25,6 +25,11 @@
   </header>
 
   <div class="wrapper">
+    <% if admin_signed_in? %>
+      <%= form_for(current_admin, as: @admin, url: destroy_admin_session_path, html: { method: :delete }) do |f| %>
+        <%= f.submit "Log out" %>
+      <% end %>
+    <% end %>
 
     <%= yield %>
 
