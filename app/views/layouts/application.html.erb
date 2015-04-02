@@ -14,7 +14,7 @@
         <div class="authentication">
           <% if user_signed_in? %>
             <%= form_for(current_user, as: @user, url: destroy_user_session_path, html: { method: :delete }) do |f| %>
-              <%= f.submit "Log out" %>
+              <%= f.submit "Log out @#{current_user.handle}" %>
             <% end %>
           <% else %>
             <%= link_to "Sign in with Twitter", omniauth_authorize_path('user', 'twitter') %><br />
