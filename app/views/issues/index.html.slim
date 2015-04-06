@@ -1,18 +1,2 @@
 - if admin_signed_in?
   p = link_to 'New Issue', new_issue_path
-
-- @issues.each do |issue|
-  section(data-component="issue")
-    h1 = link_to issue.name, issue
-    h2 = issue.description
-    ul
-      - if admin_signed_in?
-        li Administration:
-        li = link_to 'Edit', edit_issue_path(issue)
-        li = link_to 'Destroy', issue, method: :delete, data: { confirm: 'Are you sure?' } 
-
-    ul(data-component="yes/no buttons")
-      li
-        a(href="#") Yes
-      li
-        a(href="#") No

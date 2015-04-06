@@ -1,7 +1,9 @@
 # PAGE FINDER
 # Returns a boolean for the current page belonging to an action
 # and/or controller.
-isPage = (controller, action) ->
+window.$YN = new Object()
+
+$YN.isPage = (controller, action) ->
   controller = controller || true
   action = action || true
   $body = k$.$('body').dataset

@@ -3,7 +3,6 @@
 <head>
   <title>Yesno</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body data-controller="<%= controller_name %>" data-action="<%= action_name %>">
@@ -31,10 +30,17 @@
       <% end %>
     <% end %>
 
+    <!-- Static rendering for Rails -->
     <%= yield %>
+    
+    <!-- Rendering container for React -->
+    <div data-render>
+      <%= image_tag('spinner.gif', class: "loader") %>
+    </div>
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
   </div>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>
 </html>
