@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe IssuesController do
-  describe "Root" do
+  describe "Issues index" do
     it "Renders issue index" do
       get :index
       expect(response).to render_template(:index)

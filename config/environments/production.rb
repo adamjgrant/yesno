@@ -78,6 +78,9 @@ Rails.application.configure do
 
   # General Settings
   config.app_domain = 'yesno.vote'
+  
+  # React
+  config.react.variant = :production
 
   # Email
   config.action_mailer.delivery_method = :smtp

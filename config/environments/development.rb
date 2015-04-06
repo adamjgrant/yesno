@@ -39,6 +39,9 @@ Rails.application.configure do
   # General Settings
   config.app_domain = 'localhost:3000'
 
+  # React
+  config.react.variant = :development
+
   # Email
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
