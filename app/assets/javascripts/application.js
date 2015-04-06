@@ -14,5 +14,4 @@
 //= require init
 //= require react
 //= require_tree ./react/components/
-//= require_tree ./react/super_components/
 //= require_tree ./react/pages/

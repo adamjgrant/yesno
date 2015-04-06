@@ -1,9 +1,11 @@
 var Voter = React.createClass({
   render: function() {
     return (
-      <div data-component="voter">
-        <h1>Voter</h1>
-      </div>
+      <figure data-component="voter">
+        <button></button>
+        <h1>0</h1>
+        <button></button>
+      </figure>
     )
   }
 });

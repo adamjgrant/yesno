@@ -1,1 +1,30 @@
-[data-component="voter"]
+[data-component="voter"], [data-component="voter_box"] [data-component="voter"]
+  width: 50px
+
+  button
+    height: 0
+    width: 0
+    background: transparent
+    border-radius: 0
+    padding: 0
+    display: block
+    margin: 0px auto
+    border:
+      left: $space/2 solid transparent
+      right: $space/2 solid transparent
+
+    &:first-of-type
+      border:
+        bottom: $space/2 solid map-get($white, darkest)
+        top: 0
+
+    &:last-of-type
+      border:
+        top: $space/2 solid map-get($white, darkest)
+        bottom: 0
+
+  h1
+    text-align: center
+    margin:
+      top: $space/2
+      bottom: $space/2
