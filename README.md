@@ -26,10 +26,15 @@ Belongs to one Issue
 Belongs to one User
 Has many Comments
 
-Is either a yes or no (Yes attribute is true or false.)
+### Attributes
+Is either a yes or no (Agree attribute is true or false.)
+Has a statement (string, the opinion)
 
 ## Users
 Has many Opinions
+
+### Attributes
+Has a score
 
 # References
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150402201413) do
+ActiveRecord::Schema.define(version: 20150406190706) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -47,6 +47,16 @@ ActiveRecord::Schema.define(version: 20150402201413) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "opinions", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "statement"
+    t.integer  "user_id"
+    t.boolean  "agree"
+  end
+
+  add_index "opinions", ["user_id"], name: "index_opinions_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

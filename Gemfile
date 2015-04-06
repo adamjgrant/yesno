@@ -13,6 +13,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'foreman'
 gem 'sidekiq'
+gem 'react-rails', '~> 0.13.0.0'
 gem 'redis'
 gem 'devise'
 gem 'kickstart_rails'
