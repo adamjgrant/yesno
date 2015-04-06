@@ -6,7 +6,5 @@ isPage = (controller, action) ->
   action = action || true
   $body = k$.$('body').dataset
   return (
-    ($body.action == action || action == true)
-    and
-    ($body.controller == controller || controller == true)
+    ($body.action == action || action == true) and ($body.controller == controller || controller == true)
   )
