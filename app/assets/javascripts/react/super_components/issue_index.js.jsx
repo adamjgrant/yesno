@@ -34,6 +34,7 @@ var IssueIndex = React.createClass({
     })
     return (
       <div className="issue-row">
+        <Voter />
         { issueRows }
       </div>
     )
