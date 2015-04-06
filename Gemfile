@@ -21,6 +21,7 @@ gem 'autoprefixer-rails'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem "active_model_serializers", "~> 0.8.0"
+gem 'acts_as_votable', '~> 0.10.0'
 
 group :development do
   gem 'sqlite3'

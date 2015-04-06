@@ -1,7 +1,10 @@
 var IssueRow = React.createClass({
   render: function() {
     return (
-      <h1>{this.props.issue.name}</h1>
+      <div data-component="issue">
+        <h1>{this.props.issue.name}</h1>
+        <h2>{this.props.issue.description}</h2>
+      </div>
     )
   }
 })

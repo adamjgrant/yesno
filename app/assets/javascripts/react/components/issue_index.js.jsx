@@ -4,7 +4,8 @@ var IssueIndex = React.createClass({
       issues: [
         {
           id: 0,
-          name: "",
+          name: "Loading...",
+          description: "",
           created_at: ""
         }
       ]
