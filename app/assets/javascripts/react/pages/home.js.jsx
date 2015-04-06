@@ -1,6 +1,6 @@
 if ($YN.isPage('issues', 'index')) {
   React.render(
-    <IssueTable url="issues.json" />,
+    <IssueIndex url="issues.json" />,
     k$.$('[data-render]')
   )
 }
