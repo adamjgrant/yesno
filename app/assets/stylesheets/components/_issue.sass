@@ -1,12 +1,14 @@
 [data-component="issue"], [data-component="voter_box"] [data-component="issue"]
   margin-bottom: $space
 
-  h1
+  h1, h1 a
     +heading_lg
+    color: $default-font-color
 
   h2
     +heading_xs
     margin-top: 0
+    color: lighten($default-font-color, 10%)
 
   h3
     +heading_xxs
