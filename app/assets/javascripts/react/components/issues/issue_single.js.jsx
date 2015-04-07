@@ -26,18 +26,8 @@ var IssueSingle = React.createClass({
     req.send();
   },
   render: function() {
-    var response = "";
-    if (this.state.score == 0) {
-      response = "Be the first to vote!"
-    }
-    else {
-      var people_say = (Math.abs(this.state.issue.score) > 1 ? "people say" : "person says")
-      var prefix = this.state.issue.victor_score + " " + people_say
-      response = prefix + " " + (this.state.issue.score > 0 ? "YES" : "NO")
-    }
     return (
       <div>
-        <h3>{ response }</h3>
         <OpinionTable />
       </div>
     )

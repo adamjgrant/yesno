@@ -15,6 +15,13 @@ class IssuesController < ApplicationController
   # GET /issues/1
   # GET /issues/1.json
   def show
+    upvotes = @issue.get_upvotes.size
+    downvotes = @issue.get_downvotes.size
+    victor_score = upvotes > downvotes ? upvotes : downvotes
+    people_said = (victor_score > 1 ? " people said " : " person said ")
+    yes_or_no = (upvotes > downvotes ? "YES" : "NO")
+    @victor_phrasing = (victor_score > 0 ? victor_score.to_s + people_said + yes_or_no : "Be the first to vote")
+
     respond_to do |format|
       format.html { render :show }
       format.json { render :json => @issue, :serializer => IssueSerializer }
