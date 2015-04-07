@@ -15,6 +15,10 @@ class IssuesController < ApplicationController
   # GET /issues/1
   # GET /issues/1.json
   def show
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render :json => @issue, :serializer => IssueSerializer }
+    end
   end
 
   # GET /issues/new
