@@ -1,23 +1,26 @@
 var OpinionTable = React.createClass({
   getInitialState: function() {
-    return {
-      opinions: [
+    var initialData = {
+      yes: [
         {
           id: 0,
-          statement: "Loading...",
+          gist: "Loading",
+          statement: "",
+          handle: ""
         }
-      ]
+      ],
     }
+    initialData.no = initialData.yes
+    return initialData
   },
   render: function() {
     return (
-      <table>
-        <thead>
-        </thead>
-        <tbody>
-          <OpinionIndex opinions={this.state.opinions} />
-        </tbody>
-      </table>
+      <div>
+        <section data-component="opinion table">
+          <OpinionIndex title="YES" opinions={this.state.yes} />
+          <OpinionIndex title="NO" opinions={this.state.no} />
+        </section>
+      </div>
     )
   }
 })
