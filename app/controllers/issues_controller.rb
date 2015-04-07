@@ -47,7 +47,7 @@ class IssuesController < ApplicationController
   def update
     @issue = @issue || Issue.find(params[:id])
     @score = params[:score].to_i
-    if @score
+    if params[:score]
 
       if @score > 0
         @issue.upvote_from current_user
