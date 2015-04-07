@@ -7,18 +7,17 @@
     background: transparent
     border-radius: 0
     padding: 0
-    display: block
     margin: 0px auto
     border:
       left: $space/2 solid transparent
       right: $space/2 solid transparent
 
-    &:first-of-type
+    &.up
       border:
         bottom: $space/2 solid map-get($white, darkest)
         top: 0
 
-    &:last-of-type
+    &.down
       border:
         top: $space/2 solid map-get($white, darkest)
         bottom: 0

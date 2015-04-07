@@ -6,7 +6,7 @@
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
 </head>
-<body data-controller="<%= controller_name %>" data-action="<%= action_name %>">
+<body data-controller="<%= controller_name %>" data-action="<%= action_name %>" data-logged-in="<%= user_signed_in? ? "true" : "false" %>">
   <header data-component="main header">
     <div class="wrapper">
       <header>

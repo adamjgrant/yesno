@@ -1,4 +1,10 @@
 var Voter = React.createClass({
+  signInWithTwitter: function() {
+    k$.status({
+      text: "Please sign in with Twitter to vote.",
+      type: "status-yellow"
+    })
+  },
   userScore: 0,
   upvote: function(e) {
     this.userScore = 1;
@@ -46,9 +52,11 @@ var Voter = React.createClass({
   render: function() {
     return (
       <figure data-component="voter">
-        <button onClick={this.upvote}></button>
+        <button className="hide-logged-in up" onClick={this.signInWithTwitter}></button>
+        <button className="hide-logged-out up" onClick={this.upvote}></button>
         <h1>{this.props.issue.score}</h1>
-        <button onClick={this.downvote}></button>
+        <button className="hide-logged-in down" onClick={this.signInWithTwitter}></button>
+        <button className="hide-logged-out down" onClick={this.downvote}></button>
       </figure>
     )
   }
