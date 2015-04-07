@@ -6,7 +6,8 @@ var IssueIndex = React.createClass({
           id: 0,
           name: "Loading...",
           description: "",
-          created_at: ""
+          created_at: "",
+          score: 0
         }
       ]
     }
@@ -17,7 +18,6 @@ var IssueIndex = React.createClass({
     req.open('get', this.props.url, true);
     req.onload = function() {
       if (this.status >= 200 && this.status < 400) {
-        console.log(JSON.parse(this.response));
         self.setState({issues: JSON.parse(this.response).issues})
       }
     }
@@ -29,12 +29,14 @@ var IssueIndex = React.createClass({
   render: function() {
     var issueRows = this.state.issues.map(function(row) {
       return (
-        <IssueRow key={row.id} issue={row} />
+        <div data-component="voter_box" key={row.id}>
+          <Voter issue={row} object="issue" />
+          <IssueRow issue={row} />
+        </div>
       )
     })
     return (
-      <div data-component="voter_box">
-        <Voter />
+      <div>
         { issueRows }
       </div>
     )
