@@ -28,7 +28,7 @@ var IssueSingle = React.createClass({
   render: function() {
     return (
       <div>
-        <OpinionTable />
+        <OpinionTable issue={this.state.issue} />
       </div>
     )
   }

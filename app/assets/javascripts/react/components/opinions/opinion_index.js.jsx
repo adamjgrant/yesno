@@ -3,7 +3,8 @@ var OpinionIndex = React.createClass({
     return {
       redSheet: {
         show: false,
-        delayedShow: false
+        delayedShow: false,
+        contents: ""
       }
     }
   },
@@ -14,11 +15,12 @@ var OpinionIndex = React.createClass({
       }
     })
     var self = this;
-    setTimeout(function() {
+    setTimeout(function() { // TODO Allow user to submit their opinion
       self.setState({
         redSheet: {
           show: true,
-          delayedShow: "show"
+          delayedShow: "show",
+          contents: <h1>{ self.props.issue.name }</h1>
         }
       })
     }, 100)
@@ -34,7 +36,7 @@ var OpinionIndex = React.createClass({
     })
     return (
       <div data-component="opinion column">
-        { this.state.redSheet.show ? <RedSheet show={ this.state.redSheet.delayedShow } /> : "" }
+        { this.state.redSheet.show ? <RedSheet show={ this.state.redSheet.delayedShow } contents={ this.state.redSheet.contents } /> : "" }
         <h1>{this.props.title}</h1>
         <p>
           <a href="#" onClick={this.openRedSheet}>Add your opinion</a>
