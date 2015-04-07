@@ -60,7 +60,8 @@ class Users::SessionsController < Devise::SessionsController
 
   def destroy
     # authorize! :delete, @user
-    current_user.destroy
+    # current_user.destroy
+    sign_out current_user
     respond_to do |format|
       format.html { redirect_to root_url }
       format.json { head :no_content }

@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
     identity = Identity.find_for_oauth(auth)
+
+    # User is deleted from the DB on logout -_-
     user = signed_in_resource ? signed_in_resource : identity.user
 
     if user.nil?
