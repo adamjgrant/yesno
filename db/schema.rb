@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150406211141) do
+ActiveRecord::Schema.define(version: 20150407212311) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20150406211141) do
     t.string   "statement"
     t.integer  "user_id"
     t.boolean  "agree"
+    t.string   "gist"
   end
 
   add_index "opinions", ["user_id"], name: "index_opinions_on_user_id"

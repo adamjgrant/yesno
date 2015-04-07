@@ -28,6 +28,7 @@ Has many Comments
 
 ### Attributes
 Is either a yes or no (Agree attribute is true or false.)
+Has a gist (character limited summary of their opinion.)
 Has a statement (string, the opinion)
 
 ## Users
