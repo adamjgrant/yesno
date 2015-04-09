@@ -1,11 +1,14 @@
 var RedSheet = React.createClass({
   close: function() {
-    // TODO
+    this.props.displayLink.requestChange(false);
+  },
+  open: function() {
+    this.props.displayLink.requestChange(true);
   },
   render: function() {
     return (
-      <div data-component="red sheet" className={this.props.show}>
-        <button className="close">&times;</button>
+      <div data-component="red sheet" className={this.props.displayLink.value ? "show" : ""}>
+        <button className="close" onClick={this.close}>&times;</button>
         { this.props.contents }
       </div>
     )

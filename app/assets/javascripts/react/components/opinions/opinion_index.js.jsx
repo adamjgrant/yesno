@@ -1,29 +1,12 @@
 var OpinionIndex = React.createClass({
+  mixins: [React.addons.LinkedStateMixin],
   getInitialState: function() {
     return {
-      redSheet: {
-        show: false,
-        delayedShow: false,
-        contents: ""
-      }
+      showRedSheet: false,
     }
   },
   openRedSheet: function() {
-    this.setState({
-      redSheet: {
-        show: true
-      }
-    })
-    var self = this;
-    setTimeout(function() { // TODO Allow user to submit their opinion
-      self.setState({
-        redSheet: {
-          show: true,
-          delayedShow: "show",
-          contents: <h1>{ self.props.issue.name }</h1>
-        }
-      })
-    }, 100)
+    this.setState({showRedSheet: true});
   },
   render: function() {
     var opinionRows = this.props.opinions.map(function(row) {
@@ -36,7 +19,8 @@ var OpinionIndex = React.createClass({
     })
     return (
       <div data-component="opinion column">
-        { this.state.redSheet.show ? <RedSheet show={ this.state.redSheet.delayedShow } contents={ this.state.redSheet.contents } /> : "" }
+        <RedSheet displayLink={this.linkState('showRedSheet')}>
+        </RedSheet>
         <h1>{this.props.title}</h1>
         <p>
           <a href="#" onClick={this.openRedSheet}>Add your opinion</a>
