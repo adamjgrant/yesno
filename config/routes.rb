@@ -5,7 +5,9 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
-  resources :issues
+  resources :issues do
+    resources :opinions
+  end
 
   root 'issues#index'
 

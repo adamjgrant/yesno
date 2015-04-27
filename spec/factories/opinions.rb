@@ -3,7 +3,8 @@ FactoryGirl.define do
     user
     issue
     agree true
-    statement "I agree with this."
+    statement "I totally absolutely agree with this position in my heart of hearts."
+    gist "I agree with this"
   end
 
 end
