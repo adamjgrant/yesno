@@ -4,6 +4,8 @@ A simple website for voting yes or no on issues.
 
 # Data modeling
 
+![Schema](app/assets/images/schema.png)
+
 - Comments
 - Issues
 - Opinions
