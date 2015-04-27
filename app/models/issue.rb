@@ -1,3 +1,4 @@
 class Issue < ActiveRecord::Base
   acts_as_votable
+  has_many :opinions
 end

@@ -5,4 +5,6 @@ class Admin < ActiveRecord::Base
          # :registerable,
          # :recoverable, 
          :rememberable, :trackable, :validatable
+
+  has_many :issues
 end
