@@ -92,7 +92,7 @@ GEM
     kickstart_rails (3.0.94)
       autoprefixer-rails (~> 3.0)
       normalize-rails (~> 3.0)
-      sass (~> 3.4)
+      sass (~> 3.3)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     mime-types (2.5)
@@ -223,7 +223,7 @@ DEPENDENCIES
   foreman
   jbuilder (~> 2.0)
   jquery-rails
-  kickstart_rails
+  kickstart_rails (~> 3.0.94)
   omniauth
   omniauth-twitter
   pg
