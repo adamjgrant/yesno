@@ -6,7 +6,6 @@ RSpec.describe OpinionsController, type: :controller do
     let!(:opinion) { create(:opinion) }
 
     it "Should render the show page for a created opinion" do
-      p opinion.issue_id
       get :show, id: opinion.id, issue_id: opinion.issue_id
       expect(response).to render_template(:show)
       expect(response).to be_success

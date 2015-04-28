@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe IssuesController do
 
-  describe "View issues page" do
+  describe "GET index" do
     let!(:issues) do
       5.times.map do
         create(:issue)
@@ -18,6 +18,17 @@ RSpec.describe IssuesController do
       it "shows issues" do
         get :index
         expect(assigns(:issues)).to eq(issues)
+      end
+    end
+  end
+
+  describe "GET show" do
+    let(:issue) { create(:issue) }
+
+    context "for viewing a single issue as a public user" do
+      it "renders the show page" do
+        get :show, id: issue.id
+        expect(response).to render_template(:show)
       end
     end
   end
