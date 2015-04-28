@@ -30,6 +30,11 @@ RSpec.describe IssuesController do
         get :show, id: issue.id
         expect(response).to render_template(:show)
       end
+
+      it "shows an issue" do
+        get :show, id: issue.id
+        expect(assigns(:issue)).to eq(issue)
+      end
     end
   end
 
