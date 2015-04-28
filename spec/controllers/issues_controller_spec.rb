@@ -42,6 +42,7 @@ RSpec.describe IssuesController do
 
   describe "POST create" do
     let(:valid_params) { build(:issue) }
+    let(:invalid_params) { 'invalid' }
 
     context "with valid params" do
       it "Should allow for creation" do
@@ -51,6 +52,14 @@ RSpec.describe IssuesController do
         expect(filter_attributes(Issue.last.attributes)).to eq(filter_attributes(valid_params.attributes))
       end
     end
+
+    # context "with invalid params" do
+    #   it "Should not allow for creation" do
+    #     expect {
+    #       post :create, issue: invalid_params
+    #     }.to change(Issue, :count).to(0)
+    #   end
+    # end
   end
 
   private

@@ -92,7 +92,7 @@ GEM
     kickstart_rails (3.0.94)
       autoprefixer-rails (~> 3.0)
       normalize-rails (~> 3.0)
-      sass (~> 3.3)
+      sass (~> 3.4)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     mime-types (2.5)
