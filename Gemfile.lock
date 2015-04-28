@@ -223,7 +223,7 @@ DEPENDENCIES
   foreman
   jbuilder (~> 2.0)
   jquery-rails
-  kickstart_rails (~> 3.0.94)
+  kickstart_rails
   omniauth
   omniauth-twitter
   pg
