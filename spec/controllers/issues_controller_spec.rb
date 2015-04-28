@@ -2,6 +2,8 @@ require "rails_helper"
 
 RSpec.describe IssuesController do
 
+  # TODO: Test with invalid params
+
   describe "GET index" do
     let!(:issues) do
       5.times.map do
@@ -38,4 +40,23 @@ RSpec.describe IssuesController do
     end
   end
 
+  describe "POST create" do
+    let(:valid_params) { build(:issue) }
+
+    context "with valid params" do
+      it "Should allow for creation" do
+        expect {
+          post :create, issue: valid_params.attributes
+        }.to change(Issue, :count).to(1)
+        expect(filter_attributes(Issue.last.attributes)).to eq(filter_attributes(valid_params.attributes))
+      end
+    end
+  end
+
+  private
+    def filter_attributes(attrs)
+      attrs.reject do |attr|
+        ['id', 'created_at', 'updated_at'].include?(attr)
+      end
+    end
 end

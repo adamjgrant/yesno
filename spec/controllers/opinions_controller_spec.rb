@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe OpinionsController, type: :controller do
 
+  # TODO: Test with invalid params
+
   describe "GET show" do
     let!(:opinion) { create(:opinion) }
 
