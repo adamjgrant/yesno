@@ -1,6 +1,7 @@
 require "rails_helper"
 
 RSpec.describe IssuesController do
+  login_admin
 
   # TODO: Test with invalid params
 
@@ -40,6 +41,35 @@ RSpec.describe IssuesController do
     end
   end
 
+  describe "GET new" do
+    it "renders the new template" do
+      get :new
+      expect(response).to render_template(:new)
+    end
+
+    it "provides an issue object" do
+      get :new
+      issue = assigns(:issue)
+      expect(issue).to be_a_new_record
+      expect(issue).to be_a(Issue)
+    end
+  end
+
+  describe "GET edit" do
+    let(:issue) { create(:issue) }
+
+    it "renders the edit template" do
+      get :edit, id: issue.id
+      expect(response).to render_template(:edit)
+    end
+
+    it "supplies the issue requested" do
+      get :edit, id: issue.id
+      expect(assigns(:issue)).to eq(issue)
+    end
+
+  end
+
   describe "POST create" do
     let(:valid_params) { build(:issue) }
     let(:invalid_params) { 'invalid' }
@@ -60,6 +90,15 @@ RSpec.describe IssuesController do
     #     }.to change(Issue, :count).to(0)
     #   end
     # end
+  end
+
+  describe "PATCH/PUT update" do
+    let(:issue) { create(:issue) }
+    let(:valid_params) { issue.attributes }
+
+    it "should require admin access to update an issue" do
+      sign_out(:admin)
+    end
   end
 
   private
