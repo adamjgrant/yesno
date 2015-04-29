@@ -50,13 +50,28 @@ var Voter = React.createClass({
     request.send(data);
   },
   render: function() {
+    var upButton = new Array
+    var downButton = new Array
+    if (this.props.editable == "true") {
+      upButton.push(
+        <div>
+          <button className="hide-logged-in up" onClick={this.signInWithTwitter}></button>
+          <button className="hide-logged-out up" onClick={this.upvote}></button>
+        </div>
+      )
+      downButton.push(
+        <div>
+          <button className="hide-logged-in down" onClick={this.signInWithTwitter}></button>
+          <button className="hide-logged-out down" onClick={this.downvote}></button>
+        </div>
+      )
+    }
+
     return (
       <figure data-component="voter">
-        <button className="hide-logged-in up" onClick={this.signInWithTwitter}></button>
-        <button className="hide-logged-out up" onClick={this.upvote}></button>
+        { upButton }
         <h1>{this.props.issue.score}</h1>
-        <button className="hide-logged-in down" onClick={this.signInWithTwitter}></button>
-        <button className="hide-logged-out down" onClick={this.downvote}></button>
+        { downButton }
       </figure>
     )
   }
