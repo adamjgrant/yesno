@@ -19,14 +19,19 @@ if $YN.isPage('issues', 'new') or $YN.isPage('issues', 'edit')
       $file.parentNode.appendChild $input
 
       # Upload to AWS
-      $filePath = s3_direct_post.url + '/' + encodeURIComponent(s3_direct_post.fields.key.replace('${filename}', $file.files[0].name))
-      `debugger;`
+      # $filePath = s3_direct_post.url + '/' + encodeURIComponent(s3_direct_post.fields.key.replace('${filename}', $file.files[0].name))
+      $filePath = s3_direct_post.url
       req = new XMLHttpRequest()
       req.open(
         'POST',
         $filePath,
         true
       )
-      req.setRequestHeader 'Content-Type', 'application/xml'
+      boundary = "AJAX-------------" + (new Date).getTime()
+      req.setRequestHeader 'Content-Type', "multipart/form-data; boundary=#{boundary}"
+      req.sendAsBinary $file.files, boundary
+
+      # TODO Finish
+      # This is helpful http://igstan.ro/posts/2009-01-11-ajax-file-upload-with-pure-javascript.html
 
 
