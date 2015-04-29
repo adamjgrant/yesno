@@ -68,6 +68,12 @@ RSpec.describe IssuesController do
       expect(assigns(:issue)).to eq(issue)
     end
 
+    it "should require admin access to edit an issue" do
+      sign_out(:admin)
+      get :edit, id: issue.id
+      expect(response).to redirect_to(new_admin_session_path)
+    end
+
   end
 
   describe "POST create" do
@@ -80,6 +86,12 @@ RSpec.describe IssuesController do
           post :create, issue: valid_params.attributes
         }.to change(Issue, :count).to(1)
         expect(filter_attributes(Issue.last.attributes)).to eq(filter_attributes(valid_params.attributes))
+      end
+
+      it "should require admin access to create an issue" do
+        sign_out(:admin)
+        post :create, id: valid_params.id, issue: valid_params.attributes
+        expect(response).to redirect_to(new_admin_session_path)
       end
     end
 
@@ -100,6 +112,38 @@ RSpec.describe IssuesController do
       sign_out(:admin)
       patch :update, id: issue.id, issue: valid_params
       expect(response).to redirect_to(new_admin_session_path)
+    end
+
+    it "should update with a new issue" do
+      expect {
+        patch :update, id: issue.id, issue: valid_params
+      }.to change(Issue, :count).by(1)
+    end
+
+    it "should redirect to the issue index page" do
+      patch :update, id: issue.id, issue: valid_params
+      expect(response).to redirect_to(issues_path)
+    end
+  end
+
+  describe "DELETE destroy" do
+    let!(:issue) { create(:issue) }
+
+    it "should require admin access" do
+      sign_out(:admin)
+      delete :destroy, id: issue.id
+      expect(response).to redirect_to(admin_session_path)
+    end
+
+    it "should delete issue" do
+      expect {
+        delete :destroy, id: issue.id
+      }.to change(Issue, :count).by(-1)
+    end
+
+    it "should redirect to the issues index" do
+      delete :destroy, id: issue.id
+      expect(response).to redirect_to(issues_path)
     end
   end
 

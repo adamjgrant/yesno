@@ -1,6 +1,6 @@
 class IssuesController < ApplicationController
   before_action :set_issue, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin!, only: [:edit, :update, :destroy]
+  before_action :authenticate_admin!, only: [:edit, :update, :destroy, :create]
 
   # GET /issues
   # GET /issues.json
@@ -72,7 +72,7 @@ class IssuesController < ApplicationController
 
       respond_to do |format|
         if @issue.update(issue_params)
-          format.html { redirect_to @issue, notice: 'Issue was successfully updated.' }
+          format.html { redirect_to issues_path }
           format.json { render :show, status: :ok, location: @issue }
         else
           format.html { render :edit }
