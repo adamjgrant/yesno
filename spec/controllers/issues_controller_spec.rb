@@ -98,6 +98,8 @@ RSpec.describe IssuesController do
 
     it "should require admin access to update an issue" do
       sign_out(:admin)
+      patch :update, id: issue.id, issue: valid_params
+      expect(response).to redirect_to(new_admin_session_path)
     end
   end
 

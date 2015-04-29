@@ -1,5 +1,6 @@
 class IssuesController < ApplicationController
   before_action :set_issue, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin!, only: [:edit, :update, :destroy]
 
   # GET /issues
   # GET /issues.json
