@@ -19,7 +19,18 @@
     <%= f.label :description %><br>
     <%= f.text_field :description %>
   </div>
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
+<% end %>
+
+<%= content_for :post_js do %>
+  s3_direct_post = new Object();
+  s3_direct_post.url = "<%= @s3_direct_post.url %>"
+  s3_direct_post.fields = <%= @s3_direct_post.fields.to_json.html_safe %>
+  $YN.initiateFileUpload(s3_direct_post)
 <% end %>

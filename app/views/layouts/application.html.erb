@@ -43,5 +43,8 @@
     <p class="alert"><%= alert %></p>
   </div>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_tag do %>
+    <% content_for :post_js %>
+  <% end %>
 </body>
 </html>
