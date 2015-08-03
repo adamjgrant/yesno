@@ -1,7 +1,8 @@
 var RedSheet = React.createClass({
   getInitialState: function() {
     return {
-      voted: false
+      voted: false,
+      talked: false
     }
   },
   close: function() {
@@ -11,7 +12,16 @@ var RedSheet = React.createClass({
     this.props.displayLink.requestChange(true);
   },
   setVoted: function() {
-    this.setState({ voted: true });
+    var state = this.state;
+    state.voted = true;
+    this.setState(state, function() {
+      React.findDOMNode(this.refs.talker).focus();
+    });
+  },
+  setTalked: function() {
+    var state = this.state;
+    state.talked = true;
+    this.setState(state);
   },
   render: function() {
     return (
@@ -26,14 +36,17 @@ var RedSheet = React.createClass({
           <input type="radio" name="opinion" value="no" onClick={this.setVoted} />
           No
         </label>
-        <input 
-          type="submit" 
-          className={ this.state.voted ? '' : 'hideUntilVoted' }
-        />
         <textarea 
           placeholder="Why do you believe this?"
           className={ this.state.voted ? '' : 'hideUntilVoted' }
+          onChange={ this.setTalked }
+          ref="talker"
         ></textarea>
+        <input 
+          type="submit" 
+          className={ this.state.voted ? '' : 'hideUntilVoted' }
+          value="Give your opinion"
+        />
       </div>
     )
   }

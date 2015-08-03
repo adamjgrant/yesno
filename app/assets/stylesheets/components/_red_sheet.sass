@@ -14,9 +14,39 @@
   input[type="submit"]
     +button-color(darken(map-get($colors, red), 5%))
 
+  textarea + input[type="submit"]
+    +button-size(1.5)
+    +button-color(map-get($colors, red))
+
+  label
+    display: inline-block
+    vertical-align: middle
+    margin-right: 10px
+
+  textarea
+    background: transparent
+    color: white
+    border: none
+    font-size: 1.2rem
+    margin: $space auto
+    width: 100%
+
+    &:focus
+      outline: none
+      box-shadow: none
+      border-bottom: 1px solid white
+
+    +gt($tablet)
+      max-width: 600px
+      min-height: 30vh
+
+    +gt($tablet-landscape)
+      max-width: 1000px
+
+
   .hideUntilVoted,
   .hideAfterVoted
-    display: none
+    visibility: hidden
 
   &.show
     pointer-events: auto

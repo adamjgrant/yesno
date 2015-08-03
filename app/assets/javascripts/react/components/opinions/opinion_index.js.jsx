@@ -19,7 +19,11 @@ var OpinionIndex = React.createClass({
     })
     return (
       <div data-component="opinion column">
-        <RedSheet displayLink={this.linkState('showRedSheet')} issue={this.props.issue}>
+        <RedSheet 
+          displayLink={this.linkState('showRedSheet')} 
+          issue={this.props.issue}
+          key="opinion"
+        >
         </RedSheet>
         <h1>{this.props.title}</h1>
         <p>
