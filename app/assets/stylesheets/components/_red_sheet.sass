@@ -11,6 +11,12 @@
   pointer-events: none
   transition: opacity 0.25s
 
+  input[type="submit"]
+    +button-color(darken(map-get($colors, red), 5%))
+
+  .hideUntilVoted
+    display: none
+
   &.show
     pointer-events: auto
     opacity: 1
