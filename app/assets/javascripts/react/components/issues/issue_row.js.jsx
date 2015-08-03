@@ -12,6 +12,7 @@ var IssueRow = React.createClass({
     }
     return (
       <section data-component="issue">
+        <img src={ this.props.issue.image } />
         <article>
           <h1>
             <a href={"/issues/" + this.props.issue.id}>{this.props.issue.name}</a>
@@ -19,7 +20,6 @@ var IssueRow = React.createClass({
           <h2>{this.props.issue.description}</h2>
           <h3>{ response }</h3>
         </article>
-        = image_tag 
       </section>
     )
   }

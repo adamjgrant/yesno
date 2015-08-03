@@ -6,6 +6,7 @@ var IssueIndex = React.createClass({
           id: 0,
           name: "Loading...",
           description: "",
+          image: "",
           created_at: "",
           victor_score: 0,
           score: 0
