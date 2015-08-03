@@ -16,7 +16,7 @@ var RedSheet = React.createClass({
   render: function() {
     return (
       <div data-component="red sheet" className={this.props.displayLink.value ? "show" : ""}>
-        <button className="close" onClick={this.close}>&times;</button>
+        <button className={(this.state.voted ? 'hideAfterVoted' : '') + " close"} onClick={this.close}>&times;</button>
         <h1>{this.props.issue.name}</h1>
         <label>
           <input type="radio" name="opinion" value="yes" onClick={this.setVoted} />
@@ -26,14 +26,14 @@ var RedSheet = React.createClass({
           <input type="radio" name="opinion" value="no" onClick={this.setVoted} />
           No
         </label>
-        <textarea 
-          placeholder="Why do you believe this?"
-          className={ this.state.voted ? '' : 'hideUntilVoted' }
-        ></textarea>
         <input 
           type="submit" 
           className={ this.state.voted ? '' : 'hideUntilVoted' }
         />
+        <textarea 
+          placeholder="Why do you believe this?"
+          className={ this.state.voted ? '' : 'hideUntilVoted' }
+        ></textarea>
       </div>
     )
   }
