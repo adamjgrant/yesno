@@ -39,6 +39,7 @@ var RedSheet = React.createClass({
     this.setState(state);
   },
   saveOpinion: function() {
+    var self = this;
     if (!this.state.voted) {
       return k$.status({
         text: "Please vote",
@@ -47,7 +48,12 @@ var RedSheet = React.createClass({
     };
     var data = "opinion[statement]=" + this.state.response.statement +
       "&opinion[agree]=" + this.state.response.agree;
-    $YN.post('/issues/' + this.props.issue.id + '/opinions', data);
+
+    k$.status({ text: "Saving..." })
+    $YN.post('/issues/' + this.props.issue.id + '/opinions', data, function() {
+      k$.status({ text: "Saved", type: "status-green" })
+      self.close();
+    });
   },
   render: function() {
     return (

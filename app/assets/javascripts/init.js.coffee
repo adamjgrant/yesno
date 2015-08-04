@@ -11,7 +11,7 @@ $YN.isPage = (controller, action) ->
     ($body.action == action || action == true) and ($body.controller == controller || controller == true)
   )
 
-$YN.post = (endpoint, data) ->
+$YN.post = (endpoint, data, cb) ->
   token = k$.$('meta[name="csrf-token"]').content
   if (!token)
     k$.status(
@@ -21,6 +21,8 @@ $YN.post = (endpoint, data) ->
   req.open 'POST', endpoint, true
   req.setRequestHeader 'Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8'
   req.setRequestHeader('X-CSRF-Token', token)
+  req.onload = ->
+    cb()
   req.send data
 
 $YN.get = (endpoint, cb) ->
