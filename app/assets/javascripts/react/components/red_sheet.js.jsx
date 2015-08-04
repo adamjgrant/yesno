@@ -29,6 +29,7 @@ var RedSheet = React.createClass({
   },
   updateAgree: function(e) {
     var state = this.state;
+    debugger;
     state.response.agree = e.target.value.toLowerCase() == "true" ? true : false;
     this.setState(state);
   },
@@ -40,6 +41,7 @@ var RedSheet = React.createClass({
   },
   saveOpinion: function() {
     var self = this;
+
     if (!this.state.voted) {
       return k$.status({
         text: "Please vote",
@@ -61,11 +63,11 @@ var RedSheet = React.createClass({
         <button className={(this.state.voted ? 'hideAfterVoted' : '') + " close"} onClick={this.close}>&times;</button>
         <h1>{this.props.issue.name}</h1>
         <label>
-          <input type="radio" name="opinion" value="true" onClick={this.setVoted} value="true" onChange={this.updateAgree} value={ this.state.response.agree }/>
+          <input type="radio" name="opinion" onClick={this.setVoted} value="true" onChange={this.updateAgree} />
           Yes
         </label>
         <label>
-          <input type="radio" name="opinion" value="false" onClick={this.setVoted} value="false" onChange={this.updateAgree} value={ this.state.response.agree }/>
+          <input type="radio" name="opinion" onClick={this.setVoted} value="false" onChange={this.updateAgree} />
           No
         </label>
         <textarea 
