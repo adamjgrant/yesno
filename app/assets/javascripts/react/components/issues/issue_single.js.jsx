@@ -16,11 +16,9 @@ var IssueSingle = React.createClass({
     this.getData();
   },
   getData: function() {
-    // TODO: Serialize for a single request.
     var self = this,
       state = this.state;
     $YN.get('/issues/' + k$.$('[data-issue]').dataset.issue + '.json', function(data) {
-      // TODO: "Unexpected token u" error here.
       state.issue = data.issue;
       self.setState(state);
     });
