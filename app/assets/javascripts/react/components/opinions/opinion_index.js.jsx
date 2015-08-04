@@ -12,7 +12,7 @@ var OpinionIndex = React.createClass({
     var self = this;
     var rows = this.props.issue.opinions.filter(function(row) {
        // TODO: Filter out the yeses and nos
-      return row.agree === !!self.props.agree;
+      return row.agree === self.props.agree;
     });
     var opinionRows = rows.map(function(row) {
       return (
@@ -29,7 +29,7 @@ var OpinionIndex = React.createClass({
           key="opinion"
         >
         </RedSheet>
-        <h1>{this.props.title}</h1>
+        <h1>{this.props.agree ? "YES" : "NO"}</h1>
         <p>
           <a href="#" onClick={this.openRedSheet}>Add your opinion</a>
         </p>

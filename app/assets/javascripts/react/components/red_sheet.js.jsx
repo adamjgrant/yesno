@@ -29,7 +29,7 @@ var RedSheet = React.createClass({
   },
   updateAgree: function(e) {
     var state = this.state;
-    state.response.agree = !!e.target.value;
+    state.response.agree = e.target.value.toLowerCase() == "true" ? true : false;
     this.setState(state);
   },
   updateStatement: function(e) {

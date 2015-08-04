@@ -3,8 +3,8 @@ var OpinionTable = React.createClass({
     return (
       <div>
         <section data-component="opinion table">
-          <OpinionIndex title="YES" agree="true" issue={this.props.issue} />
-          <OpinionIndex title="NO" agree="false" issue={this.props.issue} />
+          <OpinionIndex key="yes" agree={ true } issue={this.props.issue} />
+          <OpinionIndex key="no" agree={ false } issue={this.props.issue} />
         </section>
       </div>
     )
