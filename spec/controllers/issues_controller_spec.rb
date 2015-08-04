@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe IssuesController do
-  login_user
+  login_admin
 
   # TODO: Test with invalid params
 

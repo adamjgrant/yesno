@@ -5,6 +5,9 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require "capybara/rails"
 require "omniauth_macros"
+require "database_cleaner"
+
+DatabaseCleaner.strategy = :truncation
 
 # Add additional requires below this line. Rails is not loaded until this point!
 

@@ -2,6 +2,7 @@ module ControllerMacros
   def login_admin
     before(:each) do
       @request.env["devise.mapping"] = Devise.mappings[:admin]
+      DatabaseCleaner.clean
       sign_in create(:admin)
     end
   end
@@ -9,9 +10,9 @@ module ControllerMacros
   def login_user
     before(:each) do
       @request.env["devise.mapping"] = Devise.mappings[:user]
-      # user = create(:user)
-      # user.confirm!
-      sign_in create(:user)
+      # DatabaseCleaner.clean
+      user = create(:user)
+      sign_in user
     end
   end
 end
