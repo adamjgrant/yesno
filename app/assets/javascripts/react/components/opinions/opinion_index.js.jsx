@@ -9,7 +9,13 @@ var OpinionIndex = React.createClass({
     this.setState({showRedSheet: true});
   },
   render: function() {
-    var opinionRows = this.props.issue.opinions.map(function(row) {
+    var self = this;
+    var rows = this.props.issue.opinions.filter(function(row) {
+       // TODO: Filter out the yeses and nos
+      debugger;
+      return row.agree === !!self.props.agree;
+    });
+    var opinionRows = rows.map(function(row) {
       return (
         <div key={row.id} data-component="opinion preview">
           <p>{row.statement}</p>
