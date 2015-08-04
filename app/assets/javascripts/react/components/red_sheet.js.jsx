@@ -2,7 +2,11 @@ var RedSheet = React.createClass({
   getInitialState: function() {
     return {
       voted: false,
-      talked: false
+      talked: false,
+      response: {
+        statement: null,
+        agree: false
+      }
     }
   },
   close: function() {
@@ -22,6 +26,17 @@ var RedSheet = React.createClass({
     var state = this.state;
     state.talked = true;
     this.setState(state);
+  },
+  saveOpinion: function() {
+    if (!this.state.voted) {
+      return k$.status({
+        text: "Please vote",
+        status: "status-red"
+      });
+    };
+    var data = "opinion[statement]=" + this.state.response.statement +
+      "&opinion[agree]=" + this.state.response.agree;
+    $YN.post('/issues/' + this.props.issue.id + '/opinions', data);
   },
   render: function() {
     return (
@@ -45,7 +60,8 @@ var RedSheet = React.createClass({
         <input 
           type="submit" 
           className={ this.state.voted ? '' : 'hideUntilVoted' }
-          value="Give your opinion"
+          onClick={ this.saveOpinion }
+          value="Save"
         />
       </div>
     )

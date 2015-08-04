@@ -10,3 +10,15 @@ $YN.isPage = (controller, action) ->
   return (
     ($body.action == action || action == true) and ($body.controller == controller || controller == true)
   )
+
+$YN.post = (endpoint, data) ->
+  token = k$.$('meta[name="csrf-token"]').content
+  if (!token)
+    k$.status(
+      text: 'Cannot verify CSRF token. This is our fault.', type: 'status-yellow' 
+    )
+  req = new XMLHttpRequest()
+  req.open 'POST', endpoint, true
+  req.setRequestHeader 'Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8'
+  req.setRequestHeader('X-CSRF-Token', token)
+  req.send JSON.stringify(data)
