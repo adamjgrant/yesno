@@ -1,6 +1,8 @@
 class IssueSerializer < ActiveModel::Serializer
   attributes :id, :name, :description, :created_at, :score, :victor_score, :image
 
+  has_many :opinions
+
   def score
     object.get_upvotes.size - object.get_downvotes.size
   end
