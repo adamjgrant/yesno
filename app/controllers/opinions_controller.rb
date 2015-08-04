@@ -1,4 +1,13 @@
 class OpinionsController < ApplicationController
+  def index
+    @issue = Issue.find(params[:issue_id])
+    @opinions = @issue.opinions
+
+    respond_to do |format|
+      format.json { render json: @opinions }
+    end
+  end
+
   def create
     @opinion = Opinion.new(opinion_params)
 
