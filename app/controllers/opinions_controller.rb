@@ -10,7 +10,7 @@ class OpinionsController < ApplicationController
 
   def create
     @issue = Issue.find(params[:issue_id])
-    @issue.opinions.create(opinion_params)
+    @opinion = @issue.opinions.new(opinion_params)
 
     if @opinion.save
       render text: "Opinion created successfully"

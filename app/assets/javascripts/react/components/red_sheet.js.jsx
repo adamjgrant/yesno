@@ -27,6 +27,17 @@ var RedSheet = React.createClass({
     state.talked = true;
     this.setState(state);
   },
+  updateAgree: function(e) {
+    var state = this.state;
+    state.response.agree = e.target.value;
+    this.setState(state);
+  },
+  updateStatement: function(e) {
+    var state = this.state;
+    state.response.statement = e.target.value;
+    this.setTalked();
+    this.setState(state);
+  },
   saveOpinion: function() {
     if (!this.state.voted) {
       return k$.status({
@@ -44,17 +55,18 @@ var RedSheet = React.createClass({
         <button className={(this.state.voted ? 'hideAfterVoted' : '') + " close"} onClick={this.close}>&times;</button>
         <h1>{this.props.issue.name}</h1>
         <label>
-          <input type="radio" name="opinion" value="yes" onClick={this.setVoted} />
+          <input type="radio" name="opinion" value="yes" onClick={this.setVoted} value="true" onChange={this.updateAgree} value={ this.state.response.agree }/>
           Yes
         </label>
         <label>
-          <input type="radio" name="opinion" value="no" onClick={this.setVoted} />
+          <input type="radio" name="opinion" value="no" onClick={this.setVoted} value="false" onChange={this.updateAgree} value={ this.state.response.agree }/>
           No
         </label>
         <textarea 
           placeholder="Why do you believe this?"
           className={ this.state.voted ? '' : 'hideUntilVoted' }
-          onChange={ this.setTalked }
+          onChange={ this.updateStatement }
+          value={ this.state.response.statement }
           ref="talker"
         ></textarea>
         <input 
