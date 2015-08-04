@@ -12,7 +12,6 @@ var OpinionIndex = React.createClass({
     var self = this;
     var rows = this.props.issue.opinions.filter(function(row) {
        // TODO: Filter out the yeses and nos
-      debugger;
       return row.agree === !!self.props.agree;
     });
     var opinionRows = rows.map(function(row) {
