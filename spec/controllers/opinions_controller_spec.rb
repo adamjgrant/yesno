@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe OpinionsController, type: :controller do
+  login_user
 
   # TODO: Test with invalid params
 

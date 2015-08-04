@@ -1,4 +1,6 @@
 class OpinionsController < ApplicationController
+  before_filter :authenticate_user!
+  
   def index
     @issue = Issue.find(params[:issue_id])
     @opinions = @issue.opinions
@@ -11,7 +13,7 @@ class OpinionsController < ApplicationController
   def create
     @issue = Issue.find(params[:issue_id])
     @opinion = @issue.opinions.new(opinion_params)
-    @opinion.user_id = current_user.id or nil
+    @opinion.user_id = user_signed_in ? current_user.id : nil
 
     if @opinion.save
       render text: "Opinion created successfully"
@@ -21,7 +23,7 @@ class OpinionsController < ApplicationController
   end
 
   def show
-    @opinion = Opinion.find_by(id: params[:id])
+    @opinion = Opinion.find(params[:id])
   end
 
   private
