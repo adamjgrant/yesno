@@ -9,10 +9,9 @@ var OpinionIndex = React.createClass({
     this.setState({showRedSheet: true});
   },
   render: function() {
-    var opinionRows = this.props.opinions.map(function(row) {
+    var opinionRows = this.props.issue.opinions.map(function(row) {
       return (
         <div key={row.id} data-component="opinion preview">
-          <h1>{row.gist}</h1>
           <p>{row.statement}</p>
         </div>
       )

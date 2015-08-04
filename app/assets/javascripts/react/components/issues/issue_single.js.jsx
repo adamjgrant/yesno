@@ -7,7 +7,8 @@ var IssueSingle = React.createClass({
         description: "",
         created_at: "",
         victor_score: 0,
-        score: 0
+        score: 0,
+        opinions: []
       }
     }
   },
@@ -15,15 +16,14 @@ var IssueSingle = React.createClass({
     this.getData();
   },
   getData: function() {
-    var self = this;
-    var req = new XMLHttpRequest();
-    req.open('get', '/issues/' + k$.$('[data-issue]').dataset.issue + '.json', true); // TODO Url
-    req.onload = function() {
-      if (this.status >= 200 && this.status < 400) {
-        self.setState({issue: JSON.parse(this.response).issue})
-      }
-    }
-    req.send();
+    // TODO: Serialize for a single request.
+    var self = this,
+      state = this.state;
+    $YN.get('/issues/' + k$.$('[data-issue]').dataset.issue + '.json', function(data) {
+      // TODO: "Unexpected token u" error here.
+      state.issue = data.issue;
+      self.setState(state);
+    });
   },
   render: function() {
     return (
