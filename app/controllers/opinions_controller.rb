@@ -11,6 +11,7 @@ class OpinionsController < ApplicationController
   def create
     @issue = Issue.find(params[:issue_id])
     @opinion = @issue.opinions.new(opinion_params)
+    @opinion.user_id = current_user.id
 
     if @opinion.save
       render text: "Opinion created successfully"

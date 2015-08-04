@@ -11,12 +11,12 @@ var OpinionIndex = React.createClass({
   render: function() {
     var self = this;
     var rows = this.props.issue.opinions.filter(function(row) {
-       // TODO: Filter out the yeses and nos
       return row.agree === self.props.agree;
     });
     var opinionRows = rows.map(function(row) {
       return (
         <div key={row.id} data-component="opinion preview">
+          <h2>@{row.handle}</h2>
           <p>{row.statement}</p>
         </div>
       )
