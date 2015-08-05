@@ -3,14 +3,16 @@ var IssueRow = React.createClass({
     var issue = this.props.issue,
       score = issue.total_votes,
       response = "Be the first to vote",
-      people_say = function(score) { return score === 1 ? "person says" : "people say"; },
+      people_say = function(score) { return score === 1 ? "says" : "say"; },
       yes_statement = issue.yes + " " + people_say(issue.yes) + " yes.",
       no_statement = issue.no + " " + people_say(issue.no) + " no.",
-      style = {
-        backgroundImage: 'url(' + issue.image + ')'
-      };
+      style = { backgroundImage: 'url(' + issue.image + ')' },
+      call_to_action = "Vote";
 
-      if (issue.yes === issue.no && issue.yes + issue.no !== 0) { response = "TIE" }
+      if (issue.yes === issue.no && issue.yes + issue.no !== 0) { 
+        response = "TIE";
+        call_to_action = "Break the tie"
+      }
       if (issue.yes > issue.no) { response = "YES" }
       if (issue.yes < issue.no) { response = "NO" }
 
@@ -28,6 +30,7 @@ var IssueRow = React.createClass({
               <a href={"/issues/" + this.props.issue.id}>{this.props.issue.name}</a>
             </h1>
             <p>{this.props.issue.description}</p>
+            <a className="cta" href="">{ call_to_action }</a>
           </aside>
         </article>
       </section>
