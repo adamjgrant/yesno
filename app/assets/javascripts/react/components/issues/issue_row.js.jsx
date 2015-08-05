@@ -1,6 +1,6 @@
 var IssueRow = React.createClass({
   render: function() {
-    var score = this.props.issue.score,
+    var score = this.props.issue.total_votes,
       response = (score > 0 ? "YES" : "YES"),
       people_say = function(score) { return score === 1 ? "person says" : "people say"; },
       yes_statement = this.props.issue.yes + " " + people_say(this.props.issue.yes) + " yes.",

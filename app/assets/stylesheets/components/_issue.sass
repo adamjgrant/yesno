@@ -47,6 +47,7 @@
 
         h1
           +heading_xs
+          margin-bottom: 2px
 
           a
             color: map-get($gray, darkest)
@@ -59,14 +60,17 @@
         padding-right: $space
         width: 40%
 
+        h1
+          margin-bottom: 2px
+
         h1:not(.small)
           +heading_xxl
           line-height: 3rem
-          text-align: right
+          margin-bottom: 5px
 
         h1.small
-          +heading_xs
-          text-align: center
+          +heading_xxs
+          font-size: 0.8rem
           color: map-get($gray, darkest)
 
         p
@@ -79,4 +83,13 @@
 
       .img
         height: 450px
+
+      article
+        max-width: $tablet
+
+        aside
+          &:first-child
+            h1
+              +heading_lg
+              margin-bottom: 5px
 
