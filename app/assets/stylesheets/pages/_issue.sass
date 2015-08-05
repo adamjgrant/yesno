@@ -1,0 +1,32 @@
+[data-controller="issues"][data-action="show"]
+  [data-component="issue"]:first-child
+    +column(4)
+
+    .img
+      height: 150px
+      margin-bottom: $space/2
+
+    article
+      display: block
+
+      aside
+        &.verdict,
+        &.title
+          width: 100%
+          padding: 0
+          border: none
+
+        &.verdict
+          text-align: left
+
+        &.title
+          margin-bottom: $space
+
+          h1:first-child
+            +heading_sm
+
+    +gt($tablet)
+      +column(4)
+
+  [data-component="opinion table"]
+    +column(8)

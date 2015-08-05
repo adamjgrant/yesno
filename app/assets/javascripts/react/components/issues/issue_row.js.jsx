@@ -18,12 +18,8 @@ var IssueRow = React.createClass({
       <section data-component="issue">
         <div className="img" style={ style } />
         <article>
-          <aside className={ (score == 0) ? '' : response.toLowerCase() }>
-            <h1 className={ (score == 0) ? 'small' : '' }>{ response }</h1>
-            { score === 0 ? '' : <p>{ yes_statement }</p> }
-            { score === 0 ? '' : <p>{ no_statement }</p> }
-          </aside>
-          <aside>
+          <Verdict score={ score } response={ response } yes={ yes_statement } no={ no_statement } className="top" />
+          <aside className="title">
             <h1>
               <a href={"/issues/" + issue.id}>{issue.name}</a>
             </h1>
@@ -32,6 +28,7 @@ var IssueRow = React.createClass({
             <a className="cta" href="#">{ "Yes" }</a>&nbsp;
             <a className="cta" href="">{ "No" }</a>
           </aside>
+          <Verdict score={ score } response={ response } yes={ yes_statement } no={ no_statement } className="bottom" />
         </article>
       </section>
     )
