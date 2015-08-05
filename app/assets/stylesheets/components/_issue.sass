@@ -47,11 +47,20 @@
         &.tie
           border-right-color: map-get($colors, yellow)
 
+          h1, p
+            color: darken(map-get($colors, yellow), 9%)
+
         &.yes
           border-right-color: map-get($colors, green)
 
+          h1, p
+            color: map-get($colors, green)
+
         &.no
           border-right-color: map-get($colors, red)
+
+          h1, p
+            color: map-get($colors, red)
 
         h1
           margin-bottom: 2px
