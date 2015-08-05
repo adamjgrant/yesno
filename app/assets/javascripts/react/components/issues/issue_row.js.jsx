@@ -6,7 +6,7 @@ var IssueRow = React.createClass({
       people_say = function(score) { return score === 1 ? "says" : "say"; },
       yes_statement = issue.yes + " " + people_say(issue.yes) + " yes.",
       no_statement = issue.no + " " + people_say(issue.no) + " no.",
-      style = { backgroundImage: 'url(' + issue.image + ')' };
+      style = issue.image ? { backgroundImage: 'url(' + issue.image + ')' } : {};
 
       if (issue.yes === issue.no && issue.yes + issue.no !== 0) { 
         response = "TIE";
@@ -25,9 +25,9 @@ var IssueRow = React.createClass({
           </aside>
           <aside>
             <h1>
-              <a href={"/issues/" + this.props.issue.id}>{this.props.issue.name}</a>
+              <a href={"/issues/" + issue.id}>{issue.name}</a>
             </h1>
-            <p>{this.props.issue.description}</p>
+            <p>{issue.description}</p>
             <p className="sign-in">{ "Sign in to vote" }</p>
             <a className="cta" href="#">{ "Yes" }</a>&nbsp;
             <a className="cta" href="">{ "No" }</a>

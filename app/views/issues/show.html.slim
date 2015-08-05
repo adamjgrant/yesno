@@ -1,14 +1,1 @@
-section[data-issue="#{params[:id]}" data-component="issue header"]
-  div[data-component="issue"]
-    = image_tag @issue.image, :class => "main"
-    h1 = @issue.name
-    h2 = @issue.description
-    /h3 = link_to 'Back', issues_path
-
-    - if admin_signed_in?
-      ul
-        li Administration: 
-        li = link_to 'Edit', edit_issue_path(@issue)
-
-  div[data-component="victor score"]
-    h1 = @victor_phrasing
+section[data-issue="#{params[:id]}"]

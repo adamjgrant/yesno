@@ -15,7 +15,8 @@ $YN.post = (endpoint, data, cb) ->
   token = k$.$('meta[name="csrf-token"]').content
   if (!token)
     k$.status(
-      text: 'Cannot verify CSRF token. This is our fault.', type: 'status-yellow' 
+      text: 'Cannot verify CSRF token. This is our fault.'
+      type: 'status-yellow'
     )
   req = new XMLHttpRequest()
   req.open 'POST', endpoint, true
