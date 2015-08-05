@@ -1,32 +1,33 @@
 var IssueRow = React.createClass({
   render: function() {
-    var score = this.props.issue.total_votes,
-      response = (score > 0 ? "YES" : "YES"),
+    var issue = this.props.issue,
+      score = issue.total_votes,
+      response = "Be the first to vote",
       people_say = function(score) { return score === 1 ? "person says" : "people say"; },
-      yes_statement = this.props.issue.yes + " " + people_say(this.props.issue.yes) + " yes.",
-      no_statement = this.props.issue.no + " " + people_say(this.props.issue.no) + " no.",
+      yes_statement = issue.yes + " " + people_say(issue.yes) + " yes.",
+      no_statement = issue.no + " " + people_say(issue.no) + " no.",
       style = {
-        backgroundImage: 'url(' + this.props.issue.image + ')'
+        backgroundImage: 'url(' + issue.image + ')'
       };
 
-    if (score == 0) {
-      response = "Be the first to vote!";
-    }
+      if (issue.yes === issue.no && issue.yes + issue.no !== 0) { response = "TIE" }
+      if (issue.yes > issue.no) { response = "YES" }
+      if (issue.yes < issue.no) { response = "NO" }
 
     return (
       <section data-component="issue">
         <div className="img" style={ style } />
         <article>
+          <aside className={ (score == 0) ? '' : response.toLowerCase() }>
+            <h1 className={ (score == 0) ? 'small' : '' }>{ response }</h1>
+            { score === 0 ? '' : <p>{ yes_statement }</p> }
+            { score === 0 ? '' : <p>{ no_statement }</p> }
+          </aside>
           <aside>
             <h1>
               <a href={"/issues/" + this.props.issue.id}>{this.props.issue.name}</a>
             </h1>
             <p>{this.props.issue.description}</p>
-          </aside>
-          <aside>
-            <h1 className={ (score == 0) ? 'small' : '' }>{ response }</h1>
-            <p>{ yes_statement }</p>
-            <p>{ no_statement }</p>
           </aside>
         </article>
       </section>

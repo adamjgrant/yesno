@@ -1,10 +1,6 @@
 [data-component="issue"]
-  margin-bottom: $space
-  width: 100%
-  max-width: 100%
-
-  +gt($tablet)
-    width: 50%
+  margin-bottom: $space*2
+  +column('half')
 
   .img
     width: 100%
@@ -34,20 +30,53 @@
 
   article
     margin: 0px auto
-    margin-top: $space/2
     display: flex
     max-width: $phablet
 
     aside
       width: 100%
+      padding-top: $space/2
 
       &:first-child
+        padding-right: $space
+        width: 40%
+        text-align: right
+        border-right: 5px solid transparent
+
+        &.tie
+          border-right-color: map-get($colors, yellow)
+
+        &.yes
+          border-right-color: map-get($colors, green)
+
+        &.no
+          border-right-color: map-get($colors, red)
+
+        h1
+          margin-bottom: 2px
+
+          &:not(.small)
+            +heading_xxl
+            line-height: 3rem
+            margin-bottom: 5px
+
+          &.small
+            +heading_xxs
+            font-size: 0.8rem
+            color: map-get($gray, darkest)
+
+        p
+          font-size: 0.85rem
+          margin-bottom: 0
+          line-height: 1.25rem
+
+      &:last-child
         padding-left: $space
         padding-right: $space/2
 
         h1
           +heading_xs
-          margin-bottom: 2px
+          margin-bottom: 4px
 
           a
             color: map-get($gray, darkest)
@@ -56,30 +85,10 @@
           color: map-get($gray, dark)
           font-size: 0.85rem
 
-      &:last-child
-        padding-right: $space
-        width: 40%
-
-        h1
-          margin-bottom: 2px
-
-        h1:not(.small)
-          +heading_xxl
-          line-height: 3rem
-          margin-bottom: 5px
-
-        h1.small
-          +heading_xxs
-          font-size: 0.8rem
-          color: map-get($gray, darkest)
-
-        p
-          font-size: 0.85rem
-          margin-bottom: 0
 
   &:first-child:not(:only-child)
     +gt($tablet)
-      width: 1000px
+      +column(12)
 
       .img
         height: 450px
@@ -88,7 +97,7 @@
         max-width: $tablet
 
         aside
-          &:first-child
+          &:last-child
             h1
               +heading_lg
               margin-bottom: 5px

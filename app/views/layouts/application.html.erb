@@ -39,12 +39,18 @@
       <%= image_tag('spinner.gif', class: "loader") %>
     </div>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
   </div>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= javascript_tag do %>
     <% content_for :post_js %>
+  <% end %>
+  <% if (notice or alert) %>
+    <script>
+      k$.status({
+        text: "<%= ( notice ? notice : alert ) %>",
+        type: "status-<%= ( notice ? "green" : "yellow" ) %>"
+      });
+    </script>
   <% end %>
 </body>
 </html>
