@@ -29,7 +29,7 @@ var IssueRow = React.createClass({
             <p>{this.props.issue.description}</p>
           </aside>
           <aside>
-            <h1>{ response }</h1>
+            <h1 className={ (score == 0) ? 'small' : '' }>{ response }</h1>
             <p>{ formatted_response }</p>
             <p>{ formatted_antiResponse }</p>
           </aside>
