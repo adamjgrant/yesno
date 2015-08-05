@@ -57,7 +57,7 @@
 
       &:last-child
         padding-right: $space
-        width: 33%
+        width: 40%
 
         h1:not(.small)
           +heading_xxl
@@ -68,6 +68,10 @@
           +heading_xs
           text-align: center
           color: map-get($gray, darkest)
+
+        p
+          font-size: 0.85rem
+          margin-bottom: 0
 
   &:first-child:not(:only-child)
     +gt($tablet)
