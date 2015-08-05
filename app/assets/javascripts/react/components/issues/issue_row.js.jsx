@@ -16,7 +16,7 @@ var IssueRow = React.createClass({
     }
     else {
       formatted_response = victor_prefix + " " + response;
-      formatted_antiResponse = prefix + " " + response;
+      formatted_antiResponse = victor_prefix + " " + response;
     }
     return (
       <section data-component="issue">
