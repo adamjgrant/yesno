@@ -1,23 +1,18 @@
 var IssueRow = React.createClass({
   render: function() {
     var score = this.props.issue.score,
-      response = (score > 0 ? "yes" : "no"),
-      antiresponse = (score > 0 ? "yes" : "no"),
-      people_say = (Math.abs(score) > 1 ? "people say" : "person says"),
-      victor_prefix = this.props.issue.victor_score + " " + people_say,
+      response = (score > 0 ? "YES" : "YES"),
+      people_say = function(score) { return score === 1 ? "person says" : "people say"; },
+      yes_statement = this.props.issue.yes + " " + people_say(this.props.issue.yes) + " yes.",
+      no_statement = this.props.issue.no + " " + people_say(this.props.issue.no) + " no.",
       style = {
         backgroundImage: 'url(' + this.props.issue.image + ')'
       };
 
-    var formatted_response, formatted_antiResponse;
-
     if (score == 0) {
       response = "Be the first to vote!";
     }
-    else {
-      formatted_response = victor_prefix + " " + response;
-      formatted_antiResponse = victor_prefix + " " + response;
-    }
+
     return (
       <section data-component="issue">
         <div className="img" style={ style } />
@@ -30,8 +25,8 @@ var IssueRow = React.createClass({
           </aside>
           <aside>
             <h1 className={ (score == 0) ? 'small' : '' }>{ response }</h1>
-            <p>{ formatted_response }</p>
-            <p>{ formatted_antiResponse }</p>
+            <p>{ yes_statement }</p>
+            <p>{ no_statement }</p>
           </aside>
         </article>
       </section>

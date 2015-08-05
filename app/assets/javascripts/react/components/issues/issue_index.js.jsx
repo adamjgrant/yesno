@@ -9,7 +9,9 @@ var IssueIndex = React.createClass({
           image: "",
           created_at: "",
           victor_score: 0,
-          score: 0
+          score: 0,
+          yes: 0,
+          no: 0
         }
       ]
     }
@@ -31,7 +33,7 @@ var IssueIndex = React.createClass({
   render: function() {
     var issueRows = this.state.issues.map(function(row) {
       return (
-        <IssueRow issue={row} />
+        <IssueRow issue={row} key={row.id} />
       )
     })
     return (
