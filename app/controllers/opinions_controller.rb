@@ -13,7 +13,17 @@ class OpinionsController < ApplicationController
   def create
     @issue = Issue.find(params[:issue_id])
     @opinion = @issue.opinions.new(opinion_params)
+
+    # TODO: This shouldn't be necessary. The user should be redirected to
+    # authentication if they haven't been already.
     @opinion.user_id = current_user.nil? ? nil : current_user.id
+
+    # Set the vote
+    if @opinion.agree
+      @issue.upvote_from current_user
+    else
+      @issue.downvote_from current_user
+    end
 
     if @opinion.save
       render text: "Opinion created successfully"

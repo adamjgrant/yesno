@@ -8,6 +8,8 @@ var IssueSingle = React.createClass({
         created_at: "",
         victor_score: 0,
         score: 0,
+        yes: 0,
+        no: 0,
         opinions: []
       }
     }
