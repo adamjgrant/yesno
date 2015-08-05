@@ -31,14 +31,11 @@ var IssueIndex = React.createClass({
   render: function() {
     var issueRows = this.state.issues.map(function(row) {
       return (
-        <div data-component="voter_box" key={row.id}>
-          <Voter issue={row} object="issue" editable="false" />
-          <IssueRow issue={row} />
-        </div>
+        <IssueRow issue={row} />
       )
     })
     return (
-      <div>
+      <div data-block="issues">
         { issueRows }
       </div>
     )

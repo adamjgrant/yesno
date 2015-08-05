@@ -1,24 +1,38 @@
 var IssueRow = React.createClass({
   render: function() {
-    response = (this.props.issue.score > 0 ? "yes" : "no")
-    var response = "";
-    if (this.props.issue.score == 0) {
-      response = "Be the first to vote!"
+    var score = this.props.issue.score,
+      response = (score > 0 ? "yes" : "no"),
+      antiresponse = (score > 0 ? "yes" : "no"),
+      people_say = (Math.abs(score) > 1 ? "people say" : "person says"),
+      victor_prefix = this.props.issue.victor_score + " " + people_say,
+      style = {
+        backgroundImage: 'url(' + this.props.issue.image + ')'
+      };
+
+    var formatted_response, formatted_antiResponse;
+
+    if (score == 0) {
+      response = "Be the first to vote!";
     }
     else {
-      var people_say = (Math.abs(this.props.issue.score) > 1 ? "people say" : "person says")
-      var prefix = this.props.issue.victor_score + " " + people_say
-      response = prefix + " " + (this.props.issue.score > 0 ? "YES" : "NO")
+      formatted_response = victor_prefix + " " + response;
+      formatted_antiResponse = prefix + " " + response;
     }
     return (
       <section data-component="issue">
-        <img src={ this.props.issue.image } />
+        <div className="img" style={ style } />
         <article>
-          <h1>
-            <a href={"/issues/" + this.props.issue.id}>{this.props.issue.name}</a>
-          </h1>
-          <h2>{this.props.issue.description}</h2>
-          <h3>{ response }</h3>
+          <aside>
+            <h1>
+              <a href={"/issues/" + this.props.issue.id}>{this.props.issue.name}</a>
+            </h1>
+            <p>{this.props.issue.description}</p>
+          </aside>
+          <aside>
+            <h1>{ response }</h1>
+            <p>{ formatted_response }</p>
+            <p>{ formatted_antiResponse }</p>
+          </aside>
         </article>
       </section>
     )

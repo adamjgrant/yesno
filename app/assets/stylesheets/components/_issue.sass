@@ -1,8 +1,18 @@
-[data-component="issue"], [data-component="voter_box"] [data-component="issue"]
+[data-component="issue"]
   margin-bottom: $space
+  width: 100%
+  max-width: 100%
 
-  img.main
-    height: 250px
+  +gt($tablet)
+    width: 50%
+
+  .img
+    width: 100%
+    height: 300px
+    background-repeat: no-repeat
+    background-position: center center
+    background-size: cover
+    margin: 0px auto
 
   h1, h1 a
     +heading_lg
@@ -26,8 +36,16 @@
   ul
     +list($style: "unstyled", $layout: "horizontal")
 
-[data-component="voter_box"] [data-component="issue"]
-  +thumbnail-content
+  article
+    margin: 0px auto
+    margin-top: $space/2
+    display: flex
+    max-width: $phablet
 
-  img
-    width: 200px
+    aside
+      width: 50%
+
+  &:first-child:not(:only-child)
+    +gt($tablet)
+      width: 1000px
+

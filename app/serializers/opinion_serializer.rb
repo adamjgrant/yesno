@@ -6,7 +6,7 @@ class OpinionSerializer < ActiveModel::Serializer
   # end
   
   def handle
-    object.user_id.nil ? "" : object.user.handle
+    object.user_id.nil? ? "" : object.user.handle
   end
 
 end
