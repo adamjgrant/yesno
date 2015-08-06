@@ -14,9 +14,6 @@ class OpinionsController < ApplicationController
     @issue = Issue.find(params[:issue_id])
     @opinion = @issue.opinions.new(opinion_params)
 
-    # TODO: This shouldn't be necessary. The user should be redirected to
-    # authentication if they haven't been already.
-    # Handle this on the front end?
     @opinion.user_id = current_user.id
 
     # SUCCESS

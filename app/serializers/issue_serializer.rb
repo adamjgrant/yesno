@@ -1,5 +1,5 @@
 class IssueSerializer < ActiveModel::Serializer
-  attributes :id, :name, :description, :created_at, :score, :total_votes, :victor_score, :image, :yes, :no
+  attributes :id, :name, :description, :created_at, :score, :total_votes, :victor_score, :image, :yes, :no, :user_can_vote
 
   has_many :opinions
 
@@ -21,5 +21,9 @@ class IssueSerializer < ActiveModel::Serializer
 
   def victor_score
     object.get_upvotes.size > object.get_downvotes.size ? object.get_upvotes.size : object.get_downvotes.size
+  end
+
+  def user_can_vote
+    !(Opinion.where(user: current_user, issue: object).count > 0)
   end
 end

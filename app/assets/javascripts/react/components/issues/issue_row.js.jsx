@@ -15,13 +15,27 @@ var IssueRow = React.createClass({
       people_say = function(score) { return score === 1 ? "says" : "say"; },
       yes_statement = issue.yes + " " + people_say(issue.yes) + " yes.",
       no_statement = issue.no + " " + people_say(issue.no) + " no.",
+      voteAction,
       style = issue.image ? { backgroundImage: 'url(' + issue.image + ')' } : {};
 
-      if (issue.yes === issue.no && issue.yes + issue.no !== 0) { 
-        response = "TIE";
-      }
-      if (issue.yes > issue.no) { response = "YES" }
-      if (issue.yes < issue.no) { response = "NO" }
+    if (issue.yes === issue.no && issue.yes + issue.no !== 0) { 
+      response = "TIE";
+    }
+    if (issue.yes > issue.no) { response = "YES" }
+    if (issue.yes < issue.no) { response = "NO" }
+
+    if (issue.user_can_vote) {
+      voteAction = [
+        <button className="cta hide-logged-out" href="#" onClick={ this.openRedSheet }>{ "Yes" }</button>,
+        <span className="hide-logged-out">&nbsp;</span>,
+        <button className="cta hide-logged-out" href="" onClick={ this.openRedSheet }>{ "No" }</button>
+      ]
+    }
+    else {
+      voteAction = (
+        <p className="hide-logged-out">{ "Thanks for voting!" }</p>
+      )
+    }
 
     return (
       <section data-component="issue">
@@ -34,17 +48,28 @@ var IssueRow = React.createClass({
         </RedSheet>
         <div className="img" style={ style } />
         <article>
-          <Verdict score={ score } response={ response } yes={ yes_statement } no={ no_statement } className="top" />
+          <Verdict
+            score={ score }
+            response={ response }
+            yes={ yes_statement }
+            no={ no_statement }
+            className="top"
+          />
           <aside className="title">
             <h1>
               <a href={"/issues/" + issue.id}>{issue.name}</a>
             </h1>
             <p>{issue.description}</p>
             <p className="sign-in hide-logged-in">{ "Sign in to vote" }</p>
-            <button className="cta hide-logged-out" href="#" onClick={ this.openRedSheet }>{ "Yes" }</button>&nbsp;
-            <button className="cta hide-logged-out" href="" onClick={ this.openRedSheet }>{ "No" }</button>
+            { voteAction }
           </aside>
-          <Verdict score={ score } response={ response } yes={ yes_statement } no={ no_statement } className="bottom" />
+          <Verdict
+            score={ score }
+            response={ response }
+            yes={ yes_statement }
+            no={ no_statement }
+            className="bottom"
+          />
         </article>
       </section>
     )
