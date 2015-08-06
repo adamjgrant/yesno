@@ -25,7 +25,7 @@ var OpinionIndex = React.createClass({
           issue={this.props.issue}
           key="opinion"
         >
-        </RedSheet>
+        </RedSheet getData={this.props.getData}>
         <p>
           <a href="#" onClick={this.openRedSheet}>Add your opinion</a>
         </p>
