@@ -40,9 +40,9 @@ var IssueRow = React.createClass({
               <a href={"/issues/" + issue.id}>{issue.name}</a>
             </h1>
             <p>{issue.description}</p>
-            <p className="sign-in">{ "Sign in to vote" }</p>
-            <a className="cta" href="#" onClick={ this.openRedSheet }>{ "Yes" }</a>&nbsp;
-            <a className="cta" href="" onClick={ this.openRedSheet }>{ "No" }</a>
+            <p className="sign-in hide-logged-in">{ "Sign in to vote" }</p>
+            <a className="cta hide-logged-out" href="#" onClick={ this.openRedSheet }>{ "Yes" }</a>&nbsp;
+            <a className="cta hide-logged-out" href="" onClick={ this.openRedSheet }>{ "No" }</a>
           </aside>
           <Verdict score={ score } response={ response } yes={ yes_statement } no={ no_statement } className="bottom" />
         </article>
