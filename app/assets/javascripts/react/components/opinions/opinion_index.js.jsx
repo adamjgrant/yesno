@@ -10,13 +10,10 @@ var OpinionIndex = React.createClass({
   },
   render: function() {
     var self = this;
-    var rows = this.props.issue.opinions.filter(function(row) {
-      return row.agree === self.props.agree;
-    });
-    var opinionRows = rows.map(function(row) {
+    var opinionRows = this.props.issue.opinions.map(function(row) {
       return (
         <div key={row.id} data-component="opinion preview">
-          <h2>@{row.handle}</h2>
+          <h1><span className={"verdict " + (row.agree ? "yes" : "no") }>{ row.agree ? "YES" : "NO" }</span> @{row.handle}</h1>
           <p>{row.statement}</p>
         </div>
       )
@@ -29,7 +26,6 @@ var OpinionIndex = React.createClass({
           key="opinion"
         >
         </RedSheet>
-        <h1>{this.props.agree ? "YES" : "NO"}</h1>
         <p>
           <a href="#" onClick={this.openRedSheet}>Add your opinion</a>
         </p>

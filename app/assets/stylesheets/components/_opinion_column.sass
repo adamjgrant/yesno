@@ -1,16 +1,13 @@
 [data-component="opinion column"]
-  +column('half')
-
-  > h1
+  h1
     +heading_xxs
-    padding: $space/3 0
-    text-align: center
     color: $default-font-color
-    margin-bottom: $space
 
-  &:first-child
-    > h1
-      color: map-get($colors, red)
+  +gt($tablet)
+    padding-left: $space
 
-  h2
-    +heading_xxs
+  .verdict
+    +label
+
+    &.yes
+      +label(map-get($colors, green))
