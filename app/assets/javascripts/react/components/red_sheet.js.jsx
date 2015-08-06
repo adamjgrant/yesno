@@ -55,7 +55,7 @@ var RedSheet = React.createClass({
 
     k$.status({ text: "Saving..." })
     $YN.post('/issues/' + this.props.issue.id + '/opinions', data, function() {
-      this.props.getData();
+      self.props.getData();
       k$.status({ text: "Saved", type: "status-green" })
       self.close();
     });
