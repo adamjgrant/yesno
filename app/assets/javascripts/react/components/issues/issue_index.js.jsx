@@ -31,11 +31,12 @@ var IssueIndex = React.createClass({
     this.getData()
   },
   render: function() {
+    var self = this;
     var issueRows = this.state.issues.map(function(row) {
       return (
-        <IssueRow issue={row} key={row.id} />
+        <IssueRow issue={row} key={row.id} getData={this.getData} />
       )
-    })
+    }, this)
     return (
       <div data-block="issues">
         { issueRows }

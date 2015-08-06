@@ -1,4 +1,13 @@
 var IssueRow = React.createClass({
+  mixins: [React.addons.LinkedStateMixin],
+  getInitialState: function() {
+    return {
+      showRedSheet: false
+    }
+  },
+  openRedSheet: function() {
+    this.setState({ showRedSheet: true });
+  },
   render: function() {
     var issue = this.props.issue,
       score = issue.total_votes,
@@ -16,6 +25,13 @@ var IssueRow = React.createClass({
 
     return (
       <section data-component="issue">
+        <RedSheet 
+          displayLink={this.linkState('showRedSheet')} 
+          issue={this.props.issue}
+          key={this.props.issue.id}
+          getData={this.props.getData}
+        >
+        </RedSheet>
         <div className="img" style={ style } />
         <article>
           <Verdict score={ score } response={ response } yes={ yes_statement } no={ no_statement } className="top" />
@@ -25,8 +41,8 @@ var IssueRow = React.createClass({
             </h1>
             <p>{issue.description}</p>
             <p className="sign-in">{ "Sign in to vote" }</p>
-            <a className="cta" href="#">{ "Yes" }</a>&nbsp;
-            <a className="cta" href="">{ "No" }</a>
+            <a className="cta" href="#" onClick={ this.openRedSheet }>{ "Yes" }</a>&nbsp;
+            <a className="cta" href="" onClick={ this.openRedSheet }>{ "No" }</a>
           </aside>
           <Verdict score={ score } response={ response } yes={ yes_statement } no={ no_statement } className="bottom" />
         </article>

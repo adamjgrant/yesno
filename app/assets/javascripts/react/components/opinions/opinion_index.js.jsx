@@ -2,7 +2,7 @@ var OpinionIndex = React.createClass({
   mixins: [React.addons.LinkedStateMixin],
   getInitialState: function() {
     return {
-      showRedSheet: false,
+      showRedSheet: false
     }
   },
   openRedSheet: function() {
