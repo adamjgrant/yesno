@@ -16,7 +16,10 @@ class OpinionsController < ApplicationController
 
     # TODO: This shouldn't be necessary. The user should be redirected to
     # authentication if they haven't been already.
-    @opinion.user_id = current_user.nil? ? nil : current_user.id
+    # Handle this on the front end?
+    @opinion.user_id = current_user.id
+
+    # SUCCESS
 
     # Set the vote
     if @opinion.agree
@@ -25,7 +28,7 @@ class OpinionsController < ApplicationController
       @issue.downvote_from current_user
     end
 
-    if @opinion.save
+    if (@opinion.save and @opinion.valid?)
       render text: "Opinion created successfully"
     else
       render text: "Could not create opinion.", status: 500
