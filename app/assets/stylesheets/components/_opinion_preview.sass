@@ -1,4 +1,13 @@
 [data-component="opinion preview"]
   h1
     text-align: left
-    +heading_xs
+    +heading_xxs
+
+  .verdict
+    +label
+
+    &.no
+      +label(map-get($colors, red))
+
+    &.yes
+      +label(map-get($colors, green))
