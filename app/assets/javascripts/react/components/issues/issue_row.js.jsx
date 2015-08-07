@@ -7,6 +7,7 @@ var IssueRow = React.createClass({
   },
   openRedSheet: function() {
     this.setState({ showRedSheet: true });
+    window.scrollTo(0, 0);
   },
   render: function() {
     var issue = this.props.issue,
@@ -26,14 +27,14 @@ var IssueRow = React.createClass({
 
     if (issue.user_can_vote) {
       voteAction = [
-        <button className="cta hide-logged-out" href="#" onClick={ this.openRedSheet }>{ "Yes" }</button>,
-        <span className="hide-logged-out">&nbsp;</span>,
-        <button className="cta hide-logged-out" href="" onClick={ this.openRedSheet }>{ "No" }</button>
+        <button key={ "a" + issue.id } className="cta hide-logged-out" href="#" onClick={ this.openRedSheet }>{ "Yes" }</button>,
+        <span key={ "b" + issue.id } className="hide-logged-out">&nbsp;</span>,
+        <button key={ "c" + issue.id } className="cta hide-logged-out" href="" onClick={ this.openRedSheet }>{ "No" }</button>
       ]
     }
     else {
       voteAction = (
-        <p className="hide-logged-out">{ "Thanks for voting!" }</p>
+        <p key={ "d" + issue.id } className="hide-logged-out">{ "Thanks for voting!" }</p>
       )
     }
 
@@ -54,6 +55,7 @@ var IssueRow = React.createClass({
             yes={ yes_statement }
             no={ no_statement }
             className="top"
+            key="1"
           />
           <aside className="title">
             <h1>
@@ -69,6 +71,7 @@ var IssueRow = React.createClass({
             yes={ yes_statement }
             no={ no_statement }
             className="bottom"
+            key="2"
           />
         </article>
       </section>

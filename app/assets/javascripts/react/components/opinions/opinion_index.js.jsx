@@ -3,7 +3,7 @@ var OpinionIndex = React.createClass({
   render: function() {
     var self = this;
     var opinionRows = this.props.issue.opinions.map(function(row) {
-      if (row.statement == null) {
+      if (row.statement !== null) {
         return (
           <div key={row.id} data-component="opinion preview">
             <h1><span className={"verdict " + (row.agree ? "yes" : "no") }>{ row.agree ? "YES" : "NO" }</span> @{row.handle}</h1>
