@@ -17,6 +17,7 @@ var IssueRow = React.createClass({
       yes_statement = issue.yes + " " + people_say(issue.yes) + " yes.",
       no_statement = issue.no + " " + people_say(issue.no) + " no.",
       voteAction,
+      authLink = (k$.$('.authentication a') || {href: ''}).href,
       style = issue.image ? { backgroundImage: 'url(' + issue.image + ')' } : {};
 
     if (issue.yes === issue.no && issue.yes + issue.no !== 0) { 
@@ -62,7 +63,7 @@ var IssueRow = React.createClass({
               <a href={"/issues/" + issue.id}>{issue.name}</a>
             </h1>
             <p>{issue.description}</p>
-            <p className="sign-in hide-logged-in">{ "Sign in to vote" }</p>
+            <a href={authLink} className="sign-in hide-logged-in">{ "Sign in to vote" }</a>
             { voteAction }
           </aside>
           <Verdict
