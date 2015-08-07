@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :opinions
   end
 
-  resources :comments, only: [:show]
+  resources :comments, only: [:show, :new, :create]
 
   root 'issues#index'
 

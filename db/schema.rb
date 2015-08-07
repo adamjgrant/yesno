@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150807151136) do
+ActiveRecord::Schema.define(version: 20150807184748) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -46,7 +46,10 @@ ActiveRecord::Schema.define(version: 20150807151136) do
     t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "opinion_id"
   end
+
+  add_index "comments", ["opinion_id"], name: "index_comments_on_opinion_id"
 
   create_table "identities", force: true do |t|
     t.integer  "user_id"

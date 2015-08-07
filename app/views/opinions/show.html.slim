@@ -2,5 +2,14 @@ h1 = @opinion.issue.name
 h2 = @opinion.agree ? "YES" : "NO" 
 h3 = @opinion.statement
 
+- @comments.each do |comment|
+  p = comment.body
+
+- if user_signed_in?
+  = render 'form'
+- else
+  p Please sign in to leave a comment
+
 - content_for :post_js do
   | $YN.clearSpinner()
+

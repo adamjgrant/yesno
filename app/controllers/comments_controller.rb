@@ -1,10 +1,11 @@
-class CommentsContrller < ApplicationController
-  def show
-
-  end
+class CommentsController < ApplicationController
 
   def create
-
+    @comment = Comment.new(comment_params)
+    @comment.user_id = current_user.id
+    if @comment.save
+      # TODO: Render the opinion page they were on.
+    end
   end
 
   private
