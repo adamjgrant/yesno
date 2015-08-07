@@ -5,18 +5,30 @@ var OpinionIndex = React.createClass({
     var opinionRows = this.props.issue.opinions.map(function(row) {
       if (row.statement !== null) {
         return (
-          <div key={row.id} data-component="opinion preview">
+          <div key={row.id} data-component="opinion_preview">
             <h1>
               <span className={"verdict " + (row.agree ? "yes" : "no") }>{ row.agree ? "YES" : "NO" }</span> 
               @{row.handle}
             </h1>
             <p>{row.statement}</p>
             <footer>
-              <p>
-                <a href={ this.props.issue.id + "/opinions/" + row.id } >
-                  { row.created_at }
-                </a>
-              </p>
+              <ul>
+                <li>
+                  <a href={ this.props.issue.id + "/opinions/" + row.id } >
+                    Add a comment
+                  </a>
+                </li>
+                <li>
+                  <a href={ this.props.issue.id + "/opinions/" + row.id } >
+                    { row.comments + " comments" }
+                  </a>
+                </li>
+                <li>
+                  <a href={ this.props.issue.id + "/opinions/" + row.id } >
+                    { row.created_at }
+                  </a>
+                </li>
+              </ul>
             </footer>
           </div>
         )

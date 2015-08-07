@@ -1,4 +1,4 @@
-[data-component="opinion preview"]
+[data-component="opinion_preview"]
   h1
     text-align: left
     +heading_xxs
@@ -23,3 +23,12 @@
 
   +gt($phablet)
     padding-left: $space
+
+  ul
+    +list($style: 'unstyled', $layout: 'horizontal')
+
+    li
+      margin-right: $space
+
+    a
+      +heading_xxs
