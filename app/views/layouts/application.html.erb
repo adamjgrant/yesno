@@ -20,7 +20,7 @@
               <%= f.submit "Log out @#{current_user.handle}" %>
             <% end %>
           <% else %>
-            <%= link_to "Sign in with Twitter", omniauth_authorize_path('user', 'twitter') %><br />
+            <%= link_to "Sign in with Twitter", omniauth_authorize_path('user', 'twitter'), role: "button" %><br />
           <% end %>
         </li>
       </ul>
