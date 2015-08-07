@@ -6,17 +6,8 @@ div(data-component="opinion_header")
 h1 Add a comment
 
 - if user_signed_in?
-  = render 'form'
+  div(data-render)
+    = image_tag('spinner.gif', class: "loader")
+
 - else
   p Please sign in to leave a comment
-
-h1 Comments
-
-- @comments.each do |comment|
-  div(data-component="comment")
-    h1 = "@#{comment.user.handle}"
-    p = comment.body
-    footer
-      p
-        = link_to "Reply", new_comment_path(comment.id)
-
