@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     resources :opinions
   end
 
+  resources :comments, only: [:show]
+
   root 'issues#index'
 
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup

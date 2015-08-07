@@ -6,6 +6,7 @@ gem "active_model_serializers", "~> 0.8.0"
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'autoprefixer-rails'
 gem 'aws-sdk', "~> 1"
+gem 'closure_tree'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'devise'
 gem 'foreman'
