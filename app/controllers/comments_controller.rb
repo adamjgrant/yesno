@@ -17,9 +17,18 @@ class CommentsController < ApplicationController
     end
 
     if @comment.save
-      redirect_to @comment.opinion
+      if @comment.opinion
+        redirect_to @comment.opinion
+      else
+        @comment = Comment.find_by_id(@comment.parent_id)
+        redirect_to @comment, :action => "new"
+      end
       flash[:success] = "Comment added."
     end
+  end
+
+  def show
+
   end
 
   private
