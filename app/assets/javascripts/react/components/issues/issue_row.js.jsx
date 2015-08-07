@@ -2,11 +2,15 @@ var IssueRow = React.createClass({
   mixins: [React.addons.LinkedStateMixin],
   getInitialState: function() {
     return {
-      showRedSheet: false
+      showRedSheet: false,
+      agree: undefined
     }
   },
-  openRedSheet: function() {
-    this.setState({ showRedSheet: true });
+  openRedSheet: function(agree) {
+    var state = this.state;
+    state.showRedSheet = true;
+    state.agree = agree;
+    this.setState(state);
     window.scrollTo(0, 0);
   },
   render: function() {
@@ -28,9 +32,9 @@ var IssueRow = React.createClass({
 
     if (issue.user_can_vote) {
       voteAction = [
-        <button key={ "a" + issue.id } className="cta hide-logged-out" href="#" onClick={ this.openRedSheet }>{ "Yes" }</button>,
+        <button key={ "a" + issue.id } className="cta hide-logged-out" href="#" onClick={ this.openRedSheet.bind(null, true) }>{ "Yes" }</button>,
         <span key={ "b" + issue.id } className="hide-logged-out">&nbsp;</span>,
-        <button key={ "c" + issue.id } className="cta hide-logged-out" href="" onClick={ this.openRedSheet }>{ "No" }</button>
+        <button key={ "c" + issue.id } className="cta hide-logged-out" href="" onClick={ this.openRedSheet.bind(null, false) }>{ "No" }</button>
       ]
     }
     else {
@@ -43,6 +47,7 @@ var IssueRow = React.createClass({
       <section data-component="issue">
         <RedSheet 
           displayLink={this.linkState('showRedSheet')} 
+          agree={this.state.agree}
           issue={this.props.issue}
           key={this.props.issue.id}
           getData={this.props.getData}

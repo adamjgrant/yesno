@@ -66,11 +66,11 @@ var RedSheet = React.createClass({
         <button className={(this.state.voted ? 'hideAfterVoted' : '') + " close"} onClick={this.close}>&times;</button>
         <h1>{this.props.issue.name}</h1>
         <label>
-          <input type="radio" name="opinion" onClick={this.setVoted} value="true" onChange={this.updateAgree} />
+          <input type="radio" name="opinion" onClick={this.setVoted} value="true" checked={this.props.agree} onChange={this.updateAgree} />
           Yes
         </label>
         <label>
-          <input type="radio" name="opinion" onClick={this.setVoted} value="false" onChange={this.updateAgree} />
+          <input type="radio" name="opinion" onClick={this.setVoted} value="false" checked={!this.props.agree} onChange={this.updateAgree} />
           No
         </label>
         <textarea 
