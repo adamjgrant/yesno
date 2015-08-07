@@ -75,7 +75,6 @@ var RedSheet = React.createClass({
         </label>
         <textarea 
           placeholder="Why do you believe this?"
-          className={ this.state.voted ? '' : 'hideUntilVoted' }
           onChange={ this.updateStatement }
           value={ this.state.response.statement }
           ref="talker"
