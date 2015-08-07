@@ -3,7 +3,9 @@ h2 = @opinion.agree ? "YES" : "NO"
 h3 = @opinion.statement
 
 - @comments.each do |comment|
-  p = comment.body
+  div(data-component="comment")
+    h1 = "@#{comment.user.handle}"
+    p = comment.body
 
 - if user_signed_in?
   = render 'form'

@@ -1,15 +1,16 @@
 class CommentsController < ApplicationController
 
   def create
-    @comment = Comment.new(comment_params)
+    @opinion = Opinion.find(params[:opinion_id])
+    @comment = @opinion.comments.new(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      # TODO: Render the opinion page they were on.
+      redirect_to @comment.opinion
     end
   end
 
   private
     def comment_params
-      params.require(:comment).permit(:title, :body, :parent_id)
+      params.require(:comment).permit(:body, :parent_id, :opinion_id)
     end
 end

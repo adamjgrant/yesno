@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
 
   has_one :identity
   has_many :opinions
+  has_many :comments
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
     identity = Identity.find_for_oauth(auth)

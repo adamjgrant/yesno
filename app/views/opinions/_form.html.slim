@@ -1,14 +1,10 @@
-= form_for(@comment) do |f|
+= form_for [@opinion, @comment] do |f|
   - if @comment.errors.any?
     script k$.status({text: "#{ pluralize(@comment.errors.count, "error")} prohibited this comment from being saved.", type: "status-red" });
 
     ul
       - @comment.errors.full_messages.each do |msg|
         li = msg
-
-  .form_group
-    = f.label :title
-    = f.text_field :title, required: true
 
   .form_group
     = f.label :body
