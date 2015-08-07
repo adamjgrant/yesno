@@ -4,7 +4,7 @@
   left: 0
   right: 0
   bottom: 0
-  background: map-get($colors, red)
+  background: $primary-color
   color: white
   text-align: center
   opacity: 0
@@ -12,11 +12,11 @@
   transition: opacity 0.25s
 
   input[type="submit"]
-    +button-color(darken(map-get($colors, red), 5%))
+    +button-color(darken($primary-color, 5%))
 
   textarea + input[type="submit"]
     +button-size(1.5)
-    +button-color(map-get($colors, red))
+    +button-color($primary-color)
 
   label
     display: inline-block
