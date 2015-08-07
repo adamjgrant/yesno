@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :opinions do
     resources :comments
   end
+  get '/comments/new/(:parent_id)', to: 'comments#new', as: :new_comment
 
   root 'issues#index'
 

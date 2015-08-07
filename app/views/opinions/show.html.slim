@@ -16,6 +16,9 @@ h1 Comments
   div(data-component="comment")
     h1 = "@#{comment.user.handle}"
     p = comment.body
+    footer
+      p
+        = link_to "Reply", new_comment_path(comment.id)
 
 - content_for :post_js do
   | $YN.clearSpinner()

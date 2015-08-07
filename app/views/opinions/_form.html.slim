@@ -6,6 +6,8 @@
       - @comment.errors.full_messages.each do |msg|
         li = msg
 
+  = f.hidden_field :parent_id
+
   .form_group
     = f.label :body
     = f.text_area :body, required: true

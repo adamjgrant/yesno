@@ -1,0 +1,8 @@
+div(data-component="comment_header")
+  p = "Replying to: #{@original_comment.body}"
+
+= render 'opinions/form'
+
+- content_for :post_js do
+  | $YN.clearSpinner()
+
