@@ -1,3 +1,6 @@
 h1 = @opinion.issue.name
 h2 = @opinion.agree ? "YES" : "NO" 
 h3 = @opinion.statement
+
+- content_for :post_js do
+  | $YN.clearSpinner()

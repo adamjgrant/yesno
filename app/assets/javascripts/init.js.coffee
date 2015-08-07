@@ -3,6 +3,7 @@
 # and/or controller.
 window.$YN = new Object()
 
+# Determine which page we're on
 $YN.isPage = (controller, action) ->
   controller = controller || true
   action = action || true
@@ -11,6 +12,7 @@ $YN.isPage = (controller, action) ->
     ($body.action == action || action == true) and ($body.controller == controller || controller == true)
   )
 
+# Basic POST request
 $YN.post = (endpoint, data, cb) ->
   token = k$.$('meta[name="csrf-token"]').content
   if (!token)
@@ -26,6 +28,7 @@ $YN.post = (endpoint, data, cb) ->
     cb()
   req.send data
 
+# Basic GET request
 $YN.get = (endpoint, cb) ->
   error = ->
     k$.status(
@@ -44,3 +47,6 @@ $YN.get = (endpoint, cb) ->
   req.onerror = -> error()
   req.send()
 
+# Clear out the [data-render] element (thus removing spinner)
+$YN.clearSpinner = ->
+  k$.$('[data-render]').innerHTML = ""
