@@ -7,11 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
 </head>
 <body data-controller="<%= controller_name %>" data-action="<%= action_name %>" data-logged-in="<%= user_signed_in? ? "true" : "false" %>">
-  <header data-component="main header">
-    <div class="wrapper">
-      <header>
-        <h1 class="logo"><a href="/">yesno.vote</a></h1>
-        <div class="authentication">
+  <div data-component="main header" data-ks-navbar>
+    <nav class="wrapper">
+      <ul>
+        <li class="navbar-title">
+          <h1 class="logo"><a href="/">yesno.vote</a></h1>
+          <button role="button">=</button>
+        </li>
+        <li class="authentication">
           <% if user_signed_in? %>
             <%= form_for(current_user, as: @user, url: destroy_user_session_path, html: { method: :delete }) do |f| %>
               <%= f.submit "Log out @#{current_user.handle}" %>
@@ -19,10 +22,10 @@
           <% else %>
             <%= link_to "Sign in with Twitter", omniauth_authorize_path('user', 'twitter') %><br />
           <% end %>
-        </div>
-      </header>
-    </div>
-  </header>
+        </li>
+      </ul>
+    </nav>
+  </div>
 
   <div class="wrapper">
     <% if admin_signed_in? %>

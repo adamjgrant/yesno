@@ -1,5 +1,6 @@
 [data-component="main header"]
-  padding: $space 0
+  +navbar($collapse: true)
+  padding: $space/3 0
   background: $primary-color
   margin-bottom: $space
 
@@ -14,28 +15,20 @@
     a
       color: white
 
-  header
-    +row
 
-    h1, .authentication
-      +column('half')
+  form
+    +gt($tablet)
+      text-align: right
 
-    .authentication
-      +gt($tablet)
-        text-align: right
+    input[type="submit"]
+      +button-color(transparent)
+      padding:
+        left: 0
+        right: 0
 
-      a
-        color: white
+      color: white
 
-      form
-        +gt($tablet)
-          text-align: right
-
-        input[type="submit"]
-          +button-color(transparent)
-          padding:
-            left: 0
-            right: 0
-
-          color: white
-
+  nav > ul > li ul[role=button], 
+  nav > ul > li > [role=button], 
+  nav > ul > li.navbar-title button[role="button"]
+    color: white
