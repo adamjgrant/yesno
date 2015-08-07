@@ -37,11 +37,6 @@
     <!-- Static rendering for Rails -->
     <%= yield %>
     
-    <!-- Rendering container for React -->
-    <div data-render>
-      <%= image_tag('spinner.gif', class: "loader") %>
-    </div>
-
   </div>
   <%= javascript_include_tag 'application' %>
   <%= javascript_tag do %>

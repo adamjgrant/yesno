@@ -46,7 +46,3 @@ $YN.get = (endpoint, cb) ->
 
   req.onerror = -> error()
   req.send()
-
-# Clear out the [data-render] element (thus removing spinner)
-$YN.clearSpinner = ->
-  k$.$('[data-render]').innerHTML = ""

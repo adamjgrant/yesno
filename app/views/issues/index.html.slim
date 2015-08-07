@@ -1,2 +1,6 @@
 - if admin_signed_in?
   p = link_to 'New Issue', new_issue_path
+
+div(data-render)
+  = image_tag('spinner.gif', class: "loader")
+
