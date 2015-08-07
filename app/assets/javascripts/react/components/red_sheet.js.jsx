@@ -1,7 +1,6 @@
 var RedSheet = React.createClass({
   getInitialState: function() {
     return {
-      voted: false,
       talked: false,
       response: {
         statement: null,
@@ -17,13 +16,6 @@ var RedSheet = React.createClass({
   },
   open: function() {
     this.props.displayLink.requestChange(true);
-  },
-  setVoted: function() {
-    var state = this.state;
-    state.voted = true;
-    this.setState(state, function() {
-      React.findDOMNode(this.refs.talker).focus();
-    });
   },
   setTalked: function() {
     var state = this.state;
@@ -44,12 +36,6 @@ var RedSheet = React.createClass({
   saveOpinion: function() {
     var self = this;
 
-    if (!this.state.voted) {
-      return k$.status({
-        text: "Please vote",
-        status: "status-red"
-      });
-    };
     var data = "opinion[statement]=" + this.state.response.statement +
       "&opinion[agree]=" + this.state.response.agree;
 
@@ -63,14 +49,14 @@ var RedSheet = React.createClass({
   render: function() {
     return (
       <div data-component="red sheet" className={this.props.displayLink.value ? "show" : ""}>
-        <button className={(this.state.voted ? 'hideAfterVoted' : '') + " close"} onClick={this.close}>&times;</button>
+        <button className="close" onClick={this.close}>&times;</button>
         <h1>{this.props.issue.name}</h1>
         <label>
-          <input type="radio" name="opinion" onClick={this.setVoted} value="true" checked={this.props.agree} onChange={this.updateAgree} />
+          <input type="radio" name="opinion" value="true" checked={this.props.agree} onChange={this.updateAgree} />
           Yes
         </label>
         <label>
-          <input type="radio" name="opinion" onClick={this.setVoted} value="false" checked={!this.props.agree} onChange={this.updateAgree} />
+          <input type="radio" name="opinion" value="false" checked={!this.props.agree} onChange={this.updateAgree} />
           No
         </label>
         <textarea 
@@ -81,7 +67,6 @@ var RedSheet = React.createClass({
         ></textarea>
         <input 
           type="submit" 
-          className={ this.state.voted ? '' : 'hideUntilVoted' }
           onClick={ this.saveOpinion }
           value="Save"
         />
