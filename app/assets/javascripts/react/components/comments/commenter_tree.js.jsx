@@ -3,10 +3,12 @@ var CommenterTree = React.createClass({
     return (
       <CommenterTreeComment comment={ comment } key={ "comment-" + comment.id } />
     )
-  }.bind(this));
+  });
   render: function() {
     return (
-      { comments }
+      <div>
+        { comments }
+      </div>
     )
   }
 });
