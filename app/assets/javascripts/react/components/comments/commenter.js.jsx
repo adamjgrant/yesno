@@ -37,6 +37,7 @@ var Commenter = React.createClass({
   },
   reply: function() {
     console.log("(TODO) Reply");
+    this.setData
   },
   render: function() {
     return (

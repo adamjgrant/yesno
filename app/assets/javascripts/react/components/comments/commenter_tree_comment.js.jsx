@@ -12,8 +12,9 @@ var CommenterTreeComment = React.createClass({
     this.setState(state);
     e.stopPropagation();
   },
-  reply: function(id) {
-    return this.props.reply(id);
+  saveComment: function() {
+    debugger;
+    this.props.reply(this.props.comment.id);
   },
   componentDidMount: function() {
     k$.modal('.modal-' + this.props.comment.id);
@@ -24,8 +25,8 @@ var CommenterTreeComment = React.createClass({
         <div data-component="modal" className={"modal-" + this.props.comment.id } style={ this.state.modalVisibility }>
           <CommenterComposer 
             comment={ this.props.comment }
+            saveComment={ this.saveComment }
           />
-          <button onClick={ this.reply.bind(null, this.props.comment.id) }>Reply</button>
         </div>
         <p>{ this.props.comment.body }</p>
         <footer>
