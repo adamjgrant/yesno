@@ -1,7 +1,11 @@
 class CommentsController < ApplicationController
 
   def index
-    @comments = Comment.where(opinion_id: params[:opinion_id]).hash_tree
+    comments = Comment.where(opinion_id: params[:opinion_id])
+    @comments = comments.hash_tree
+    
+    # But this works?
+    # @comments = Comment.hash_tree
 
     respond_to do |format|
       format.json { render :json => Comment.json_tree(@comments) }
@@ -21,8 +25,8 @@ class CommentsController < ApplicationController
     else
       @opinion = Opinion.find(params[:opinion_id])
       @comment = @opinion.comments.new(comment_params)
-      @comment.user_id = current_user.id
     end
+    @comment.user_id = current_user.id
 
     if @comment.save
       render :text => "Comment added successfully", :status => 200

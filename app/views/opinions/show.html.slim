@@ -1,7 +1,6 @@
 div(data-component="opinion_header")
-  h1 = @opinion.issue.name
-  h2 = @opinion.agree ? "YES" : "NO" 
-  h3 = @opinion.statement
+  h1 = @opinion.statement
+  p To "#{@opinion.issue.name}", this user said "#{@opinion.agree ? "YES" : "NO"}"
 
 h1 Add a comment
 div(

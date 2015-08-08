@@ -5,7 +5,7 @@ class Comment < ActiveRecord::Base
 
   def self.json_tree(nodes)
     nodes.map do |node, sub_nodes|
-      {:body => node.body, :id => node.id, :parent_id => node.parent_id, :comments => Comment.json_tree(sub_nodes).compact}
+      {:opinion_id => node.opinion_id, :body => node.body, :id => node.id, :parent_id => node.parent_id, :comments => Comment.json_tree(sub_nodes).compact}
     end
   end
 end
