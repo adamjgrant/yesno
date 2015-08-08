@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
 
     if @comment.save
       if @comment.opinion
-        redirect_to @comment.opinion
+        render :text => "Comment added successfully", :status => 200
       else
         @comment = Comment.find_by_id(@comment.parent_id)
         redirect_to @comment, :action => "new"

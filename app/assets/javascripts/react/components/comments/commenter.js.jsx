@@ -24,7 +24,13 @@ var Commenter = React.createClass({
     else {
       url = "/issues/" + this.issueId + "/opinions/" + this.opinionId + "/comments"
     }
-    $YN.post(url, data, function() {});
+    $YN.post(url, data, function() {
+      k$.status({
+        text: "Comment added",
+        type: "status-green"
+      });
+      this.getData();
+    }.bind(this));
   },
   componentDidMount: function() {
     this.getData();
