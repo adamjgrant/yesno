@@ -25,7 +25,7 @@ $YN.post = (endpoint, data, cb) ->
   req.setRequestHeader 'Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8'
   req.setRequestHeader('X-CSRF-Token', token)
   req.onload = ->
-    cb()
+    cb(this.response)
   req.send data
 
 # Basic GET request

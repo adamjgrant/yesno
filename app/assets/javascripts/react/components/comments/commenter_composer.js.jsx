@@ -7,6 +7,9 @@ var CommenterComposer = React.createClass({
   },
   saveComment: function() {
     this.props.saveComment(this.props.commentId, this.state.body);
+    var state = this.state;
+    state.body = "";
+    this.setState(state);
   },
   render: function() {
     return (

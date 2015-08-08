@@ -8,8 +8,8 @@ var Commenter = React.createClass({
       this.setState(state);
     }.bind(this));
   },
-  issueId: k$.$('[data-issue-id]').dataset.issueId,
-  opinionId: k$.$('[data-opinion-id]').dataset.opinionId,
+  issueId: k$.$('[data-issue-id]') ? k$.$('[data-issue-id]').dataset.issueId : null,
+  opinionId: k$.$('[data-opinion-id]') ? k$.$('[data-opinion-id]').dataset.opinionId : null,
   getInitialState: function() {
     return {
       comments: []
@@ -24,9 +24,9 @@ var Commenter = React.createClass({
     else {
       url = "/issues/" + this.issueId + "/opinions/" + this.opinionId + "/comments"
     }
-    $YN.post(url, data, function() {
+    $YN.post(url, data, function(response) {
       k$.status({
-        text: "Comment added",
+        text: response,
         type: "status-green"
       });
       this.getData();
