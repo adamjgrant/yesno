@@ -6,12 +6,11 @@ Rails.application.routes.draw do
   }
 
   resources :issues do
-    resources :opinions
+    resources :opinions do
+      resources :comments
+    end
   end
 
-  resources :opinions do
-    resources :comments
-  end
   get '/comments/new/(:parent_id)', to: 'comments#new', as: :new_comment
   resources :comments, only: :show
 

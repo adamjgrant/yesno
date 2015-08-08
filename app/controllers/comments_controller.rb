@@ -1,5 +1,13 @@
 class CommentsController < ApplicationController
 
+  def index
+    @comments = Comment.where(opinion_id: params[:opinion_id])
+
+    respond_to do |format|
+      format.json { render json: @comments }
+    end
+  end
+
   def new
     @original_comment = Comment.find_by_id(params[:parent_id])
     @opinion = @original_comment.opinion

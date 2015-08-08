@@ -4,6 +4,10 @@ div(data-component="opinion_header")
   h3 = @opinion.statement
 
 h1 Add a comment
+div(
+  data-issue-id="#{@opinion.issue.id}"
+  data-opinion-id="#{@opinion.id}"
+)
 
 - if user_signed_in?
   div(data-render)
