@@ -5,18 +5,26 @@ var CommenterTreeComment = React.createClass({
     });
   },
   showModal: function(e) {
+    e.stopPropagation();
     var state = this.state;
     state.modalVisibility = {
       display: "block"
     };
     this.setState(state);
-    e.stopPropagation();
   },
   saveComment: function(id, body) {
     this.props.saveComment(this.props.comment.id, body);
   },
+  hideModal: function() {
+    var state = this.state
+    state.modalVisibility = {
+      display: "none"
+    }
+  },
   componentDidMount: function() {
-    // k$.modal('.modal-' + this.props.comment.id);
+    document.body.addEventListener('click', function() {
+      this.hideModal();
+    }.bind(this));
   },
   render: function() {
     return (
