@@ -12,12 +12,11 @@ var CommenterTreeComment = React.createClass({
     this.setState(state);
     e.stopPropagation();
   },
-  saveComment: function() {
-    debugger;
+  saveComment: function(id, body) {
     this.props.reply(this.props.comment.id);
   },
   componentDidMount: function() {
-    k$.modal('.modal-' + this.props.comment.id);
+    // k$.modal('.modal-' + this.props.comment.id);
   },
   render: function() {
     return (

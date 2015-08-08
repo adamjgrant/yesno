@@ -8,13 +8,16 @@ var Commenter = React.createClass({
       this.setState(state);
     }.bind(this));
   },
+
   issueId: k$.$('[data-issue-id]') ? k$.$('[data-issue-id]').dataset.issueId : null,
   opinionId: k$.$('[data-opinion-id]') ? k$.$('[data-opinion-id]').dataset.opinionId : null,
+
   getInitialState: function() {
     return {
       comments: []
     }
   },
+
   setData: function(commentId, body) {
     var url, data;
     data = "comment[body]=" + body;
@@ -32,13 +35,15 @@ var Commenter = React.createClass({
       this.getData();
     }.bind(this));
   },
+
   componentDidMount: function() {
     this.getData();
   },
-  reply: function() {
-    console.log("(TODO) Reply");
-    this.setData
+
+  saveComment: function() {
+    this.setData(id, body);
   },
+
   render: function() {
     return (
       <div>
@@ -46,7 +51,7 @@ var Commenter = React.createClass({
           issueId={this.issueId} opinionId={this.opinionId} 
           saveComment={ this.setData }
         />
-        <CommenterTree comments={this.state.comments} reply={ this.reply }/>
+        <CommenterTree comments={this.state.comments} saveComment={ this.reply }/>
       </div>
     )
   }

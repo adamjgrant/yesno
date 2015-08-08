@@ -7,8 +7,8 @@ var CommenterTree = React.createClass({
       return (
         <CommenterTreeComment 
           comment={ comment } 
-          key={ "comment-" + comment.id } 
           reply={ this.reply }
+          key={ "comment-" + comment.id } 
         />
       )
     }.bind(this));
