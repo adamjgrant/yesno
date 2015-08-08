@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/comments/new/(:parent_id)', to: 'comments#new', as: :new_comment
+  post '/comments/create/(:parent_id)', to: 'comments#create', as: :new_comment
   resources :comments, only: :show
 
   root 'issues#index'
