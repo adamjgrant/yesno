@@ -13,13 +13,16 @@ var CommenterTreeComment = React.createClass({
     this.setState(state);
   },
   saveComment: function(id, body) {
-    this.props.saveComment(this.props.comment.id, body);
+    this.props.saveComment(this.props.comment.id, body, function() {
+      this.hideModal();
+    }.bind(this));
   },
   hideModal: function() {
-    var state = this.state
+    var state = this.state;
     state.modalVisibility = {
       display: "none"
-    }
+    };
+    this.setState(state);
   },
   componentDidMount: function() {
     document.body.addEventListener('click', function() {
@@ -29,7 +32,7 @@ var CommenterTreeComment = React.createClass({
   render: function() {
     return (
       <div data-component="comment">
-        <div data-component="modal" className={"modal-" + this.props.comment.id } style={ this.state.modalVisibility }>
+        <div data-component="modal" className={"modal-" + this.props.comment.id } style={ this.state.modalVisibility } onClick={ this.showModal }>
           <CommenterComposer 
             comment={ this.props.comment }
             saveComment={ this.saveComment }

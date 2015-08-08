@@ -1,6 +1,6 @@
 var CommenterTree = React.createClass({
-  saveComment: function(id, body) {
-    this.props.saveComment(id, body);
+  saveComment: function(id, body, cb) {
+    this.props.saveComment(id, body, cb);
   },
   render: function() {
     var comments = this.props.comments.map(function(comment) {

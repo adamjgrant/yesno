@@ -18,20 +18,28 @@ var Commenter = React.createClass({
     }
   },
 
-  setData: function(commentId, body) {
+  setData: function(commentId, body, cb) {
     var url, data;
     data = "comment[body]=" + body;
+
     if (commentId) {
       url = "/comments/create/" + commentId
     }
     else {
       url = "/issues/" + this.issueId + "/opinions/" + this.opinionId + "/comments"
     }
+
+    k$.status({
+      text: "Adding your comment...",
+      type: "status-yellow"
+    });
+
     $YN.post(url, data, function(response) {
       k$.status({
         text: response,
         type: "status-green"
       });
+      if (typeof(cb) === "function") { cb(); }
       this.getData();
     }.bind(this));
   },
@@ -40,8 +48,8 @@ var Commenter = React.createClass({
     this.getData();
   },
 
-  saveComment: function(id, body) {
-    this.setData(id, body);
+  saveComment: function(id, body, cb) {
+    this.setData(id, body, cb);
   },
 
   render: function() {
