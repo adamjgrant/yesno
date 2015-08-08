@@ -35,6 +35,9 @@ var Commenter = React.createClass({
   componentDidMount: function() {
     this.getData();
   },
+  reply: function() {
+    console.log("(TODO) Reply");
+  },
   render: function() {
     return (
       <div>
@@ -42,7 +45,7 @@ var Commenter = React.createClass({
           issueId={this.issueId} opinionId={this.opinionId} 
           saveComment={ this.setData }
         />
-        <CommenterTree comments={this.state.comments} />
+        <CommenterTree comments={this.state.comments} reply={ this.reply }/>
       </div>
     )
   }
