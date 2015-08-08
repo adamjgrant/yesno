@@ -6,7 +6,7 @@ var CommenterComposer = React.createClass({
     })
   },
   saveComment: function() {
-    this.props.saveComment(this.props.commentId, this.state.body);
+    this.props.saveComment(this.props.comment.id, this.state.body);
     var state = this.state;
     state.body = "";
     this.setState(state);
@@ -14,6 +14,7 @@ var CommenterComposer = React.createClass({
   render: function() {
     return (
       <div>
+        { this.props.comment ? <p>{this.props.comment.body}</p> : '' }
         <textarea 
           placeholder="Type your comment here"
           valueLink={this.linkState('body')}

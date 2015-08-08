@@ -23,7 +23,7 @@ var CommenterTreeComment = React.createClass({
       <div data-component="comment">
         <div data-component="modal" className={"modal-" + this.props.comment.id } style={ this.state.modalVisibility }>
           <CommenterComposer 
-            commentId={ this.props.comment.id }
+            comment={ this.props.comment }
           />
           <button onClick={ this.reply.bind(null, this.props.comment.id) }>Reply</button>
         </div>
