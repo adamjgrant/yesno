@@ -1,10 +1,10 @@
 class CommentsController < ApplicationController
 
   def index
-    @comments = Comment.where(opinion_id: params[:opinion_id])
+    @comments = Comment.where(opinion_id: params[:opinion_id]).hash_tree
 
     respond_to do |format|
-      format.json { render json: @comments }
+      format.json { render :json => Comment.json_tree(@comments) }
     end
   end
 
