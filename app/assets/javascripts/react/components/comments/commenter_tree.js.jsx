@@ -1,13 +1,13 @@
 var CommenterTree = React.createClass({
-  reply: function() {
-    this.props.reply();
+  saveComment: function(id, body) {
+    this.props.saveComment(id, body);
   },
   render: function() {
     var comments = this.props.comments.map(function(comment) {
       return (
         <CommenterTreeComment 
           comment={ comment } 
-          reply={ this.reply }
+          saveComment={ this.saveComment }
           key={ "comment-" + comment.id } 
         />
       )
