@@ -35,6 +35,15 @@ class CommentsController < ApplicationController
     end
   end
 
+  def update
+    @comment = Comment.find_by_id(params[:id])
+    if @comment.liked_by current_user
+      render text: "Upvoted!", status: 200
+    else
+      render text: "Unknown error", status: 500
+    end
+  end
+
   def show
 
   end

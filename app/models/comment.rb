@@ -2,6 +2,7 @@ class Comment < ActiveRecord::Base
   acts_as_tree order: 'created_at ASC'
   belongs_to :opinion
   belongs_to :user
+  acts_as_votable
 
   def self.json_tree(nodes)
     nodes.map do |node, sub_nodes|

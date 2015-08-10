@@ -20,15 +20,14 @@ var Voter = React.createClass({
       type: "status-blue"
     });
 
-    var data = "score=" + vote;
+    var data = "score=" + this.score;
     var cb = function() {
       k$.status({
-        text: (self.score > 0 ? "Up" : "Down") + "voted!",
+        text: (this.score > 0 ? "Up" : "Down") + "voted!",
         type: "status-green"
       });
-    };
+    }.bind(this);
     var url = $YN.constructPath(this.props.endpoint, this.props.endpointData);
-    debugger;
     $YN.put(url, data, cb);
   },
   render: function() {
