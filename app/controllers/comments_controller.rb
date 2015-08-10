@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     end
 
     respond_to do |format|
-      format.json { render :json => @comments, root: false}
+      format.json { render :json => @comments }
     end
   end
 
