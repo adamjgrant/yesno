@@ -8,9 +8,8 @@ div(
   data-opinion-id="#{@opinion.id}"
 )
 
-- if user_signed_in?
-  div(data-render)
-    = image_tag('spinner.gif', class: "loader")
-
-- else
+- if !user_signed_in?
   p Please sign in to leave a comment
+
+div(data-render)
+  = image_tag('spinner.gif', class: "loader")
