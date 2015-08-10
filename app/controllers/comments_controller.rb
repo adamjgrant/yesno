@@ -1,14 +1,18 @@
 class CommentsController < ApplicationController
 
   def index
-    comments = Comment.where(opinion_id: params[:opinion_id])
-    @comments = comments.hash_tree
-    
-    # But this works?
-    # @comments = Comment.hash_tree
+    comments = Opinion.find(params[:opinion_id]).comments
+    parent_comment = Comment.new(body: 'Placeholder Ancestor', opinion_id: 0)
 
+    comments.each do |comment|
+      parent_comment.add_child comment
+    end
+
+    @comments = parent_comment.hash_tree
+    
     respond_to do |format|
       format.json { render :json => Comment.json_tree(@comments) }
+      # format.json { render :json => @comments }
     end
   end
 
