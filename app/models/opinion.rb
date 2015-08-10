@@ -1,7 +1,7 @@
 class Opinion < ActiveRecord::Base
   belongs_to :user
   belongs_to :issue
-  has_many :comments
+  has_many :comments, dependent: :destroy
   acts_as_votable
 
   validates :user_id, uniqueness: { scope: :issue_id,
