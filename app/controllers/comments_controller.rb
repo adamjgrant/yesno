@@ -5,13 +5,11 @@ class CommentsController < ApplicationController
     @comments = Array.new
 
     comments.each do |comment|
-      @comments.push Comment.json_tree(comment.hash_tree)
+      @comments.push Comment.json_tree(comment.hash_tree).first
     end
 
-    # raise @comments.inspect
-    
     respond_to do |format|
-      format.json { render :json => @comments.first }
+      format.json { render :json => @comments, root: false}
     end
   end
 
