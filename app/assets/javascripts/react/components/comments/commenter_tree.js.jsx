@@ -1,6 +1,6 @@
 var CommenterTree = React.createClass({
-  saveComment: function(id, body, cb) {
-    this.props.saveComment(id, body, cb);
+  saveComment: function(id, opinion_id, body, cb) {
+    this.props.saveComment(id, opinion_id, body, cb);
   },
   render: function() {
     var commentUL = function(comment) {
@@ -14,6 +14,7 @@ var CommenterTree = React.createClass({
           saveComment={ this.saveComment }
           key={ "comment-" + comment.id } 
           children={ innerComments }
+          opinionId={ this.props.opinionId }
         >
         </CommenterTreeComment>
       )

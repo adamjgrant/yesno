@@ -14,7 +14,7 @@ class OpinionSerializer < ActiveModel::Serializer
   end
 
   def comments
-    object.comments.where(parent_id: nil).count
+    object.comments.where(opinion_id: object.id).count
   end
 
 end

@@ -18,9 +18,9 @@ var Commenter = React.createClass({
     }
   },
 
-  setData: function(commentId, body, cb) {
+  setData: function(commentId, opinionId, body, cb) {
     var url, data;
-    data = "comment[body]=" + body;
+    data = "comment[body]=" + body + "&comment[opinion_id]=" + opinionId;
 
     if (commentId) {
       url = "/comments/create/" + commentId
@@ -59,7 +59,7 @@ var Commenter = React.createClass({
           issueId={this.issueId} opinionId={this.opinionId} 
           saveComment={ this.setData }
         />
-        <CommenterTree comments={this.state.comments} saveComment={ this.saveComment }/>
+        <CommenterTree opinionId={this.opinionId} comments={this.state.comments} saveComment={ this.saveComment }/>
       </div>
     )
   }

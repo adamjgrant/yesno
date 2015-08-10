@@ -12,8 +12,8 @@ var CommenterTreeComment = React.createClass({
     };
     this.setState(state);
   },
-  saveComment: function(id, body) {
-    this.props.saveComment(this.props.comment.id, body, function() {
+  saveComment: function(id, opinionId, body) {
+    this.props.saveComment(this.props.comment.id, opinionId, body, function() {
       this.hideModal();
     }.bind(this));
   },
@@ -36,6 +36,7 @@ var CommenterTreeComment = React.createClass({
           <CommenterComposer 
             comment={ this.props.comment }
             saveComment={ this.saveComment }
+            opinionId={ this.props.opinionId }
           />
         </div>
         <p>{ this.props.comment.body }</p>
