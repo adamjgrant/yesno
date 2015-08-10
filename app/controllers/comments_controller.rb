@@ -11,8 +11,7 @@ class CommentsController < ApplicationController
     # raise @comments.inspect
     
     respond_to do |format|
-      # format.json { render :json => Comment.json_tree(@comments) }
-      format.json { render :json => @comments }
+      format.json { render :json => @comments.first }
     end
   end
 
