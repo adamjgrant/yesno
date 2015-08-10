@@ -3,19 +3,28 @@ var CommenterTree = React.createClass({
     this.props.saveComment(id, body, cb);
   },
   render: function() {
-    var comments = this.props.comments.map(function(comment) {
+    var commentUL = function(comment) {
+      var innerComments = <strong>None</strong>;
+      if (comment.comments) {
+        innerComments = comment.comments.map(commentUL.bind(this));
+      }
       return (
         <CommenterTreeComment 
           comment={ comment } 
           saveComment={ this.saveComment }
           key={ "comment-" + comment.id } 
-        />
+          children={ innerComments }
+        >
+        </CommenterTreeComment>
       )
-    }.bind(this));
+    };
+    var comments = this.props.comments.map(commentUL.bind(this));
     return (
       <div>
         <h1>Comments</h1>
-        { comments }
+        <ul data-block="comments">
+          { comments }
+        </ul>
       </div>
     )
   }

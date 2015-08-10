@@ -31,7 +31,7 @@ var CommenterTreeComment = React.createClass({
   },
   render: function() {
     return (
-      <div data-component="comment">
+      <li data-component="comment">
         <div data-component="modal" className={"modal-" + this.props.comment.id } style={ this.state.modalVisibility } onClick={ this.showModal }>
           <CommenterComposer 
             comment={ this.props.comment }
@@ -46,7 +46,10 @@ var CommenterTreeComment = React.createClass({
             </a>
           </p>
         </footer>
-      </div>
+        <ul data-block="comments">
+          { this.props.children }
+        </ul>
+      </li>
     )
   }
 });
