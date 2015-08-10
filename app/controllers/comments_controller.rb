@@ -2,17 +2,17 @@ class CommentsController < ApplicationController
 
   def index
     comments = Opinion.find(params[:opinion_id]).comments
-    parent_comment = Comment.new(body: 'Placeholder Ancestor', opinion_id: 0)
+    @comments = Array.new
 
     comments.each do |comment|
-      parent_comment.add_child comment
+      @comments.push Comment.json_tree(comment.hash_tree)
     end
 
-    @comments = parent_comment.hash_tree
+    # raise @comments.inspect
     
     respond_to do |format|
-      format.json { render :json => Comment.json_tree(@comments) }
-      # format.json { render :json => @comments }
+      # format.json { render :json => Comment.json_tree(@comments) }
+      format.json { render :json => @comments }
     end
   end
 
