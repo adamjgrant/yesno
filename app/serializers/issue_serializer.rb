@@ -1,5 +1,5 @@
 class IssueSerializer < ActiveModel::Serializer
-  attributes :id, :name, :description, :created_at, :score, :total_votes, :victor_score, :image, :yes, :no, :user_can_vote
+  attributes :id, :name, :description, :created_at, :score, :total_votes, :victor_score, :image, :yes, :no, :user_can_vote, :slug
 
   has_many :opinions
 
@@ -25,5 +25,9 @@ class IssueSerializer < ActiveModel::Serializer
 
   def user_can_vote
     !(Opinion.where(user: current_user, issue: object).count > 0)
+  end
+
+  def slug
+    object.to_param
   end
 end

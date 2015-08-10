@@ -1,5 +1,5 @@
 class OpinionSerializer < ActiveModel::Serializer
-  attributes :id, :handle, :statement, :gist, :agree, :created_at, :comments
+  attributes :id, :handle, :statement, :gist, :agree, :created_at, :comments, :slug
 
   # def score
   #   object.get_upvotes.size - object.get_downvotes.size
@@ -15,6 +15,10 @@ class OpinionSerializer < ActiveModel::Serializer
 
   def comments
     object.comments.where(opinion_id: object.id).count
+  end
+
+  def slug
+    object.to_param
   end
 
 end

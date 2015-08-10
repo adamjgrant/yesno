@@ -65,7 +65,7 @@ var IssueRow = React.createClass({
           />
           <aside className="title">
             <h1>
-              <a href={"/issues/" + issue.id}>{issue.name}</a>
+              <a href={"/issues/" + issue.slug}>{issue.name}</a>
             </h1>
             <p>{issue.description}</p>
             <a href={authLink} className="sign-in hide-logged-in">{ "Sign in to vote" }</a>

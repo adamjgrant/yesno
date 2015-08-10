@@ -14,17 +14,17 @@ var OpinionIndex = React.createClass({
             <footer>
               <ul>
                 <li>
-                  <a href={ this.props.issue.id + "/opinions/" + row.id } >
+                  <a href={ this.props.issue.slug + "/opinions/" + row.slug } >
                     Add a comment
                   </a>
                 </li>
                 <li>
-                  <a href={ this.props.issue.id + "/opinions/" + row.id } >
+                  <a href={ this.props.issue.slug + "/opinions/" + row.slug } >
                     { row.comments + " comments" }
                   </a>
                 </li>
                 <li>
-                  <a href={ this.props.issue.id + "/opinions/" + row.id } >
+                  <a href={ this.props.issue.slug + "/opinions/" + row.slug } >
                     { row.created_at }
                   </a>
                 </li>

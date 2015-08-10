@@ -7,4 +7,8 @@ class Opinion < ActiveRecord::Base
   validates :user_id, uniqueness: { scope: :issue_id,
     message: "Only one opinion per user per issue" 
   }
+
+  def to_param
+    [id, statement.slice(0, 40).parameterize].join("-")
+  end
 end
