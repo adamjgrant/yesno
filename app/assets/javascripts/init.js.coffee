@@ -13,7 +13,7 @@ $YN.isPage = (controller, action) ->
   )
 
 # Basic POST request
-$YN.post = (endpoint, data, cb) ->
+$YN.post = (endpoint, data, cb, type) ->
   token = k$.$('meta[name="csrf-token"]').content
   if (!token)
     k$.status(
@@ -21,12 +21,16 @@ $YN.post = (endpoint, data, cb) ->
       type: 'status-yellow'
     )
   req = new XMLHttpRequest()
-  req.open 'POST', endpoint, true
+  req.open (type || 'POST'), endpoint, true
   req.setRequestHeader 'Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8'
   req.setRequestHeader('X-CSRF-Token', token)
   req.onload = ->
     cb(this.response)
   req.send data
+
+# Basic PUT request
+$YN.put = (endpoint, data, cb) ->
+  $YN.post(endpoint, data, cb, 'PUT');
 
 # Basic GET request
 $YN.get = (endpoint, cb) ->
@@ -46,3 +50,13 @@ $YN.get = (endpoint, cb) ->
 
   req.onerror = -> error()
   req.send()
+
+$YN.constructPath = (path, args) ->
+  regex = /(:\w+)/
+  pathParts = path.split(regex)
+  if (pathParts.length == 1)
+    return pathParts[0]
+  `for (var i = 1; i < pathParts.length; i += 2) {
+    pathParts[i] = args[(i-1)/2];
+  }`
+  return pathParts.join('')

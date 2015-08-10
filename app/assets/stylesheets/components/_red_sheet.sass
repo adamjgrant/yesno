@@ -23,8 +23,11 @@
     vertical-align: middle
     margin-right: 10px
 
+  p
+    text-align: left
+
   textarea
-    background: transparent
+    background: rgba(255, 255, 255, 0.1)
     color: white
     border: none
     font-size: 1.2rem
@@ -37,7 +40,8 @@
     &:focus
       outline: none
       box-shadow: none
-      border-bottom: 1px solid white
+      background: white
+      color: $default-font-color
 
     +gt($tablet)
       max-width: 600px

@@ -39,6 +39,13 @@ var CommenterTreeComment = React.createClass({
             opinionId={ this.props.opinionId }
           />
         </div>
+        <Voter 
+          endpoint="/comments/:id" 
+          endpoint-data={ this.props.comment.id } 
+          score={ 0 } 
+          editable={ true }
+          disableDown={ true }
+        />
         <p>{ this.props.comment.body }</p>
         <footer>
           <p>

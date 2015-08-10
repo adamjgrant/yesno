@@ -49,27 +49,29 @@ var RedSheet = React.createClass({
   render: function() {
     return (
       <div data-component="red sheet" className={this.props.displayLink.value ? "show" : ""}>
-        <button className="close" onClick={this.close}>&times;</button>
-        <h1>{this.props.issue.name}</h1>
-        <label>
-          <input type="radio" name="opinion" value="true" checked={this.props.agree} onChange={this.updateAgree} />
-          Yes
-        </label>
-        <label>
-          <input type="radio" name="opinion" value="false" checked={!this.props.agree} onChange={this.updateAgree} />
-          No
-        </label>
-        <textarea 
-          placeholder="Why do you believe this?"
-          onChange={ this.updateStatement }
-          value={ this.state.response.statement }
-          ref="talker"
-        ></textarea>
-        <input 
-          type="submit" 
-          onClick={ this.saveOpinion }
-          value="Save"
-        />
+        <div className="wrapper">
+          <button className="close" onClick={this.close}>&times;</button>
+          <h1>{this.props.issue.name}</h1>
+          <label>
+            <input type="radio" name="opinion" value="true" checked={this.props.agree} onChange={this.updateAgree} />
+            Yes
+          </label>
+          <label>
+            <input type="radio" name="opinion" value="false" checked={!this.props.agree} onChange={this.updateAgree} />
+            No
+          </label>
+          <p>Tell us why below</p>
+          <textarea 
+            onChange={ this.updateStatement }
+            value={ this.state.response.statement }
+            ref="talker"
+          ></textarea>
+          <input 
+            type="submit" 
+            onClick={ this.saveOpinion }
+            value="Save"
+          />
+        </div>
       </div>
     )
   }
