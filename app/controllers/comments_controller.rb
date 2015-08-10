@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
 
   def index
-    comments = Opinion.find(params[:opinion_id]).comments
+    comments = Opinion.find(params[:opinion_id]).comments.where(parent_id: nil)
     @comments = Array.new
 
     comments.each do |comment|
