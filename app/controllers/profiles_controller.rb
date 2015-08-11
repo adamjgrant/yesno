@@ -7,7 +7,6 @@ class ProfilesController < ApplicationController
 
   private
     def clear_notifications
-      notifications = @profile.notifications.where(read: false)
-      ClearNotificationsWorker.perform_async(notifications)
+      ClearNotificationsWorker.perform_async(@profile.id)
     end
 end
