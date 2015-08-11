@@ -48,8 +48,8 @@ var Commenter = React.createClass({
     this.getData();
   },
 
-  saveComment: function(id, body, cb) {
-    this.setData(id, body, cb);
+  saveComment: function(id, opinionId, body, cb) {
+    this.setData(id, opinionId, body, cb);
   },
 
   refresh: function() {
