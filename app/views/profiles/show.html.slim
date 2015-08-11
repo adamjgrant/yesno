@@ -1,11 +1,12 @@
-h1 = "@" + @profile.handle
+h1 Notifications
 
 - if @profile.notifications.empty?
   p No notifications
 - else
   - @profile.notifications.each do |notification|
-    div(data-component="notification")
-      h1 = notification.body
+    div(data-component="notification" ng-class="{{ 'read' : notification.read }}")
+      h1 = notification.title
+      blockquote = "\"#{notification.body}\""
       p
         = link_to notification.action_text, notification.action_link
 

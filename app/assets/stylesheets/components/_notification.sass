@@ -1,0 +1,23 @@
+[data-component="notification"]
+  background: lighten(map-get($colors, yellow), 35%)
+  margin: 0 (-$space)
+  padding: $space $space
+
+  h1
+    +heading_xxs
+
+  blockquote
+    padding: 0
+    +p
+    margin: $space/2 0
+
+  p
+    font-size: 0.85rem
+    line-height: 1rem
+    margin-bottom: 0
+
+  &.read
+    background: transparent
+
+  + [data-component="notification"]
+    border-top: 1px solid lighten(map-get($colors, yellow), 15%)

@@ -1,7 +1,7 @@
 class NotificationWorker
   include Sidekiq::Worker
 
-  def perform(ownerId, body, action_link, action_text)
+  def perform(ownerId, title, body, action_link, action_text)
     Notification.create(
       user_id: ownerId, 
       title: title,

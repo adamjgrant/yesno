@@ -65,7 +65,7 @@ class CommentsController < ApplicationController
           NotificationWorker.perform_async(
             user.id,
             "#{current_user.handle} just replied to your comment.",
-            truncate(comment_params.body),
+            (comment_params[:body].to_s).truncate(50, :separator => ' '),
             "#{issue_opinion_path(parent.opinion.issue, parent.opinion)}#comment-#{@comment.id}",
             "View their reply."
           )
