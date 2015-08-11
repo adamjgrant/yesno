@@ -5,11 +5,16 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
+  require 'sidekiq/web'
+  mount Sidekiq::Web, at: '/sidekiq'
+
   resources :issues do
     resources :opinions do
       resources :comments
     end
   end
+
+  get '/notifications', to: 'profiles#show'
 
   post '/comments/create/(:parent_id)', to: 'comments#create', as: :new_comment
   put '/comments/(:id)', to: 'comments#update'

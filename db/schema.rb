@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150807205100) do
+ActiveRecord::Schema.define(version: 20150811172805) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -69,6 +69,18 @@ ActiveRecord::Schema.define(version: 20150807205100) do
     t.datetime "updated_at"
     t.string   "image"
   end
+
+  create_table "notifications", force: true do |t|
+    t.string   "body"
+    t.boolean  "read"
+    t.string   "action_link"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "action_text"
+  end
+
+  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id"
 
   create_table "opinions", force: true do |t|
     t.datetime "created_at"
