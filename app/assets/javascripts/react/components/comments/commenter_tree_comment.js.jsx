@@ -52,7 +52,7 @@ var CommenterTreeComment = React.createClass({
             refresh={ this.refresh }
           />
           <section>
-            <p>{ this.props.comment.body }</p>
+            <p id={ "comment-" + this.props.comment.id }>{ this.props.comment.body }</p>
             <footer>
               <p>
                 <a href="#" onClick={ this.showModal }>
