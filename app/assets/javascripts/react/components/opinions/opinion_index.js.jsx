@@ -17,30 +17,32 @@ var OpinionIndex = React.createClass({
               refresh={ this.refresh }
               key={"voter-" + row.id}
             />
-            <h1>
-              <span className={"verdict " + (row.agree ? "yes" : "no") }>{ row.agree ? "YES" : "NO" }</span> 
-              @{row.handle}
-            </h1>
-            <p>{row.statement}</p>
-            <footer>
-              <ul>
-                <li>
-                  <a href={ this.props.issue.slug + "/opinions/" + row.slug } >
-                    Add a comment
-                  </a>
-                </li>
-                <li>
-                  <a href={ this.props.issue.slug + "/opinions/" + row.slug } >
-                    { row.comments + " comments" }
-                  </a>
-                </li>
-                <li>
-                  <a href={ this.props.issue.slug + "/opinions/" + row.slug } >
-                    { row.created_at }
-                  </a>
-                </li>
-              </ul>
-            </footer>
+            <article>
+              <h1>
+                <span className={"verdict " + (row.agree ? "yes" : "no") }>{ row.agree ? "YES" : "NO" }</span> 
+                @{row.handle}
+              </h1>
+              <p>{row.statement}</p>
+              <footer>
+                <ul>
+                  <li>
+                    <a href={ this.props.issue.slug + "/opinions/" + row.slug } >
+                      Add a comment
+                    </a>
+                  </li>
+                  <li>
+                    <a href={ this.props.issue.slug + "/opinions/" + row.slug } >
+                      { row.comments + " comments" }
+                    </a>
+                  </li>
+                  <li>
+                    <a href={ this.props.issue.slug + "/opinions/" + row.slug } >
+                      { row.created_at }
+                    </a>
+                  </li>
+                </ul>
+              </footer>
+            </article>
           </div>
         )
       }

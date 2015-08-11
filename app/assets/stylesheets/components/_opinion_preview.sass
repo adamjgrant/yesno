@@ -1,16 +1,25 @@
 [data-component="opinion_preview"]
+  display: flex
+
   h1
     text-align: left
     +heading_xxs
 
   .verdict
     +label
-
-    &.no
-      +label(map-get($colors, red))
+    background: transparent
+    border-width: 0
+    border-radius: 0
+    border-right-width: 3px
+    margin-right: 5px
 
     &.yes
-      +label(map-get($colors, green))
+      color: map-get($colors, green)
+      border-color: map-get($colors, green)
+
+    &.no
+      color: map-get($colors, red)
+      border-color: map-get($colors, red)
 
   p
     margin-bottom: $space/5
@@ -32,3 +41,11 @@
 
     a
       +heading_xxs
+
+  +c("voter")
+    width: auto
+    margin-right: $space
+
+    h1
+      margin: 5px 0
+      text-align: center
