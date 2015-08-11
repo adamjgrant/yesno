@@ -5,10 +5,27 @@
     +heading_xxs
 
   p
-    +p(true)
     max-width: 500px
-    margin-bottom: $space/4
+    margin-bottom: $space/3
+
+  article
+    display: inline-block
+    vertical-align: top
 
   footer
     p
       +heading_xxs
+
+  +c("voter")
+    display: inline-block
+    vertical-align: top
+    width: auto
+    margin:
+      right: $space/2
+
+    button.up
+      border-width: 8px
+
+    h1
+      margin: 0
+      font-size: 0.85rem

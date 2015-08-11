@@ -50,17 +50,19 @@ var CommenterTreeComment = React.createClass({
           disableDown={ true }
           refresh={ this.refresh }
         />
-        <p>{ this.props.comment.body }</p>
-        <footer>
-          <p>
-            <a href="#" onClick={ this.showModal }>
-              Reply
-            </a>
-          </p>
-        </footer>
-        <ul data-block="comments">
-          { this.props.children }
-        </ul>
+        <article>
+          <p>{ this.props.comment.body }</p>
+          <footer>
+            <p>
+              <a href="#" onClick={ this.showModal }>
+                Reply
+              </a>
+            </p>
+          </footer>
+          <ul data-block="comments">
+            { this.props.children }
+          </ul>
+        </article>
       </li>
     )
   }
