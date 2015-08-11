@@ -3,8 +3,7 @@ var RedSheet = React.createClass({
     return {
       talked: false,
       response: {
-        statement: null,
-        agree: false
+        statement: null
       }
     }
   },
@@ -22,22 +21,21 @@ var RedSheet = React.createClass({
     state.talked = true;
     this.setState(state);
   },
-  updateAgree: function(e) {
-    var state = this.state;
-    state.response.agree = e.target.value.toLowerCase() == "true" ? true : false;
-    this.setState(state);
-  },
   updateStatement: function(e) {
     var state = this.state;
     state.response.statement = e.target.value;
     this.setTalked();
     this.setState(state);
   },
+  updateAgree: function(e, agree) {
+    agree = e.target.value.toLowerCase() == "true" ? true : false;
+    this.props.updateAgree(agree);
+  },
   saveOpinion: function() {
     var self = this;
 
     var data = "opinion[statement]=" + this.state.response.statement +
-      "&opinion[agree]=" + this.state.response.agree;
+      "&opinion[agree]=" + this.props.agree;
 
     k$.status({ text: "Saving..." })
     $YN.post('/issues/' + this.props.issue.id + '/opinions', data, function() {
@@ -45,6 +43,11 @@ var RedSheet = React.createClass({
       k$.status({ text: "Saved", type: "status-green" })
       self.close();
     });
+  },
+  componentDidMount: function() {
+    var state = this.state;
+    state.response.agree = this.props.agree;
+    this.setState(state);
   },
   render: function() {
     return (

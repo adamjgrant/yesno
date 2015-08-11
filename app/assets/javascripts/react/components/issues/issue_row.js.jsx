@@ -13,6 +13,11 @@ var IssueRow = React.createClass({
     this.setState(state);
     window.scrollTo(0, 0);
   },
+  updateAgree: function(agree) {
+    var state = this.state;
+    state.agree = agree;
+    this.setState(state);
+  },
   render: function() {
     var issue = this.props.issue,
       score = issue.total_votes,
@@ -32,9 +37,23 @@ var IssueRow = React.createClass({
 
     if (issue.user_can_vote) {
       voteAction = [
-        <button key={ "a" + issue.id } className="cta hide-logged-out" href="#" onClick={ this.openRedSheet.bind(null, true) }>{ "Yes" }</button>,
+        <button 
+          key={ "a" + issue.id } 
+          className="cta hide-logged-out" 
+          href="#" 
+          onClick={ this.openRedSheet.bind(null, true) }
+        >
+          { "Yes" }
+        </button>,
         <span key={ "b" + issue.id } className="hide-logged-out">&nbsp;</span>,
-        <button key={ "c" + issue.id } className="cta hide-logged-out" href="" onClick={ this.openRedSheet.bind(null, false) }>{ "No" }</button>
+        <button 
+          key={ "c" + issue.id } 
+          className="cta hide-logged-out" 
+          href="" 
+          onClick={ this.openRedSheet.bind(null, false) }
+        >
+          { "No" }
+        </button>
       ]
     }
     else {
@@ -51,6 +70,7 @@ var IssueRow = React.createClass({
           issue={this.props.issue}
           key={this.props.issue.id}
           getData={this.props.getData}
+          updateAgree={this.updateAgree}
         >
         </RedSheet>
         <div className="img" style={ style } />
