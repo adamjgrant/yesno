@@ -1,11 +1,22 @@
 var OpinionIndex = React.createClass({
   mixins: [React.addons.LinkedStateMixin],
+  refresh: function() {
+    this.props.getData();
+  },
   render: function() {
     var self = this;
     var opinionRows = this.props.issue.opinions.map(function(row) {
       if (row.statement !== null) {
         return (
           <div key={row.id} data-component="opinion_preview">
+            <Voter 
+              endpoint="/issues/:issue_id/opinions/:opinion_id"
+              endpointData={ [this.props.issue.id, row.id] }
+              score={ row.score }
+              editable={ true }
+              refresh={ this.refresh }
+              key={"voter-" + row.id}
+            />
             <h1>
               <span className={"verdict " + (row.agree ? "yes" : "no") }>{ row.agree ? "YES" : "NO" }</span> 
               @{row.handle}

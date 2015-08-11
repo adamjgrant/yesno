@@ -1,9 +1,9 @@
 class OpinionSerializer < ActiveModel::Serializer
-  attributes :id, :handle, :statement, :gist, :agree, :created_at, :comments, :slug
+  attributes :id, :score, :handle, :statement, :gist, :agree, :created_at, :comments, :slug
 
-  # def score
-  #   object.get_upvotes.size - object.get_downvotes.size
-  # end
+  def score
+    object.get_upvotes.size - object.get_downvotes.size
+  end
   
   def handle
     object.user_id.nil? ? "" : object.user.handle

@@ -3,7 +3,10 @@ var OpinionTable = React.createClass({
     return (
       <section data-component="opinion table">
         <div>
-          <OpinionIndex issue={this.props.issue} getData={this.props.getData} />
+          <OpinionIndex 
+            issue={this.props.issue} 
+            getData={this.props.getData} 
+          />
         </div>
       </section>
     )

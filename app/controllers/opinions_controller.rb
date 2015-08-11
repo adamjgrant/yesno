@@ -32,6 +32,15 @@ class OpinionsController < ApplicationController
     end
   end
 
+  def update
+    @opinion = Opinion.find_by_id(params[:id])
+    if ((params[:score].to_i > 0) ? @opinion.liked_by(current_user) : @opinion.disliked_by(current_user))
+      render text: "Voted!", status: 200
+    else
+      render text: "Unknown error", status: 500
+    end
+  end
+
   def show
     @opinion = Opinion.find(params[:id])
     @comments = @opinion.comments
