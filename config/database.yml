@@ -22,5 +22,8 @@ test:
   database: db/test.sqlite3
 
 production:
-  adapter: postgres
+  <<: *default
+  password: <%= ENV['DB_PASS'] %>
+  username: root
+  host: <%= ENV['DB_HOST'] %>
 
