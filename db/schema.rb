@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150811172805) do
+ActiveRecord::Schema.define(version: 20150811213342) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 20150811172805) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "action_text"
+    t.string   "title"
   end
 
   add_index "notifications", ["user_id"], name: "index_notifications_on_user_id"

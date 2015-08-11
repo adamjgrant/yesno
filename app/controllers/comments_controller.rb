@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  after_action :notify_participants, only: [:create]
 
   def index
     comments = Opinion.find(params[:opinion_id]).comments.where(parent_id: nil)
@@ -51,5 +52,24 @@ class CommentsController < ApplicationController
   private
     def comment_params
       params.require(:comment).permit(:body, :parent_id, :opinion_id)
+    end
+
+    def notify_participants
+      if params[:parent_id].to_i > 0
+        parent = Comment.find_by_id(params[:parent_id])
+        
+        # TODO: Look for the user who was replied to and 
+        # create a notification for them.
+        user = parent.user
+        if (user.id != current_user.id)
+          NotificationWorker.perform_async(
+            user.id,
+            "#{current_user.handle} just replied to your comment.",
+            truncate(comment_params.body),
+            "#{issue_opinion_path(parent.opinion.issue, parent.opinion)}#comment-#{@comment.id}",
+            "View their reply."
+          )
+        end
+      end
     end
 end

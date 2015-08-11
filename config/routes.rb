@@ -5,8 +5,8 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
-  require 'sidekiq/web'
-  mount Sidekiq::Web, at: '/sidekiq'
+  # require 'sidekiq/web'
+  # mount Sidekiq::Web, at: '/sidekiq'
 
   resources :issues do
     resources :opinions do
