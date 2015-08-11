@@ -4,7 +4,7 @@ h1 Notifications
   p No notifications
 - else
   - @profile.notifications.each do |notification|
-    div(data-component="notification" ng-class="{{ 'read' : notification.read }}")
+    div(data-component="notification" class="#{ notification.read ? 'read' : '' }")
       h1 = notification.title
       blockquote = "\"#{notification.body}\""
       p
