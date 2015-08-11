@@ -52,6 +52,10 @@ var Commenter = React.createClass({
     this.setData(id, body, cb);
   },
 
+  refresh: function() {
+    this.getData();
+  },
+
   render: function() {
     return (
       <div>
@@ -59,7 +63,7 @@ var Commenter = React.createClass({
           issueId={this.issueId} opinionId={this.opinionId} 
           saveComment={ this.setData }
         />
-        <CommenterTree opinionId={this.opinionId} comments={this.state.comments} saveComment={ this.saveComment }/>
+        <CommenterTree opinionId={this.opinionId} refresh={this.refresh} comments={this.state.comments} saveComment={ this.saveComment }/>
       </div>
     )
   }

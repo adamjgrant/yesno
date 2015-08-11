@@ -26,6 +26,7 @@ var Voter = React.createClass({
         text: (this.score > 0 ? "Up" : "Down") + "voted!",
         type: "status-green"
       });
+      this.props.refresh();
     }.bind(this);
     var url = $YN.constructPath(this.props.endpoint, this.props.endpointData);
     $YN.put(url, data, cb);

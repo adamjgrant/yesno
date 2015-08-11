@@ -29,6 +29,9 @@ var CommenterTreeComment = React.createClass({
       this.hideModal();
     }.bind(this));
   },
+  refresh: function() {
+    this.props.refresh();
+  },
   render: function() {
     return (
       <li data-component="comment">
@@ -45,6 +48,7 @@ var CommenterTreeComment = React.createClass({
           score={ this.props.comment.score } 
           editable={ true }
           disableDown={ true }
+          refresh={ this.refresh }
         />
         <p>{ this.props.comment.body }</p>
         <footer>
