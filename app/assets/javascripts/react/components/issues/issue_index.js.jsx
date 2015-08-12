@@ -29,6 +29,9 @@ var IssueIndex = React.createClass({
   },
   componentDidMount: function() {
     this.getData()
+    $YN.mixpanel("Page visited", {
+      page: "Issue index"
+    })
   },
   render: function() {
     var self = this;

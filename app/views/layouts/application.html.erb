@@ -6,7 +6,13 @@
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
 </head>
-<body data-controller="<%= controller_name %>" data-action="<%= action_name %>" data-logged-in="<%= user_signed_in? ? "true" : "false" %>">
+<body 
+  data-controller="<%= controller_name %>" 
+  data-action="<%= action_name %>" 
+  data-logged-in="<%= user_signed_in? ? "true" : "false" %>"
+  data-user-id="<%= user_signed_in? ? current_user.id : nil %>"
+  data-user-handle="<%= user_signed_in? ? current_user.handle: nil %>"
+>
   <div data-component="main header" data-ks-navbar>
     <nav class="wrapper">
       <ul>

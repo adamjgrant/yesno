@@ -60,3 +60,18 @@ $YN.constructPath = (path, args) ->
     pathParts[i] = args[(i-1)/2];
   }`
   return pathParts.join('')
+
+# Mixpanel
+
+$YN.mixpanel = (event, action) ->
+  if (typeof(mixpanel) != "undefined")
+    id = k$.$('[data-user-id]').dataset.userId
+    handle = k$.$('[data-user-handle]').dataset.userHandle
+    mixpanel.identify id
+    mixpanel.people.set(
+      "handle": handle
+    )
+    mixpanel.track event, action
+  else
+    console.debug("A mixpanel event was requested but not sent.")
+    console.debug(event, action)
