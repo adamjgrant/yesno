@@ -3,6 +3,7 @@ class ProfilesController < ApplicationController
 
   def show
     @profile = params[:id] ? User.find(params[:id]) : current_user
+    @notifications = @profile.notifications.order('created_at DESC')
 
     respond_to do |format|
       format.html

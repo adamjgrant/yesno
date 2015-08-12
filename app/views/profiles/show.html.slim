@@ -3,7 +3,7 @@ h1 Notifications
 - if @profile.notifications.empty?
   p No notifications
 - else
-  - @profile.notifications.each do |notification|
+  - @notifications.each do |notification|
     div(data-component="notification" class="#{ notification.read ? 'read' : '' }")
       h1 = notification.title
       blockquote = "\"#{notification.body}\""

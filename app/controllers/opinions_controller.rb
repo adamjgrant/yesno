@@ -27,6 +27,7 @@ class OpinionsController < ApplicationController
 
     if (@opinion.save and @opinion.valid?)
       render text: "Opinion created successfully"
+      ContinuityWorkerOpinion.perform_async(@issue.id, !@opinion.agree, current_user.id)
     else
       render text: "Could not create opinion.", status: 500
     end
