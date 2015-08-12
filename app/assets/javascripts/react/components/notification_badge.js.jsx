@@ -14,10 +14,10 @@ var NotificationBadge = React.createClass({
   },
   render: function() {
     if (this.state.newNotifications > 0) {
-      return ( <a href="/notifications">{ this.state.newNotifications + " new" }</a> );
+      return ( <a className="unread" href="/notifications">{ this.state.newNotifications + " new" }</a> );
     }
     else {
-      return false;
+      return ( <a href="/notifications">Notifications</a> );
     }
   }
 });

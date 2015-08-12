@@ -31,3 +31,9 @@
   nav > ul > li > [role=button], 
   nav > ul > li.navbar-title button[role="button"]
     color: white
+
+  a:not([role=button]).unread
+    background: map-get($colors, red)
+    color: white
+    border-radius: 5px
+    opacty: 1
