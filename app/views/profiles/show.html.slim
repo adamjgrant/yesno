@@ -12,4 +12,15 @@ h1 Notifications
 
 - content_for :post_js do
   | $YN.mixpanel("Page viewed", { page: "Notification Page" });
+  | var notifications = k$.$$('[data-component="notification"]');
+  | for (var i = 0, len = notifications.length; i < len; i++) {
+  |   (function() {
+  |     var notification = notifications[i].querySelector('p a');
+  |     notification.addEventListener('click', function() {
+  |       $YN.mixpanel("Followed Notification", {
+  |         notification: notification.innerHTML
+  |       });
+  |     });
+  |   })();
+  | }
 
