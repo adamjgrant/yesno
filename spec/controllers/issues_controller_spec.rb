@@ -20,7 +20,7 @@ RSpec.describe IssuesController do
 
       it "shows issues" do
         get :index
-        expect(assigns(:issues)).to eq(issues)
+        expect(assigns(:issues)).to eq(issues.reverse)
       end
     end
   end
