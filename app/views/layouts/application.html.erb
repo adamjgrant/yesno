@@ -26,16 +26,18 @@
         <% if user_signed_in? %>
           <li data-notifications-render></li>
         <% end %>
+        <% if admin_signed_in? %>
+          <li>
+            <%= form_for(current_admin, as: @admin, url: destroy_admin_session_path, html: { method: :delete }) do |f| %>
+              <%= f.submit "Log out" %>
+            <% end %>
+          </li>
+        <% end %>
       </ul>
     </nav>
   </div>
 
   <div class="wrapper">
-    <% if admin_signed_in? %>
-      <%= form_for(current_admin, as: @admin, url: destroy_admin_session_path, html: { method: :delete }) do |f| %>
-        <%= f.submit "Log out" %>
-      <% end %>
-    <% end %>
 
     <!-- Static rendering for Rails -->
     <%= yield %>
