@@ -1,4 +1,14 @@
-- @opinions.each do |opinion|
-  = opinion.statement
+table(data-component="admin_table")
+  thead
+    tr
+      th Opinion
+      th Handle
+      th Actions
+  tbody
+    - @opinions.each do |opinion|
+      tr
+        td = opinion.statement
+        td = opinion.user.handle
+        td = link_to "Delete", [opinion.issue, opinion], method: :delete
 
 = paginate @opinions

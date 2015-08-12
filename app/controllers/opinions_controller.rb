@@ -48,6 +48,14 @@ class OpinionsController < ApplicationController
     @comment = Comment.new
   end
 
+  def destroy
+    @opinion = Opinion.find(params[:id])
+
+    if @opinion.destroy
+      redirect_to(:back)
+    end
+  end
+
   private
     def opinion_params
       params.require(:opinion).permit(:gist, :agree, :statement)

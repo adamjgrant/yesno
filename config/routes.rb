@@ -14,7 +14,9 @@ Rails.application.routes.draw do
     end
   end
 
-  match '/admins/opinions' => 'admins/opinions#index', via: [:get]
+  namespace :admins do
+    resources :opinions
+  end
 
   get '/notifications', to: 'profiles#show', as: :notifications
 
