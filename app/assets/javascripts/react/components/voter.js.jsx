@@ -50,7 +50,7 @@ var Voter = React.createClass({
     }
 
     return (
-      <figure data-component="voter">
+      <figure data-component="voter" key={ "voter-" + this.props.keyId }>
         { this.props.disableUp ? null: upButton }
         <h1>{this.props.score}</h1>
         { this.props.disableDown ? null : downButton }

@@ -11,6 +11,11 @@ var NotificationBadge = React.createClass({
   },
   componentDidMount: function() {
     this.getData();
+    var pollCount = 0,
+        poll = setInterval(function() {
+          pollCount++;
+          pollCount > 2 ? window.clearInterval(poll) : this.getData();
+        }.bind(this), 3000);
   },
   render: function() {
     if (this.state.newNotifications > 0) {

@@ -55,6 +55,7 @@ var CommenterTreeComment = React.createClass({
             editable={ true }
             disableDown={ true }
             refresh={ this.refresh }
+            keyId={ this.props.comment.id }
           />
           <section>
             <p id={ "comment-" + this.props.comment.id }>{ this.props.comment.body }</p>

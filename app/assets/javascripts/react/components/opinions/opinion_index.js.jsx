@@ -15,7 +15,7 @@ var OpinionIndex = React.createClass({
               score={ row.score }
               editable={ true }
               refresh={ this.refresh }
-              key={"voter-" + row.id}
+              keyId={row.id}
             />
             <article>
               <h1>
