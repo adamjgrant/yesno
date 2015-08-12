@@ -23,6 +23,11 @@
             <%= link_to "Sign in with Twitter", omniauth_authorize_path('user', 'twitter'), role: "button" %><br />
           <% end %>
         </li>
+        <% if user_signed_in? %>
+          <li>
+            <a data-notifications-render></a>
+          </li>
+        <% end %>
       </ul>
     </nav>
   </div>

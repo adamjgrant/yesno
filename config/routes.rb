@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/notifications', to: 'profiles#show'
+  get '/notifications', to: 'profiles#show', as: :notifications
 
   post '/comments/create/(:parent_id)', to: 'comments#create', as: :new_comment
   put '/comments/(:id)', to: 'comments#update'

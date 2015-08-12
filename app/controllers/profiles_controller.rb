@@ -3,6 +3,11 @@ class ProfilesController < ApplicationController
 
   def show
     @profile = params[:id] ? User.find(params[:id]) : current_user
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => @comments }
+    end
   end
 
   private
