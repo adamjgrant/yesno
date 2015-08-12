@@ -11,6 +11,5 @@ h1 Notifications
         = link_to notification.action_text, notification.action_link
 
 - content_for :post_js do
-  script
-    | $YN.mixpanel("Page viewed", { page: "Notification Page" });
+  | $YN.mixpanel("Page viewed", { page: "Notification Page" });
 
