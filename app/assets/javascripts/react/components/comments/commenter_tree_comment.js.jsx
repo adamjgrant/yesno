@@ -28,6 +28,11 @@ var CommenterTreeComment = React.createClass({
     document.body.addEventListener('click', function() {
       this.hideModal();
     }.bind(this));
+    // Scroll to anchor link if exists
+    if (location.hash) {
+      var position = k$.$(location.hash).getBoundingClientRect();
+      window.scrollTo(position.left, position.top);
+    }
   },
   refresh: function() {
     this.props.refresh();
