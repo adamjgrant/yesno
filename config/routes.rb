@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     end
   end
 
+  match '/admins/opinions' => 'admins/opinions#index', via: [:get]
+
   get '/notifications', to: 'profiles#show', as: :notifications
 
   post '/comments/create/(:parent_id)', to: 'comments#create', as: :new_comment
