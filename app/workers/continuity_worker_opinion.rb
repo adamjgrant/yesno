@@ -15,16 +15,6 @@ class ContinuityWorkerOpinion
         issue_opinion_path(issue.id, @opinion.id),
         "View their opinion"
       )
-    else
-      # Get issue that doesn't have their vote
-      issues = Issue.all
-      issues.each do |issue|
-        opinions = issue.opinions.where(user_id: userId)
-        if (opinions.size == 0)
-          @issue = issue
-          break
-        end
-      end
     end
 
   end
