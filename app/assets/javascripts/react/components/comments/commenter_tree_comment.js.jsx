@@ -15,6 +15,10 @@ var CommenterTreeComment = React.createClass({
   saveComment: function(id, opinionId, body) {
     this.props.saveComment(this.props.comment.id, opinionId, body, function() {
       this.hideModal();
+      $YN.mixpanel("Expressed", {
+        interaction: "User commented"
+      });
+      $YN.mixpanel("Commented");
     }.bind(this));
   },
   hideModal: function() {
