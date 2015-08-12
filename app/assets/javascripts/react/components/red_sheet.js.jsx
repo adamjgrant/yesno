@@ -32,7 +32,6 @@ var RedSheet = React.createClass({
     this.props.updateAgree(agree);
   },
   saveOpinion: function() {
-    var self = this;
 
     var data = "opinion[statement]=" + this.state.response.statement +
       "&opinion[agree]=" + this.props.agree;
@@ -40,24 +39,24 @@ var RedSheet = React.createClass({
     k$.status({ text: "Saving..." })
 
     $YN.post('/issues/' + this.props.issue.id + '/opinions', data, function() {
-      self.props.getData();
+      this.props.getData();
       k$.status({ text: "Saved", type: "status-green" })
-      self.close();
+      this.close();
 
       $YN.mixpanel("Expressed", {
         interaction: "User voted"
       });
       $YN.mixpanel("Voted", {
-        vote: this.props.response.agree,
+        vote: this.state.response.agree,
         issue: this.props.issue.name
       });
       if (this.state.response.statement) {
         $YN.mixpanel("Voted with statement", {
-          vote: this.props.response.statement,
+          vote: this.state.response.statement,
           issue: this.props.issue.name
         });
       }
-    });
+    }.bind(this));
   },
   componentDidMount: function() {
     var state = this.state;
