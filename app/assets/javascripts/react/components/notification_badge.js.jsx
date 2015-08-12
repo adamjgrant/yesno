@@ -14,7 +14,7 @@ var NotificationBadge = React.createClass({
     var pollCount = 0,
         poll = setInterval(function() {
           pollCount++;
-          pollCount > 2 ? window.clearInterval(poll) : this.getData();
+          pollCount > 3 ? window.clearInterval(poll) : this.getData();
         }.bind(this), 3000);
   },
   render: function() {
