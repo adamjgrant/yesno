@@ -1,5 +1,6 @@
 class OpinionsController < ApplicationController
   before_filter :authenticate_user!, :except => [:show]
+  after_action :destroy_votes, :only => [:destroy]
   
   def index
     @issue = Issue.find(params[:issue_id])
@@ -53,11 +54,18 @@ class OpinionsController < ApplicationController
 
     if @opinion.destroy
       redirect_to(:back)
+    else
+      render text: "Could not destroy opinion", status: 500
     end
   end
 
   private
     def opinion_params
       params.require(:opinion).permit(:gist, :agree, :statement)
+    end
+
+    def destroy_votes
+      @votes = Vote.where(votable_type: "Issue", votable_id: @opinion.issue.id)
+      @votes.destroy_all
     end
 end
