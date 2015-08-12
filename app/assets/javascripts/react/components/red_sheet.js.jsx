@@ -38,10 +38,25 @@ var RedSheet = React.createClass({
       "&opinion[agree]=" + this.props.agree;
 
     k$.status({ text: "Saving..." })
+
     $YN.post('/issues/' + this.props.issue.id + '/opinions', data, function() {
       self.props.getData();
       k$.status({ text: "Saved", type: "status-green" })
       self.close();
+
+      $YN.mixpanel("Expressed", {
+        interaction: "User voted"
+      });
+      $YN.mixpanel("Voted" {
+        vote: this.props.response.agree,
+        issue: this.props.issue.name
+      });
+      if (this.state.response.statement) {
+        $YN.mixpanel("Voted with statement" {
+          vote: this.props.response.statement,
+          issue: this.props.issue.name
+        });
+      }
     });
   },
   componentDidMount: function() {

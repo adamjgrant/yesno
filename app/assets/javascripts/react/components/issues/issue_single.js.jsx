@@ -24,6 +24,9 @@ var IssueSingle = React.createClass({
       state.issue = data.issue;
       self.setState(state);
     });
+    $YN.mixpanel("Page visited", {
+      page: "Issue page – " + this.state.issue.name
+    });
   },
   render: function() {
     return (
