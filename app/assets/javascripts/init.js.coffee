@@ -69,7 +69,7 @@ $YN.mixpanel = (event, action) ->
     handle = k$.$('[data-user-handle]').dataset.userHandle
     mixpanel.identify id
     mixpanel.people.set(
-      "$first_name": handle
+      "$firstname": handle
       "handle": handle
     )
     mixpanel.track event, action

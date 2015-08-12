@@ -47,12 +47,12 @@ var RedSheet = React.createClass({
       $YN.mixpanel("Expressed", {
         interaction: "User voted"
       });
-      $YN.mixpanel("Voted" {
+      $YN.mixpanel("Voted", {
         vote: this.props.response.agree,
         issue: this.props.issue.name
       });
       if (this.state.response.statement) {
-        $YN.mixpanel("Voted with statement" {
+        $YN.mixpanel("Voted with statement", {
           vote: this.props.response.statement,
           issue: this.props.issue.name
         });
