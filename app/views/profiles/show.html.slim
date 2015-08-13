@@ -11,7 +11,7 @@ h1 Notifications
         = link_to notification.action_text, notification.action_link
 
 - content_for :post_js do
-  | $YN.mixpanel("Page viewed", { page: "Notification Page" });
+  | $YN.mixpanel("Page visited", { page: "Notification Page" });
   | var notifications = k$.$$('[data-component="notification"]');
   | for (var i = 0, len = notifications.length; i < len; i++) {
   |   (function() {
@@ -23,4 +23,3 @@ h1 Notifications
   |     });
   |   })();
   | }
-
