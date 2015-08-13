@@ -21,8 +21,25 @@ $black: (lightest: #444, lighter: #333, light: #222)
 // Rainbow
 $colors: (red: #CA3518, orange: darkorange, yellow: #ffe312, green: #58AA00, blue: #47A5DF, violet: darkmagenta)
 
-// Vendor libraries
-@import url(//fonts.googleapis.com/css?family=Lato:300,400,700,400italic)
+@font-face
+  font-family: 'Graphik'
+  src: font-url('Graphik-Regular-Web.eot')
+  src: font-url('Graphik-Regular-Web.eot#iefix') format('embedded-opentype')
+  src: font-url('Graphik-Regular-Web.woff') format('woff')
+  src: font-url('Graphik-Regular-Web.ttf') format('truetype')
+  font-weight:  normal
+  font-style:   normal
+  font-stretch: normal
+
+@font-face
+  font-family: 'Abrade'
+  src: font-url('abrade.eot')
+  src: font-url('abrade.eot#iefix') format('embedded-opentype')
+  src: font-url('abrade.woff') format('woff')
+  src: font-url('abrade.ttf') format('truetype')
+  font-weight:  normal
+  font-style:   normal
+  font-stretch: normal
 
 // Ten point design variables
 // --------------------------
@@ -31,8 +48,8 @@ $colors: (red: #CA3518, orange: darkorange, yellow: #ffe312, green: #58AA00, blu
 $primary-color:       map-get($colors, blue)
 $secondary-color:     map-get($white, darker)
 $space:               25px
-$heading-font-family: 'museo-sans', 'Lato', helvetica neue, sans-serif
-$default-font-family: 'museo-sans', 'Lato', helvetica neue, sans-serif
+$heading-font-family: 'Abrade', helvetica neue, sans-serif
+$default-font-family: 'Graphik', helvetica neue, sans-serif
 $mono-font-family:    'ubuntu-mono', monospace
 $default-font-size:   16px
 $default-font-color:  map-get($gray, darkest)
