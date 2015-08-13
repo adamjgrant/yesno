@@ -12,6 +12,8 @@ class Comment < ActiveRecord::Base
         :id => node.id, 
         :parent_id => node.parent_id, 
         :score => node.get_upvotes.size - node.get_downvotes.size,
+        :avatar => node.user.avatar,
+        :handle => node.user.handle,
         :comments => Comment.json_tree(sub_nodes).compact
       }
     end

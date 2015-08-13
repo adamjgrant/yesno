@@ -62,7 +62,13 @@ var CommenterTreeComment = React.createClass({
             keyId={ this.props.comment.id }
           />
           <section>
-            <p id={ "comment-" + this.props.comment.id }>{ this.props.comment.body }</p>
+            <header>
+              <img src={ this.props.comment.avatar} />
+              <span>{"@" + this.props.comment.handle}</span>
+            </header>
+            <main>
+              <p id={ "comment-" + this.props.comment.id }>{ this.props.comment.body }</p>
+            </main>
             <footer>
               <p>
                 <a href="#" onClick={ this.showModal }>
