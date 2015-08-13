@@ -19,8 +19,9 @@ var OpinionIndex = React.createClass({
             />
             <article>
               <h1>
+                <img src={ row.avatar } />
                 <span className={"verdict " + (row.agree ? "yes" : "no") }>{ row.agree ? "YES" : "NO" }</span> 
-                @{row.handle}
+                <span>{"@" + row.handle}</span>
               </h1>
               <p>{row.statement}</p>
               <footer>

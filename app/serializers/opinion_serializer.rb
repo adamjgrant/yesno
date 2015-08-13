@@ -1,5 +1,5 @@
 class OpinionSerializer < ActiveModel::Serializer
-  attributes :id, :score, :handle, :statement, :gist, :agree, :created_at, :comments, :slug
+  attributes :id, :score, :handle, :avatar, :statement, :gist, :agree, :created_at, :comments, :slug
 
   def score
     object.get_upvotes.size - object.get_downvotes.size
@@ -7,6 +7,10 @@ class OpinionSerializer < ActiveModel::Serializer
   
   def handle
     object.user_id.nil? ? "" : object.user.handle
+  end
+
+  def avatar
+    object.user_id.nil? ? "" : object.user.avatar
   end
 
   def created_at

@@ -30,11 +30,14 @@ class User < ActiveRecord::Base
       if user.nil?
         user = User.new(
           handle: auth.extra.raw_info.screen_name,
+          avatar: auth.extra.raw_info.profile_image_url,
           email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
           password: Devise.friendly_token[0,20]
         )
         user.skip_confirmation!
         user.save!
+      else
+        user.update(avatar: auth.extra.raw_info.profile_image_url)
       end
     end
 
