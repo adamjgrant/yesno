@@ -7,9 +7,9 @@ var Verdict = React.createClass({
 
     return (
       <aside className={ (score == 0 ? '' : response.toLowerCase()) + " verdict " + this.props.className }>
-        <h1 className={ (score == 0 ? 'small ' : '') }>{ this.props.response }</h1>
-        { score === 0 ? '' : <p>{ yes_statement }</p> }
-        { score === 0 ? '' : <p>{ no_statement }</p> }
+        <span className={ (score == 0 ? 'small ' : '') }>{ this.props.response }</span>
+        { score === 0 || true ? '' : <p>{ yes_statement }</p> }
+        { score === 0 || true ? '' : <p>{ no_statement }</p> }
       </aside>
     )
   }

@@ -10,6 +10,11 @@ $circleHeight: 60px
   width: 100%
   margin-bottom: $space
   position: relative
+  width: 275px
+  max-width: 100%
+  margin: 
+    left: auto
+    right: auto
 
   header
     width: 100%
@@ -32,7 +37,7 @@ $circleHeight: 60px
       background: map-get($colors, blue)
 
   main
-    padding: $space
+    padding: $space/2
       top: $space*2
 
   h1, h2, p
@@ -43,6 +48,9 @@ $circleHeight: 60px
 
     a
       color: $default-font-color
+
+  p
+    color: lighten($default-font-color, 25%)
 
   footer
     position: absolute
@@ -55,14 +63,9 @@ $circleHeight: 60px
     justify-content: center
 
   .cta
-    +button-color(white)
-    color: map-get($colors, blue)
+    color: saturate(lighten(map-get($colors, blue), 10%), 30%)
+    cursor: pointer
+    margin: 0px $space
 
     &:hover
-      background: map-get($white, dark)
-
-  +gt($phone)
-    max-width: 275px
-    margin: 
-      left: auto
-      right: auto
+      text-decoration: underline

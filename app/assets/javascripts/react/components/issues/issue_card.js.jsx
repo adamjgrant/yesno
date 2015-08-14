@@ -1,5 +1,8 @@
 var IssueCard = React.createClass({
   mixins: [React.addons.LinkedStateMixin],
+  componentDidMount: function() {
+    $YN.buddySystem(k$.$$('[data-component="issue"] h1'))
+  },
   getInitialState: function() {
     return {
       showRedSheet: false,
@@ -21,13 +24,17 @@ var IssueCard = React.createClass({
   render: function() {
     var issue = this.props.issue,
       score = issue.total_votes,
-      response = "Be the first to vote",
-      people_say = function(score) { return score === 1 ? "says" : "say"; },
+      response = "?",
+      people_say = function(score) { return score === 1 ? "person says" : "people say"; },
       yes_statement = issue.yes + " " + people_say(issue.yes) + " yes.",
       no_statement = issue.no + " " + people_say(issue.no) + " no.",
       voteAction,
       authLink = (k$.$('.authentication a') || {href: ''}).href,
-      style = issue.image ? { backgroundImage: 'url(' + issue.image + ')' } : {};
+      style = issue.image ? { backgroundImage: 'url(' + issue.image + ')' } : {},
+      statement = score === 0 ? 'Be the first to vote!' : 
+        (issue.yes === issue.no ? "It's a tie!" :
+           (issue.yes > issue.no ? yes_statement : no_statement)
+        );
 
     if (issue.yes === issue.no && issue.yes + issue.no !== 0) { 
       response = "TIE";
@@ -37,23 +44,23 @@ var IssueCard = React.createClass({
 
     if (issue.user_can_vote) {
       voteAction = [
-        <button 
+        <div
           key={ "a" + issue.id } 
           className="cta hide-logged-out" 
           href="#" 
           onClick={ this.openRedSheet.bind(null, true) }
         >
           { "Yes" }
-        </button>,
+        </div>,
         <span key={ "b" + issue.id } className="hide-logged-out">&nbsp;</span>,
-        <button 
+        <div
           key={ "c" + issue.id } 
           className="cta hide-logged-out" 
           href="" 
           onClick={ this.openRedSheet.bind(null, false) }
         >
           { "No" }
-        </button>
+        </div>
       ]
     }
     else {
@@ -63,7 +70,27 @@ var IssueCard = React.createClass({
     }
 
     return (
-      <section data-component="issue">
+      <div>
+        <section data-component="issue">
+          <header style={ style }>
+            <Verdict
+                score={ score }
+                response={ response }
+                className="top"
+                key="1"
+              />
+          </header>
+          <main>
+            <h1>
+              <a href={"/issues/" + issue.slug}>{issue.name}</a>
+            </h1>
+            <p>{statement}</p>
+          </main>
+          <footer>
+            <a href={authLink} className="sign-in hide-logged-in">{ "Sign in to vote" }</a>
+            { voteAction }
+          </footer>
+        </section>
         <RedSheet 
           displayLink={this.linkState('showRedSheet')} 
           agree={this.state.agree}
@@ -73,28 +100,7 @@ var IssueCard = React.createClass({
           updateAgree={this.updateAgree}
         >
         </RedSheet>
-        <header style={ style }>
-        { false ? <Verdict
-            score={ score }
-            response={ response }
-            yes={ yes_statement }
-            no={ no_statement }
-            className="top"
-            key="1"
-          /> : '' }
-          <aside></aside>
-        </header>
-        <main>
-          <h1>
-            <a href={"/issues/" + issue.slug}>{issue.name}</a>
-          </h1>
-          <p>{issue.description}</p>
-        </main>
-        <footer>
-          <a href={authLink} className="sign-in hide-logged-in">{ "Sign in to vote" }</a>
-          { voteAction }
-        </footer>
-      </section>
+      </div>
     )
   }
 })
