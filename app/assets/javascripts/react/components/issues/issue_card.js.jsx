@@ -1,7 +1,7 @@
 var IssueCard = React.createClass({
   mixins: [React.addons.LinkedStateMixin],
   componentDidMount: function() {
-    $YN.buddySystem(k$.$$('[data-component="issue"] h1'))
+    // $YN.buddySystem(k$.$$('[data-component="issue"] h1'))
   },
   getInitialState: function() {
     return {
