@@ -8,5 +8,20 @@
   [data-component="opinion_table"]
     +column('twothirds')
 
-  [data-component="issue"]
-    margin-left: 0
+  +gt($tablet)
+    [data-component="issue"]
+      margin-left: 0
+
+    .issue_column
+      +column(5)
+
+    [data-component="opinion_table"]
+      +column(7)
+
+  +gt($tablet-landscape)
+    .issue_column
+      +column(4)
+
+    [data-component="opinion_table"]
+      +column(8)
+
