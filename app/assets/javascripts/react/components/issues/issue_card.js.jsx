@@ -70,7 +70,7 @@ var IssueCard = React.createClass({
     }
 
     return (
-      <div>
+      <div className="issue_column">
         <section data-component="issue">
           <header style={ style }>
             <Verdict
