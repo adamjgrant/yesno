@@ -31,7 +31,7 @@ var IssueSingle = React.createClass({
   render: function() {
     return (
       <div data-block="issue">
-        <IssueRow issue={this.state.issue} getData={this.getData} />
+        <IssueCard issue={this.state.issue} getData={this.getData} />
         <OpinionTable issue={this.state.issue} getData={this.getData} />
       </div>
     )

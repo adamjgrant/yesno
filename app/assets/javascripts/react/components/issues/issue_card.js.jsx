@@ -1,4 +1,4 @@
-var IssueRow = React.createClass({
+var IssueCard = React.createClass({
   mixins: [React.addons.LinkedStateMixin],
   getInitialState: function() {
     return {
@@ -73,33 +73,27 @@ var IssueRow = React.createClass({
           updateAgree={this.updateAgree}
         >
         </RedSheet>
-        <div className="img" style={ style } />
-        <article>
-          <Verdict
+        <header style={ style }>
+        { false ? <Verdict
             score={ score }
             response={ response }
             yes={ yes_statement }
             no={ no_statement }
             className="top"
             key="1"
-          />
-          <aside className="title">
-            <h1>
-              <a href={"/issues/" + issue.slug}>{issue.name}</a>
-            </h1>
-            <p>{issue.description}</p>
-            <a href={authLink} className="sign-in hide-logged-in">{ "Sign in to vote" }</a>
-            { voteAction }
-          </aside>
-          <Verdict
-            score={ score }
-            response={ response }
-            yes={ yes_statement }
-            no={ no_statement }
-            className="bottom"
-            key="2"
-          />
-        </article>
+          /> : '' }
+          <aside></aside>
+        </header>
+        <main>
+          <h1>
+            <a href={"/issues/" + issue.slug}>{issue.name}</a>
+          </h1>
+          <p>{issue.description}</p>
+        </main>
+        <footer>
+          <a href={authLink} className="sign-in hide-logged-in">{ "Sign in to vote" }</a>
+          { voteAction }
+        </footer>
       </section>
     )
   }
