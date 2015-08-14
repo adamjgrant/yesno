@@ -1,7 +1,7 @@
 var OpinionTable = React.createClass({
   render: function() {
     return (
-      <section data-component="opinion table">
+      <section data-component="opinion_table">
         <div>
           <OpinionIndex 
             issue={this.props.issue} 

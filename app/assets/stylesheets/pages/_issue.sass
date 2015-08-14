@@ -1,32 +1,12 @@
 [data-controller="issues"][data-action="show"]
-  [data-component="issue"]:first-child
-    +column(4)
+  .row
+    +row
 
-    .img
-      height: 150px
-      margin-bottom: $space/2
+  .issue_column
+    +column('third')
 
-    article
-      display: block
+  [data-component="opinion_table"]
+    +column('twothirds')
 
-      aside
-        &.verdict,
-        &.title
-          width: 100%
-          padding: 0
-          border: none
-
-        &.verdict
-          text-align: left
-
-        &.title
-          margin-bottom: $space
-
-          h1:first-child
-            +heading_sm
-
-    +gt($tablet)
-      +column(4)
-
-  [data-component="opinion table"]
-    +column(8)
+  [data-component="issue"]
+    margin-left: 0

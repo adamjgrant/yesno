@@ -49,7 +49,7 @@ var OpinionIndex = React.createClass({
       }
     }, this)
     return (
-      <div data-component="opinion column">
+      <div data-component="opinion_column">
         { opinionRows }
       </div>
     )
