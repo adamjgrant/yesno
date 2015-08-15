@@ -7,10 +7,11 @@
       border-radius: 0px
       height: auto
       width: auto
+      max-width: 400px
       margin:
         left: 0
         right: 0
-        bottom: $space
+        bottom: $space*2
 
       header
         border-radius: 3px
@@ -18,7 +19,7 @@
         width: 80px
         display: inline-block
         vertical-align: top
-        margin-right: $space/2
+        margin-left: $space/2
         float: right
 
       main
@@ -36,6 +37,10 @@
 
       h1
         margin-bottom: 0
+        +heading_rg
+
+        +gt($phablet)
+          +heading_md
 
       footer
         text-align: left
