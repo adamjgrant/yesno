@@ -21,7 +21,7 @@ var CommenterComposer = React.createClass({
   render: function() {
     return (
       <div className="hide-logged-out">
-        { this.props.comment ? <p>{this.props.comment.body}</p> : '' }
+        { this.props.comment ? <p>&ldquo;{this.props.comment.body}&rdquo;</p> : '' }
         <textarea 
           placeholder="Type your comment here"
           valueLink={this.linkState('body')}

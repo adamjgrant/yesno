@@ -27,6 +27,10 @@ var CommenterTree = React.createClass({
     return (
       <div data-block="comments">
         <h1>Comments</h1>
+        <CommenterComposer 
+          issueId={this.props.issueId} opinionId={this.props.opinionId} 
+          saveComment={ this.saveComment }
+        />
         <ul data-block="comments">
           { comments }
         </ul>
