@@ -20,6 +20,7 @@ var OpinionIndex = React.createClass({
               />
               <p>
                 <a href={ this.props.issue.slug + "/opinions/" + row.slug } >
+                  <span className={"verdict " + (row.agree ? "yes" : "no") }>{ row.agree ? "YES" : "NO" }</span>
                   {row.statement}
                 </a>
               </p>
@@ -27,7 +28,6 @@ var OpinionIndex = React.createClass({
             <footer>
               <img src={ row.avatar } />
               <span>{"@" + row.handle}</span>
-              <span className={"verdict " + (row.agree ? "yes" : "no") }>{ row.agree ? "YES" : "NO" }</span>
             </footer>
             <footer>
               <ul>
