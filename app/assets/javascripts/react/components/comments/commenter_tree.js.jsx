@@ -33,6 +33,7 @@ var CommenterTree = React.createClass({
         />
         <ul data-block="comments">
           { comments }
+          { comments.length ? '' : <p>No comments yet</p> }
         </ul>
       </div>
     )

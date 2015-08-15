@@ -55,6 +55,7 @@ var OpinionIndex = React.createClass({
     return (
       <div data-component="opinion_column">
         { opinionRows }
+        { opinionRows.length ? '' : <p>No opinions yet</p> }
       </div>
     )
   }
