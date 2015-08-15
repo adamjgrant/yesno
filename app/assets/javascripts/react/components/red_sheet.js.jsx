@@ -65,7 +65,7 @@ var RedSheet = React.createClass({
   },
   render: function() {
     return (
-      <div data-component="red sheet" className={this.props.displayLink.value ? "show" : ""}>
+      <div data-component="red_sheet" className={this.props.displayLink.value ? "show" : ""}>
         <div className="wrapper">
           <button className="close" onClick={this.close}>&times;</button>
           <h1>{this.props.issue.name}</h1>

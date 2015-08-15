@@ -1,4 +1,4 @@
-[data-component="red sheet"]
+[data-component="red_sheet"]
   position: absolute
   top: 0
   left: 0
@@ -11,6 +11,10 @@
   pointer-events: none
   transition: opacity 0.25s
   z-index: 9
+
+  h1
+    +heading_md
+    margin-top: 80px
 
   input[type="submit"]
     +button-color(darken($primary-color, 5%))
@@ -25,18 +29,19 @@
     margin-right: 10px
 
   p
-    text-align: left
+    margin-top: $space/2
 
   textarea
     background: rgba(255, 255, 255, 0.1)
     color: white
     border: none
     font-size: 1.2rem
-    margin: $space auto
-    width: 100%
-    padding:
-      left: 15px
-      right: 15px
+    margin: $space (-$space)
+    padding: 15px
+    height: calc(100vh - 360px)
+    max-width: none
+    width: 100vw
+    border-radius: 0
 
     &:focus
       outline: none
