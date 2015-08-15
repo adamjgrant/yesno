@@ -36,15 +36,15 @@ var Voter = React.createClass({
     var downButton = new Array
     if (this.props.editable) {
       upButton.push(
-        <div>
-          <button className="hide-logged-in up" onClick={this.signInWithTwitter}></button>
-          <button className="hide-logged-out up" onClick={this.upvote}></button>
+        <div key={"ubd1-" + this.props.keyId}>
+          <button className="hide-logged-in up" key={"ub1-" + this.props.keyId} onClick={this.signInWithTwitter}></button>
+          <button className="hide-logged-out up" key={"ub2-" + this.props.keyId} onClick={this.upvote}></button>
         </div>
       )
       downButton.push(
-        <div>
-          <button className="hide-logged-in down" onClick={this.signInWithTwitter}></button>
-          <button className="hide-logged-out down" onClick={this.downvote}></button>
+        <div key={"dbd1-" + this.props.keyId}>
+          <button className="hide-logged-in down" key={"db1-" + this.props.keyId} onClick={this.signInWithTwitter}></button>
+          <button className="hide-logged-out down" key={"db2-" + this.props.keyId} onClick={this.downvote}></button>
         </div>
       )
     }
