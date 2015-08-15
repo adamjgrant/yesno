@@ -5,9 +5,9 @@ require 'json'
 require 'fileutils'
 
 @sprite_name = "symbol-sprite"
-@base_dir = "./img/symbol-sprites/"
-@svg_lib = @base_dir + "lib/"
-@export_dir = @base_dir + "dist/"
+@base_dir = "./app/assets/images/"
+@svg_lib = @base_dir + "symbol-sprite/"
+@export_dir = @base_dir
 
 def build
   @svg_names = Dir.glob(["#{@svg_lib}**/*.svg"]).reject{ |entry| entry =~ /^\.{1,2}$/ }
