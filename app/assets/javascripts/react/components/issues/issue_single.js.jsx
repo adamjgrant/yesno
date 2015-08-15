@@ -31,6 +31,10 @@ var IssueSingle = React.createClass({
   render: function() {
     return (
       <div className="row">
+        <div data-component="breadcrumbs">
+          <a href="/">&laquo; All issues</a>
+        </div>
+
         <IssueCard issue={this.state.issue} getData={this.getData} />
         <OpinionTable issue={this.state.issue} getData={this.getData} />
       </div>

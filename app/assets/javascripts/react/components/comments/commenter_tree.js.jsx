@@ -25,7 +25,7 @@ var CommenterTree = React.createClass({
     };
     var comments = this.props.comments.map(commentUL.bind(this));
     return (
-      <div data-component="comment_tree">
+      <div data-block="comments">
         <h1>Comments</h1>
         <ul data-block="comments">
           { comments }

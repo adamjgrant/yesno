@@ -1,0 +1,51 @@
+[data-controller="issues"][data-action="show"],
+[data-controller="opinions"][data-action="show"]
+  @media screen and (max-width: $tablet)
+    [data-component="issue"]
+      border: 0px
+      box-shadow: none
+      border-radius: 0px
+      height: auto
+      width: auto
+      margin:
+        left: 0
+        right: 0
+        bottom: $space
+
+      header
+        border-radius: 3px
+        height: 60px
+        width: 80px
+        display: inline-block
+        vertical-align: top
+        margin-right: $space/2
+        float: right
+
+      main
+        display: block
+        padding: 0
+
+        p
+          margin-bottom: $space/3
+
+      aside
+        display: none
+
+      h1, h2, p
+        text-align: left
+
+      h1
+        margin-bottom: 0
+
+      footer
+        text-align: left
+        display: block
+
+      .cta
+        display: inline-block
+        margin: 0
+          right: $space
+
+  +gt($tablet)
+    [data-component="breadcrumbs"]
+      display: none

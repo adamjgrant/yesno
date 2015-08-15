@@ -1,10 +1,13 @@
-[data-component="opinion_preview"]
-  display: flex
+[data-component="opinion"]
+  article
+    display: flex
+    align-items: center
+    margin-bottom: $space/2
 
   img
     border-radius: 50%
-    width: 25px
-    height: 25px
+    width: 20px
+    height: 20px
     margin-right: 5px
 
   h1
@@ -21,25 +24,26 @@
     background: transparent
     border-width: 0
     border-radius: 0
-    border-right-width: 3px
     margin-bottom: 0
 
     &.yes
       color: map-get($colors, green)
-      border-color: map-get($colors, green)
 
     &.no
       color: map-get($colors, red)
-      border-color: map-get($colors, red)
 
   p
     margin-bottom: $space/5
 
   footer
-    margin-bottom: $space
+    display: flex
+    align-items: center
+    margin-bottom: 5px
+    padding-left: 45px
 
-    p
+    p, span, h1
       font-size: 0.85rem
+      display: inline-block
 
   +gt($phablet)
     // padding-left: $space
@@ -52,6 +56,9 @@
 
     a
       +heading_xxs
+
+    > li
+      margin-bottom: 5px
 
   +c("voter")
     width: auto

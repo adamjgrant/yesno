@@ -79,7 +79,7 @@ var CommenterTreeComment = React.createClass({
           </section>
         </div>
         <article>
-          <ul data-block="comments">
+          <ul>
             { this.props.children }
           </ul>
         </article>
