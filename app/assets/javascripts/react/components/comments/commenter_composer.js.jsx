@@ -12,6 +12,12 @@ var CommenterComposer = React.createClass({
     state.body = "";
     this.setState(state);
   },
+  handleKeyDown: function(e) {
+    var event = e.which || e.event;
+    if (event === 13) {
+      this.saveComment();
+    }
+  },
   render: function() {
     return (
       <div className="hide-logged-out">
@@ -19,8 +25,8 @@ var CommenterComposer = React.createClass({
         <textarea 
           placeholder="Type your comment here"
           valueLink={this.linkState('body')}
+          onKeyDown={this.handleKeyDown}
         ></textarea>
-        <input type="submit" value="Save" onClick={ this.saveComment } />
       </div>
     )
   }

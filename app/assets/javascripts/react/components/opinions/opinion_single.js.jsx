@@ -57,18 +57,22 @@ var OpinionSingle = React.createClass({
   render: function() {
     return (
       <div className="row">
+        <div data-component="breadcrumbs">
+          <a href="/">&laquo; All issues</a>
+          <span> / </span>
+          <a href={ "/issues/" + this.state.issue.id }>{ this.state.issue.name }</a>
+        </div>
         <IssueCard issue={this.state.issue} getData={this.getData} />
         <div className="opinion_column">
-          <p><a href={ "/issues/" + this.state.issue.id }>{ "Back to " + this.state.issue.name }</a></p>
-          <figure data-component="opinion_preview">
-            <img src={ this.state.opinion.avatar } />
-            <article>
-              <h1>
-                <span className={"verdict " + (this.state.opinion.agree ? "yes" : "no")}>{ this.state.opinion.agree ? "YES" : "NO" }</span>
+          <figure data-component="opinion_single">
+            <blockquote>&ldquo;{ this.state.opinion.statement }&rdquo;</blockquote>
+            <div data-component="opinion">
+              <footer>
+                <img src={ this.state.opinion.avatar } />
                 <span>{"@" + this.state.opinion.handle }</span>
-              </h1>
-              <p>{ this.state.opinion.statement }</p>
-            </article>
+                <span className={"verdict " + (this.state.opinion.agree ? "yes" : "no")}>{ this.state.opinion.agree ? "YES" : "NO" }</span>
+              </footer>
+            </div>
           </figure>
           <Commenter />
         </div>
