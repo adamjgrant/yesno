@@ -61,9 +61,9 @@ var OpinionSingle = React.createClass({
         <div className="opinion_column">
           <p><a href={ "/issues/" + this.state.issue.id }>{ "Back to " + this.state.issue.name }</a></p>
           <figure data-component="opinion_preview">
+            <img src={ this.state.opinion.avatar } />
             <article>
               <h1>
-                <img src={ this.state.opinion.avatar } />
                 <span className={"verdict " + (this.state.opinion.agree ? "yes" : "no")}>{ this.state.opinion.agree ? "YES" : "NO" }</span>
                 <span>{"@" + this.state.opinion.handle }</span>
               </h1>

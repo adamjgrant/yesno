@@ -1,12 +1,15 @@
 [data-component="opinion_preview"]
   display: flex
 
+  img
+    border-radius: 50%
+    width: 25px
+    height: 25px
+    margin-right: 5px
+
   h1
     text-align: left
     +heading_xxs
-
-    img
-      border-radius: 50%
 
     span, img
       vertical-align: middle
@@ -39,7 +42,7 @@
       font-size: 0.85rem
 
   +gt($phablet)
-    padding-left: $space
+    // padding-left: $space
 
   ul
     +list($style: 'unstyled', $layout: 'horizontal')
@@ -55,5 +58,7 @@
     margin-right: $space
 
     h1
-      margin: 5px 0
+      margin: 0
+        top: 5px
+      line-height: normal
       text-align: center
