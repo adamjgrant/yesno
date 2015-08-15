@@ -1,15 +1,7 @@
-div(data-component="opinion_header")
-  h1 = @opinion.statement
-  p To "#{@opinion.issue.name}", this user said "#{@opinion.agree ? "YES" : "NO"}"
-
-h1 Add a comment
 div(
   data-issue-id="#{@opinion.issue.id}"
   data-opinion-id="#{@opinion.id}"
 )
-
-- if !user_signed_in?
-  p Please sign in to leave a comment
 
 div(data-render)
   = image_tag('spinner.gif', class: "loader")

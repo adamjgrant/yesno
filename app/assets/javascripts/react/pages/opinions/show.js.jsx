@@ -1,6 +1,6 @@
 if ($YN.isPage('opinions', 'show')) {
   React.render(
-    <Commenter />,
+    <OpinionSingle />,
     k$.$('[data-render]')
   )
 }

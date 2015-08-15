@@ -47,6 +47,11 @@ class OpinionsController < ApplicationController
     @opinion = Opinion.find(params[:id])
     @comments = @opinion.comments
     @comment = Comment.new
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @opinion }
+    end
   end
 
   def destroy
