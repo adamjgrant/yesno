@@ -56,10 +56,13 @@ var OpinionSingle = React.createClass({
   },
   render: function() {
     return (
-      <div>
+      <div className="row">
         <IssueCard issue={this.state.issue} getData={this.getData} />
-        <h1>{"\"" + this.state.opinion.statement + "\""}</h1>
-        <Commenter />
+        <div className="opinion_column">
+          <p><a href={ "/issues/" + this.state.issue.id }>{ "Back to " + this.state.issue.name }</a></p>
+          <h1>{"\"" + this.state.opinion.statement + "\""}</h1>
+          <Commenter />
+        </div>
       </div>
     )
   }
