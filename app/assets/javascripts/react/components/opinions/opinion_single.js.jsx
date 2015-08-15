@@ -64,15 +64,10 @@ var OpinionSingle = React.createClass({
             <article>
               <h1>
                 <img src={ this.state.opinion.avatar } />
-                <span className={"verdict " + (this.state.opinion.agree ? "yes" : "no")>{ this.state.opinion.agree ? "YES" : "NO" }</span>
+                <span className={"verdict " + (this.state.opinion.agree ? "yes" : "no")}>{ this.state.opinion.agree ? "YES" : "NO" }</span>
                 <span>{"@" + this.state.opinion.handle }</span>
               </h1>
               <p>{ this.state.opinion.statement }</p>
-            </article>
-
-
-            <article>
-              <h1>{"\"" + this.state.opinion.statement + "\""}</h1>
             </article>
           </figure>
           <Commenter />
