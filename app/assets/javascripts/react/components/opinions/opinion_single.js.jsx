@@ -29,30 +29,46 @@ var OpinionSingle = React.createClass({
     }
   },
   componentDidMount: function() {
-    this.getData();
-    $YN.mixpanel("Page visited", {
-      page: "Opinion page – " + this.state.issue.name + " | " + this.state.opinion.statement
-    });
+    this.getData(function() {
+      $YN.mixpanel("Page visited", {
+        page: "Opinion page – " + this.state.issue.name + " | " + this.state.opinion.statement
+      });
+    }.bind(this));
   },
-  getIssueData: function() {
+  getIssueData: function(cb) {
     var self = this,
       state = this.state;
     $YN.get('/issues/' + k$.$('[data-issue-id]').dataset.issueId + '.json', function(data) {
       state.issue = data.issue;
       self.setState(state);
-    });
+
+      if(cb) {
+        this.fireMixpanelEvent(cb);
+      }
+    }.bind(this));
   },
-  getOpinionData: function() {
+  getOpinionData: function(cb) {
     var self = this,
       state = this.state;
     $YN.get('/issues/' + k$.$('[data-issue-id]').dataset.issueId + '/opinions/' + k$.$('[data-opinion-id]').dataset.opinionId + '.json', function(data) {
       state.opinion = data.opinion;
       self.setState(state);
-    });
+
+      if(cb) {
+        this.fireMixpanelEvent(cb);
+      }
+    }.bind(this));
   },
-  getData: function() {
-    this.getIssueData();
-    this.getOpinionData();
+  firings: 0,
+  fireMixpanelEvent(cb) {
+    this.firings++;
+    if (this.firings > 1) {
+      cb();
+    }
+  },
+  getData: function(cb) {
+    this.getIssueData(cb);
+    this.getOpinionData(cb);
   },
   render: function() {
     return (
