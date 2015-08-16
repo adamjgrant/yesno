@@ -34,7 +34,13 @@ $circleHeight: 60px
       margin-left: -$circleHeight/2
       border: 3px solid white
       // background: map-get($blue, slate)
-      background: map-get($colors, blue)
+      background: map-get($blue, equals)
+
+      &.yes
+        background: map-get($colors, turquoise)
+
+      &.no
+        background: map-get($colors, violet)
 
       svg
         width: 40px
