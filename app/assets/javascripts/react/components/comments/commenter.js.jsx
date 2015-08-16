@@ -39,6 +39,10 @@ var Commenter = React.createClass({
         text: response,
         type: "status-green"
       });
+      $YN.mixpanel("Expressed", {
+        interaction: "User commented"
+      });
+      $YN.mixpanel("Commented");
       if (typeof(cb) === "function") { cb(); }
       this.getData();
     }.bind(this));
