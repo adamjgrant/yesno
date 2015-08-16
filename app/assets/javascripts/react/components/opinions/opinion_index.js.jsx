@@ -6,7 +6,7 @@ var OpinionIndex = React.createClass({
   render: function() {
     var self = this;
     var opinionRows = this.props.issue.opinions.map(function(row) {
-      if (row.statement !== null) {
+      if (row.statement !== "null") {
         return (
           <div key={row.id} data-component="opinion">
             <article>
