@@ -23,7 +23,8 @@ var IssueCard = React.createClass({
   },
   render: function() {
     var issue = this.props.issue,
-      score = issue.total_votes,
+      score = issue.score,
+      votes = issue.total_votes,
       response = "?",
       people_say = function(score) { return score === 1 ? "person says" : "people say"; },
       yes_statement = issue.yes + " " + people_say(issue.yes) + " yes.",
@@ -31,7 +32,7 @@ var IssueCard = React.createClass({
       voteAction,
       authLink = (k$.$('.authentication a') || {href: ''}).href,
       style = issue.image ? { backgroundImage: 'url(' + issue.image + ')' } : {},
-      statement = score === 0 ? 'Be the first to vote!' : 
+      statement = votes === 0 ? 'Be the first to vote!' : 
         (issue.yes === issue.no ? "It's a tie!" :
            (issue.yes > issue.no ? yes_statement : no_statement)
         );
@@ -75,6 +76,7 @@ var IssueCard = React.createClass({
           <header style={ style }>
             <Verdict
                 score={ score }
+                votes={ votes }
                 response={ response }
                 className="top"
                 key="1"

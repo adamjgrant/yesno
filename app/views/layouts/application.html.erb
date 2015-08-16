@@ -12,6 +12,7 @@
   data-logged-in="<%= user_signed_in? ? "true" : "false" %>"
   data-user-id="<%= user_signed_in? ? current_user.id : nil %>"
   data-user-handle="<%= user_signed_in? ? current_user.handle: nil %>"
+  data-symbol-sprite="<%= image_path('symbol-sprite.svg')%>"
 >
   <div data-component="main header" data-ks-navbar>
     <nav class="wrapper">
