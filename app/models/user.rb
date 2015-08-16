@@ -36,6 +36,10 @@ class User < ActiveRecord::Base
         )
         user.skip_confirmation!
         user.save!
+        if (Rails.env.production?)
+          tracker = Mixpanel::Tracker.new(ENV['MIXPANEL_TOKEN'])
+          tracker.track(current_user.id, 'New user signup')
+        end
       else
         user.update(avatar: auth.extra.raw_info.profile_image_url)
       end
