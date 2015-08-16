@@ -15,17 +15,21 @@ var IssueSingle = React.createClass({
     }
   },
   componentDidMount: function() {
-    this.getData();
-    $YN.mixpanel("Page visited", {
-      page: "Issue page – " + this.state.issue.name
-    });
+    this.getData(function() {
+      $YN.mixpanel("Page visited", {
+        page: "Issue page – " + this.state.issue.name
+      });
+    }.bind(this));
   },
-  getData: function() {
+  getData: function(cb) {
     var self = this,
       state = this.state;
     $YN.get('/issues/' + k$.$('[data-issue]').dataset.issue + '.json', function(data) {
       state.issue = data.issue;
       self.setState(state);
+      if (cb) {
+        cb();
+      }
     });
   },
   render: function() {
