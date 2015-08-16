@@ -56,6 +56,7 @@ var RedSheet = React.createClass({
           issue: this.props.issue.name
         });
       }
+      location.href = "/issues/" + this.props.issue.id;
     }.bind(this));
   },
   componentDidMount: function() {
