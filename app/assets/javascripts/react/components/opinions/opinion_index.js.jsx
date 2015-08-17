@@ -18,36 +18,38 @@ var OpinionIndex = React.createClass({
                 refresh={ this.refresh }
                 keyId={row.id}
               />
-              <p>
-                <a href={ this.props.issue.slug + "/opinions/" + row.slug } >
-                  <span className={"verdict " + (row.agree ? "yes" : "no") }>{ row.agree ? "YES" : "NO" }</span>
-                  {row.statement}
-                </a>
-              </p>
+              <main>
+                <p>
+                  <a href={ this.props.issue.slug + "/opinions/" + row.slug } >
+                    <span className={"verdict " + (row.agree ? "yes" : "no") }>{ row.agree ? "YES" : "NO" }</span>
+                    {row.statement}
+                  </a>
+                </p>
+                <footer>
+                  <img src={ row.avatar } />
+                  <span>{"@" + row.handle}</span>
+                </footer>
+                <footer>
+                  <ul>
+                    <li>
+                      <a href={ this.props.issue.slug + "/opinions/" + row.slug } >
+                        Add a comment
+                      </a>
+                    </li>
+                    <li>
+                      <a href={ this.props.issue.slug + "/opinions/" + row.slug } >
+                        { row.comments + " comments" }
+                      </a>
+                    </li>
+                    <li>
+                      <a href={ this.props.issue.slug + "/opinions/" + row.slug } >
+                        { row.created_at }
+                      </a>
+                    </li>
+                  </ul>
+                </footer>
+              </main>
             </article>
-            <footer>
-              <img src={ row.avatar } />
-              <span>{"@" + row.handle}</span>
-            </footer>
-            <footer>
-              <ul>
-                <li>
-                  <a href={ this.props.issue.slug + "/opinions/" + row.slug } >
-                    Add a comment
-                  </a>
-                </li>
-                <li>
-                  <a href={ this.props.issue.slug + "/opinions/" + row.slug } >
-                    { row.comments + " comments" }
-                  </a>
-                </li>
-                <li>
-                  <a href={ this.props.issue.slug + "/opinions/" + row.slug } >
-                    { row.created_at }
-                  </a>
-                </li>
-              </ul>
-            </footer>
           </div>
         )
       }

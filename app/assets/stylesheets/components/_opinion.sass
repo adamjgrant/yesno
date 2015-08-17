@@ -3,6 +3,7 @@
     display: flex
     align-items: flex-start
     margin-bottom: $space/2
+    flex-wrap: wrap
 
   img
     border-radius: 50%
@@ -33,17 +34,21 @@
       color: map-get($colors, violet)
 
   p
-    margin-bottom: $space/5
+    margin-bottom: $space
 
   footer
     display: flex
     align-items: center
-    margin-bottom: 5px
-    padding-left: 45px
+    // margin-bottom: 5px
+    width: 100%
 
-    p, span, h1
+    p, span, h1, a
       font-size: 0.85rem
       display: inline-block
+      color: map-get($gray, lighter)
+
+    a
+      text-decoration: underline
 
   +gt($phablet)
     // padding-left: $space
@@ -53,9 +58,6 @@
 
     li
       margin-right: $space
-
-    a
-      +heading_xxs
 
     > li
       margin-bottom: 5px
