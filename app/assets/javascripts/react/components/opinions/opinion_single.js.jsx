@@ -41,7 +41,7 @@ var OpinionSingle = React.createClass({
       state.issue = data.issue;
       this.setState(state);
 
-      if(cb) { this.fireMixpanelEvent(cb); }
+      if (cb) { this.fireMixpanelEvent(cb); }
     }.bind(this));
   },
   getOpinionData: function(cb) {
@@ -50,7 +50,7 @@ var OpinionSingle = React.createClass({
       state.opinion = data.opinion;
       this.setState(state);
 
-      if(cb) { this.fireMixpanelEvent(cb); }
+      if (cb) { this.fireMixpanelEvent(cb); }
     }.bind(this));
   },
   firings: 0,
