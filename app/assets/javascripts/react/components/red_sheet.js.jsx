@@ -28,7 +28,7 @@ var RedSheet = React.createClass({
     this.setState(state);
   },
   updateAgree: function(e, agree) {
-    agree = e ? agree : (e.target.value.toLowerCase() == "true" ? true : false);
+    agree = e ? (e.target.value.toLowerCase() == "true" ? true : false) : agree;
     this.props.updateAgree(agree);
   },
   saveOpinion: function() {
