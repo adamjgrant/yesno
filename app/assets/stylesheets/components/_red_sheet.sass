@@ -49,6 +49,26 @@
       background: white
       color: $default-font-color
 
+      @media screen and (max-width: #{$tablet})
+        position: fixed
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        width: 100%
+        height: auto
+        margin: 0
+        z-index: 1
+
+        + input[type="submit"]
+          position: fixed
+          z-index: 2
+          width: 150px
+          margin-left: -75px
+          left: 50%
+          bottom: 10px
+          text-align: center
+
     +gt($tablet)
       max-width: 600px
       min-height: 30vh
