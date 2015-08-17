@@ -18,7 +18,9 @@
     <nav class="wrapper">
       <ul>
         <li class="navbar-title">
-          <h1 class="logo"><a href="/">yesno.vote</a></h1>
+          <%= link_to root_path, :class => "logo" do %>
+            <%= image_tag "logo.svg" %>
+          <% end %>
           <button role="button">=</button>
         </li>
         <li class="authentication">

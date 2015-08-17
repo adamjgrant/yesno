@@ -1,18 +1,21 @@
 [data-component="main header"]
-  +navbar($collapse: true, $background-color: $primary-color)
+  +navbar($collapse: true, $background-color: white)
   padding: $space/3 0
   margin-bottom: $space
 
   +gt($tablet)
     margin-bottom: $space*2
 
+  nav > ul > li > a:not([role=button]).logo
+    margin:
+      left: -30px
+
+    img
+      width: 100px
+      margin-top: 4px
+
   h1
     +heading_xs
-    color: white
-
-    a
-      color: white
-
 
   form
     +gt($tablet)
@@ -24,15 +27,7 @@
         left: 0
         right: 0
 
-      color: white
-
-  nav > ul > li ul[role=button], 
-  nav > ul > li > [role=button], 
-  nav > ul > li.navbar-title button[role="button"]
-    color: white
-
   a:not([role=button]).unread
     background: map-get($colors, red)
-    color: white
     border-radius: 5px
     opacty: 1
