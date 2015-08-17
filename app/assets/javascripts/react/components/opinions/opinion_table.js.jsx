@@ -3,6 +3,7 @@ var OpinionTable = React.createClass({
     var style = this.props.issue.image ? { backgroundImage: 'url(' + this.props.issue.image + ')' } : {};
     return (
       <section data-component="opinion_table">
+        <p className="description">{ this.props.issue.description }</p>
         <h1>Opinions</h1>
         <div>
           <OpinionIndex 
