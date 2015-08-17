@@ -87,15 +87,17 @@ var IssueCard = React.createClass({
     return (
       <div className="issue_column">
         <section data-component="issue">
-          <header style={ style }>
-            <Verdict
-                score={ score }
-                votes={ votes }
-                response={ response }
-                className="top"
-                key="1"
-              />
-          </header>
+          <a href={ "/issues/" + issue.slug }>
+            <header style={ style }>
+              <Verdict
+                  score={ score }
+                  votes={ votes }
+                  response={ response }
+                  className="top"
+                  key="1"
+                />
+            </header>
+          </a>
           <main>
             <h1>
               <a href={"/issues/" + issue.slug}>{issue.name}</a>
