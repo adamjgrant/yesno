@@ -70,7 +70,9 @@ class OpinionsController < ApplicationController
     end
 
     def destroy_votes
-      @votes = Vote.where(votable_type: "Issue", votable_id: @opinion.issue.id)
-      @votes.destroy_all
+      # TODO: This ended up deleting ANY vote on this issue, rather than just the one associated with the opinion.
+      # Now that I read the query, it's obvious why, but need to be careful reimplementing.
+      # @votes = Vote.where(votable_type: "Issue", votable_id: @opinion.issue.id)
+      # @votes.destroy_all
     end
 end
