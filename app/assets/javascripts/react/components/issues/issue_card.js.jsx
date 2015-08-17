@@ -1,7 +1,7 @@
 var IssueCard = React.createClass({
   mixins: [React.addons.LinkedStateMixin],
   componentDidMount: function() {
-    // $YN.buddySystem(k$.$$('[data-component="issue"] h1'))
+    $YN.buddySystem(k$.$$('[data-component="issue"] h1'))
   },
   getInitialState: function() {
     return {
@@ -32,12 +32,12 @@ var IssueCard = React.createClass({
       voteAction,
       authLink = (k$.$('.authentication a') || {href: ''}).href,
       style = issue.image ? { backgroundImage: 'url(' + issue.image + ')' } : {},
-      statement = votes === 0 ? 'Be the first to vote!' : 
+      statement = votes === 0 ? 'Be the first to vote!' :
         (issue.yes === issue.no ? "It's a tie!" :
            (issue.yes > issue.no ? yes_statement : no_statement)
         );
 
-    if (issue.yes === issue.no && issue.yes + issue.no !== 0) { 
+    if (issue.yes === issue.no && issue.yes + issue.no !== 0) {
       response = "TIE";
     }
     if (issue.yes > issue.no) { response = "YES" }
@@ -46,18 +46,18 @@ var IssueCard = React.createClass({
     if (issue.user_can_vote) {
       voteAction = [
         <div
-          key={ "a" + issue.id } 
-          className="cta hide-logged-out" 
-          href="#" 
+          key={ "a" + issue.id }
+          className="cta hide-logged-out"
+          href="#"
           onClick={ this.openRedSheet.bind(null, true) }
         >
           { "Yes" }
         </div>,
         <span key={ "b" + issue.id } className="hide-logged-out">&nbsp;</span>,
         <div
-          key={ "c" + issue.id } 
-          className="cta hide-logged-out" 
-          href="" 
+          key={ "c" + issue.id }
+          className="cta hide-logged-out"
+          href=""
           onClick={ this.openRedSheet.bind(null, false) }
         >
           { "No" }
@@ -93,8 +93,8 @@ var IssueCard = React.createClass({
             { voteAction }
           </footer>
         </section>
-        <RedSheet 
-          displayLink={this.linkState('showRedSheet')} 
+        <RedSheet
+          displayLink={this.linkState('showRedSheet')}
           agree={this.state.agree}
           issue={this.props.issue}
           key={this.props.issue.id}
