@@ -11,6 +11,10 @@ class OpinionsController < ApplicationController
     end
   end
 
+  def new
+    @issue = Issue.find(params[:issue_id])
+  end
+
   def create
     @issue = Issue.find(params[:issue_id])
     @opinion = @issue.opinions.new(opinion_params)

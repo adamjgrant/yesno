@@ -14,3 +14,12 @@
 [data-logged-in="false"]
   .hide-logged-out
     display: none !important
+
+.show-mobile
+  +gt($tablet)
+    display: none
+
+.hide-mobile
+  @media screen and (max-width: $tablet)
+    display: none
+

@@ -74,5 +74,13 @@ $circleHeight: 60px
     cursor: pointer
     margin: 0px $space
 
+    svg
+      transition: all 0.25s
+
     &:hover
       text-decoration: underline
+
+      svg
+        fill: map-get($colors, blue)
+        width: 40px
+        height: 40px

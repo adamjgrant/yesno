@@ -47,21 +47,35 @@ var IssueCard = React.createClass({
       voteAction = [
         <div
           key={ "a" + issue.id }
-          className="cta hide-logged-out"
+          className="cta hide-logged-out hide-mobile"
           href="#"
           onClick={ this.openRedSheet.bind(null, true) }
         >
-          { "Yes" }
+          <Icon icon="thumbs-up" />
         </div>,
+        <a
+          key={ "d" + issue.id }
+          className="cta hide-logged-out show-mobile"
+          href={ "/issues/" + issue.id + "/opinions/new#yes" }
+        >
+          <Icon icon="thumbs-up" />
+        </a>,
         <span key={ "b" + issue.id } className="hide-logged-out">&nbsp;</span>,
         <div
           key={ "c" + issue.id }
-          className="cta hide-logged-out"
+          className="cta hide-logged-out hide-mobile"
           href=""
           onClick={ this.openRedSheet.bind(null, false) }
         >
-          { "No" }
-        </div>
+          <Icon icon="thumbs-down" />
+        </div>,
+        <a
+          key={ "e" + issue.id }
+          className="cta hide-logged-out show-mobile"
+          href={ "/issues/" + issue.id + "/opinions/new#no" }
+        >
+          <Icon icon="thumbs-down" />
+        </a>
       ]
     }
     else {
