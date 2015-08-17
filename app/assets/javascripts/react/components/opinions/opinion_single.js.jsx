@@ -54,7 +54,7 @@ var OpinionSingle = React.createClass({
     }.bind(this));
   },
   firings: 0,
-  fireMixpanelEvent(cb) {
+  fireMixpanelEvent: function(cb) {
     this.firings++;
     if (this.firings > 1) {
       cb();
