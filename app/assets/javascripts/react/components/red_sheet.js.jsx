@@ -62,6 +62,9 @@ var RedSheet = React.createClass({
   componentDidMount: function() {
     var state = this.state;
     state.response.agree = this.props.agree;
+    if (location.hash === "#yes") { state.response.agree = true }
+    if (location.hash === "#no") { state.response.agree = false }
+    console.log(location.hash);
     this.setState(state);
   },
   render: function() {
@@ -71,11 +74,11 @@ var RedSheet = React.createClass({
           <button className="close" onClick={this.close}>&times;</button>
           <h1>{this.props.issue.name}</h1>
           <label>
-            <input type="radio" name="opinion" value="true" checked={this.props.agree} onChange={this.updateAgree} />
+            <input type="radio" name="opinion" value="true" checked={this.state.response.agree} onChange={this.updateAgree} />
             Yes
           </label>
           <label>
-            <input type="radio" name="opinion" value="false" checked={!this.props.agree} onChange={this.updateAgree} />
+            <input type="radio" name="opinion" value="false" checked={!this.state.response.agree} onChange={this.updateAgree} />
             No
           </label>
           <p>Tell us why below</p>
