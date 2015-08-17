@@ -81,6 +81,7 @@ var RedSheet = React.createClass({
           </label>
           <p>Tell us why below</p>
           <textarea 
+            placeholder="I believe this because..."
             onChange={ this.updateStatement }
             value={ this.state.response.statement }
             ref="talker"
