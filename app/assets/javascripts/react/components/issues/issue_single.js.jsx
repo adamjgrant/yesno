@@ -43,7 +43,7 @@ var IssueSingle = React.createClass({
         </div>
         <div className="issue_aside">
           <NewsTitle issue={ this.state.issue } />
-          <OpinionTable issue={this.state.issue} getData={this.getData} />
+          <OpinionTable issue={this.state.issue} vote={ this.vote } getData={this.getData} />
         </div>
       </div>
     )
