@@ -35,14 +35,14 @@ var IssueSingle = React.createClass({
   render: function() {
     return (
       <div data-block="issue_row">
-        <div data-component="breadcrumbs">
-          <a href="/">&laquo; All issues</a>
-        </div>
-
         <div className="issue_card_container">
+          <div data-component="breadcrumbs">
+            <a href="/">&laquo; All issues</a>
+          </div>
           <IssueCard issue={this.state.issue} getData={this.getData} />
         </div>
         <div className="issue_aside">
+          <NewsTitle issue={ this.state.issue } />
           <OpinionTable issue={this.state.issue} getData={this.getData} />
         </div>
       </div>

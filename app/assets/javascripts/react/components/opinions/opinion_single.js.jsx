@@ -66,14 +66,17 @@ var OpinionSingle = React.createClass({
   },
   render: function() {
     return (
-      <div className="row">
-        <div data-component="breadcrumbs">
-          <a href="/">&laquo; All issues</a>
-          <span> / </span>
-          <a href={ "/issues/" + this.state.issue.id }>{ this.state.issue.name }</a>
+      <div data-block="issue_row">
+        <div className="issue_card_container">
+          <div data-component="breadcrumbs">
+            <a href="/">&laquo; All issues</a>
+            <span> / </span>
+            <a href={ "/issues/" + this.state.issue.id }>{ this.state.issue.name }</a>
+          </div>
+          <IssueCard issue={this.state.issue} getData={this.getData} />
         </div>
-        <IssueCard issue={this.state.issue} getData={this.getData} />
-        <div className="opinion_column">
+
+        <div className="issue_aside">
           <OpinionPreview opinion={ this.state.opinion } />
           <Commenter />
         </div>

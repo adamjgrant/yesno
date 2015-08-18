@@ -85,7 +85,7 @@ var IssueCard = React.createClass({
     }
 
     return (
-      <div data-block="issue_row">
+      <div>
         <RedSheet
           displayLink={this.linkState('showRedSheet')}
           agree={this.state.agree}
@@ -95,42 +95,29 @@ var IssueCard = React.createClass({
           updateAgree={this.updateAgree}
         >
         </RedSheet>
-        <NewsTitle className="full" key={"b"} issue={this.props.issue} />
-        <div className="issue_aside">
-          <NewsTitle className="partial" key={"a"} issue={this.props.issue} />
-          <div data-block="opinion_previews">
-            <h1>Top Opinions</h1>
-            <div className="row">
-              { this.props.issue.top_yes ? <OpinionPreview issue={ this.props.issue } opinion={ this.props.issue.top_yes } /> : <p data-component="opinion_preview"><em>{ "No yes votes yet!" }</em></p> }
-              { this.props.issue.top_no ? <OpinionPreview issue={ this.props.issue } opinion={ this.props.issue.top_no } /> : <p data-component="opinion_preview"><em>{ "No no votes yet!" }</em></p> }
-            </div>
-          </div>
-        </div>
-        <div className="issue_card_container">
-          <section data-component="issue">
-            <a href={ "/issues/" + issue.slug }>
-              <header style={ style }>
-                <Verdict
-                    score={ score }
-                    votes={ votes }
-                    response={ response }
-                    className="top"
-                    key="1"
-                  />
-              </header>
-            </a>
-            <main>
-              <h1>
-                <a href={"/issues/" + issue.slug}>{issue.name}</a>
-              </h1>
-              <p>{statement}</p>
-            </main>
-            <footer>
-              <a href={authLink} className="sign-in hide-logged-in">{ "Sign in to vote" }</a>
-              { voteAction }
-            </footer>
-          </section>
-        </div>
+        <section data-component="issue">
+          <a href={ "/issues/" + issue.slug }>
+            <header style={ style }>
+              <Verdict
+                  score={ score }
+                  votes={ votes }
+                  response={ response }
+                  className="top"
+                  key="1"
+                />
+            </header>
+          </a>
+          <main>
+            <h1>
+              <a href={"/issues/" + issue.slug}>{issue.name}</a>
+            </h1>
+            <p>{statement}</p>
+          </main>
+          <footer>
+            <a href={authLink} className="sign-in hide-logged-in">{ "Sign in to vote" }</a>
+            { voteAction }
+          </footer>
+        </section>
       </div>
     )
   }
