@@ -92,6 +92,13 @@ var IssueCard = React.createClass({
         </div>
       )
     }
+    else {
+      recentEvents = (
+        <div data-component="news">
+          <h1><a href={ "/issues/" + issue.slug }>{ issue.name }</a></h1>
+        </div>
+      )
+    }
 
     return (
       <div className="issue_column">
