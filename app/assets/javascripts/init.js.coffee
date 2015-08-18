@@ -33,7 +33,7 @@ $YN.put = (endpoint, data, cb) ->
   $YN.post(endpoint, data, cb, 'PUT');
 
 # Basic GET request
-$YN.get = (endpoint, cb) ->
+$YN.get = (endpoint, cb, lsKey) ->
   error = ->
     k$.status(
       text: "Could not get data at " + endpoint,
@@ -44,7 +44,9 @@ $YN.get = (endpoint, cb) ->
   req.open 'GET', endpoint, true
   req.onload = ->
     if (this.status >= 200 and this.status < 400)
-      return cb(JSON.parse(this.response))
+      response = JSON.parse(this.response)
+      $YN.lsSet(lsKey, response) if lsKey
+      return cb(response)
     else
       error()
 
@@ -60,6 +62,7 @@ $YN.constructPath = (path, args) ->
     pathParts[i] = args[(i-1)/2];
   }`
   return pathParts.join('')
+
 
 # Mixpanel
 
@@ -105,3 +108,11 @@ $YN.mixpanel = (event, action) ->
     }
   })
 };`
+
+# LocalStorage Caching
+
+$YN.lsSet = (key, data) ->
+  localStorage.setItem "YESNOVOTE" + key, JSON.stringify(data)
+
+$YN.lsGet = (key) ->
+  JSON.parse localStorage.getItem "YESNOVOTE" + key

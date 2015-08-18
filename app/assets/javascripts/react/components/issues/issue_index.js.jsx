@@ -1,4 +1,5 @@
 var IssueIndex = React.createClass({
+  lsKey: "issues",
   getInitialState: function() {
     return {
       issues: [
@@ -19,18 +20,17 @@ var IssueIndex = React.createClass({
     }
   },
   getData: function() {
-    var self = this;
-    var req = new XMLHttpRequest();
-    req.open('get', this.props.url, true);
-    req.onload = function() {
-      if (this.status >= 200 && this.status < 400) {
-        self.setState({issues: JSON.parse(this.response).issues})
-      }
-    }
-    req.send();
+    $YN.get(this.props.url, function(response) {
+        var state = this.state;
+        state.issues = response.issues;
+        this.setState(state);
+      }.bind(this), this.lsKey
+    );
   },
   componentDidMount: function() {
-    this.getData()
+    cachedData = $YN.lsGet(this.lsKey);
+    if (cachedData) { this.setState(cachedData); }
+    this.getData();
     $YN.mixpanel("Page visited", {
       page: "Issue index"
     })
