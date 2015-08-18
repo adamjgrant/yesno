@@ -1,5 +1,21 @@
 class IssueSerializer < ActiveModel::Serializer
-  attributes :id, :name, :description, :created_at, :score, :total_votes, :victor_score, :image, :yes, :no, :user_can_vote, :slug, :top_yes, :top_no
+  attributes :id, 
+    :name, 
+    :description, 
+    :created_at, 
+    :score, 
+    :total_votes, 
+    :victor_score, 
+    :image, 
+    :yes, 
+    :no, 
+    :user_can_vote, 
+    :slug, 
+    :top_yes, 
+    :top_no,
+    :news_link,
+    :news_title,
+    :news_image
 
   has_many :opinions
 

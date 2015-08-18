@@ -12,6 +12,19 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :news_title%><br>
+    <%= f.text_field :news_title %>
+  </div>
+  <div class="field">
+    <%= f.label :news_link %><br>
+    <%= f.text_field :news_link %>
+  </div>
+  <div class="field">
+    <%= f.label :news_image %><br>
+    <%= f.text_field :news_image %>
+  </div>
+
+  <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
     <p>Use an affirmative title, not a question. E.g. "John is good at math"</p>
