@@ -23,3 +23,22 @@
   @media screen and (max-width: $tablet)
     display: none !important
 
+// STICKY FOOTER
+
++gt($tablet)
+  $footerHeight: 100px
+
+  *
+    margin: 0
+
+  html, body
+    height: 100%
+
+  .sf-wrapper
+    min-height: 100%
+    margin: 0 auto (-$footerHeight - 80px)
+    padding-top: 90px
+
+  .sf-footer, .sf-push
+    height: $footerHeight
+
