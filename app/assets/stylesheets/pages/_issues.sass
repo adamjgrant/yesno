@@ -2,6 +2,13 @@
   article aside.verdict.top
     display: none
 
+  +c("news_title")
+    &.partial
+      display: none
+
+    &.full
+      +column(12)
+
 [data-controller="issues"][data-action="index"]
   article aside.verdict.bottom
     display: none
@@ -9,3 +16,7 @@
   +b("opinion_previews")
     +gt($tablet)
       display: block
+
+  +c("news_title")
+    &.full
+      display: none

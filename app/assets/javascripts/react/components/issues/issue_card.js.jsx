@@ -95,11 +95,9 @@ var IssueCard = React.createClass({
           updateAgree={this.updateAgree}
         >
         </RedSheet>
+        <NewsTitle className="full" key={"b"} issue={this.props.issue} />
         <div className="issue_aside">
-          <div data-component="news">
-            <h1><a href={ "/issues/" + issue.slug }>{ issue.news_title || issue.name }</a></h1>
-            { issue.news_link ? <p>Read the full article at <a href={ issue.news_link }>{ issue.news_source }</a></p> : "" }
-          </div>
+          <NewsTitle className="partial" key={"a"} issue={this.props.issue} />
           <div data-block="opinion_previews">
             <h1>Top Opinions</h1>
             <div className="row">
