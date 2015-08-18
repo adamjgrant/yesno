@@ -25,8 +25,8 @@ var OpinionTable = React.createClass({
         <p className="description">{ this.props.issue.description }</p>
         <h1>Opinions</h1>
         <p><small>
-          <a href="#" className="hide-logged-out" onClick={ this.openRedSheet.bind(null, false) }>Add your opinion</a>
-          <span className="hide-logged-in">Sign in to add your opinion</span>
+          <a href="#" className="hide-logged-out hide-mobile" onClick={ this.openRedSheet.bind(null, false) }>Add your opinion</a>
+          <span className="hide-logged-in hide-mobile">Sign in to add your opinion</span>
         </small></p>
         <div>
           <OpinionIndex 
