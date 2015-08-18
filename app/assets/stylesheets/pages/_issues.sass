@@ -5,3 +5,7 @@
 [data-controller="issues"][data-action="index"]
   article aside.verdict.bottom
     display: none
+
+  +b("opinion_previews")
+    +gt($tablet)
+      display: block

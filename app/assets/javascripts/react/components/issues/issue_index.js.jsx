@@ -11,7 +11,9 @@ var IssueIndex = React.createClass({
           victor_score: 0,
           score: 0,
           yes: 0,
-          no: 0
+          no: 0,
+          top_yes: null,
+          top_no: null
         }
       ]
     }
