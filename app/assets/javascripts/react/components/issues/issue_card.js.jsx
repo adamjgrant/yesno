@@ -122,8 +122,8 @@ var IssueCard = React.createClass({
         </RedSheet>
         <div data-block="opinion_previews">
           <h1>Top Opinions</h1>
-          { this.props.issue.top_yes ? <OpinionPreview opinion={ this.props.issue.top_yes } /> : <p><em>{ "No yes votes yet!" }</em></p> }
-          { this.props.issue.top_no ? <OpinionPreview opinion={ this.props.issue.top_no } /> : <p><em>{ "No no votes yet!" }</em></p> }
+          { this.props.issue.top_yes ? <OpinionPreview issue={ this.props.issue } opinion={ this.props.issue.top_yes } /> : <p><em>{ "No yes votes yet!" }</em></p> }
+          { this.props.issue.top_no ? <OpinionPreview issue={ this.props.issue } opinion={ this.props.issue.top_no } /> : <p><em>{ "No no votes yet!" }</em></p> }
         </div>
       </div>
     )
