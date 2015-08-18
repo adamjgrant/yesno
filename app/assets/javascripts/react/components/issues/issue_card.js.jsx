@@ -30,6 +30,7 @@ var IssueCard = React.createClass({
       yes_statement = issue.yes + " " + people_say(issue.yes) + " yes.",
       no_statement = issue.no + " " + people_say(issue.no) + " no.",
       voteAction,
+      recentEvents,
       authLink = (k$.$('.authentication a') || {href: ''}).href,
       style = issue.image ? { backgroundImage: 'url(' + issue.image + ')' } : {},
       statement = votes === 0 ? 'Be the first to vote!' :
@@ -84,8 +85,33 @@ var IssueCard = React.createClass({
       )
     }
 
+    if (issue.news_link) {
+      recentEvents = (
+        <div data-component="news">
+          <h1><a href={ issue.news_link }>{ issue.news_title }</a></h1>
+        </div>
+      )
+    }
+
     return (
       <div className="issue_column">
+        { recentEvents }
+        <RedSheet
+          displayLink={this.linkState('showRedSheet')}
+          agree={this.state.agree}
+          issue={this.props.issue}
+          key={this.props.issue.id}
+          getData={this.props.getData}
+          updateAgree={this.updateAgree}
+        >
+        </RedSheet>
+        <div data-block="opinion_previews">
+          <h1>Top Opinions</h1>
+          <div className="row">
+            { this.props.issue.top_yes ? <OpinionPreview issue={ this.props.issue } opinion={ this.props.issue.top_yes } /> : <p data-component="opinion_preview"><em>{ "No yes votes yet!" }</em></p> }
+            { this.props.issue.top_no ? <OpinionPreview issue={ this.props.issue } opinion={ this.props.issue.top_no } /> : <p data-component="opinion_preview"><em>{ "No no votes yet!" }</em></p> }
+          </div>
+        </div>
         <div className="issue_card_container">
           <section data-component="issue">
             <a href={ "/issues/" + issue.slug }>
@@ -110,22 +136,6 @@ var IssueCard = React.createClass({
               { voteAction }
             </footer>
           </section>
-        </div>
-        <RedSheet
-          displayLink={this.linkState('showRedSheet')}
-          agree={this.state.agree}
-          issue={this.props.issue}
-          key={this.props.issue.id}
-          getData={this.props.getData}
-          updateAgree={this.updateAgree}
-        >
-        </RedSheet>
-        <div data-block="opinion_previews">
-          <h1>Top Opinions</h1>
-          <div className="row">
-            { this.props.issue.top_yes ? <OpinionPreview issue={ this.props.issue } opinion={ this.props.issue.top_yes } /> : <p><em>{ "No yes votes yet!" }</em></p> }
-            { this.props.issue.top_no ? <OpinionPreview issue={ this.props.issue } opinion={ this.props.issue.top_no } /> : <p><em>{ "No no votes yet!" }</em></p> }
-          </div>
         </div>
       </div>
     )
