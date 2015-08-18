@@ -36,12 +36,15 @@ var IssueSingle = React.createClass({
     return (
       <div data-block="issue_row">
         <div className="issue_card_container">
-          <div data-component="breadcrumbs">
+          <div data-component="breadcrumbs" className="show-mobile">
             <a href="/">&laquo; All issues</a>
           </div>
           <IssueCard issue={this.state.issue} getData={this.getData} />
         </div>
         <div className="issue_aside">
+          <div data-component="breadcrumbs" className="hide-mobile">
+            <a href="/">&laquo; All issues</a>
+          </div>
           <NewsTitle issue={ this.state.issue } />
           <OpinionTable issue={this.state.issue} vote={ this.vote } getData={this.getData} />
         </div>
