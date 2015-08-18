@@ -9,6 +9,17 @@
   +b("opinion_previews")
     display: none
 
+    blockquote
+      +p
+      margin-bottom: $space/2
+
     +gt($tablet)
       display: block
       +column('twothirds')
+
+    +gt($tablet-landscape)
+      .row
+        +row
+
+      +c("opinion_preview")
+        +column('half')
