@@ -1,7 +1,10 @@
 [data-block="issues"]
   // Only do this when it's in a flock of issues ^
-  .issue_column
+  .row
     +row
+
+  .issue_aside
+    +column('twothirds')
 
   .issue_card_container
     +column('third')
@@ -15,14 +18,7 @@
 
     +gt($tablet)
       display: block
-      +column('twothirds')
-
-      +c("opinion_preview")
-        +column(12)
 
     +gt($tablet-landscape)
-      .row
-        +row
-
       +c("opinion_preview")
         +column('half')

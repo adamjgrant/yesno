@@ -2,7 +2,7 @@
   .row
     +row
 
-  .issue_column
+  +b("issue_row")
     +column('third')
 
   [data-component="opinion_table"]
@@ -12,14 +12,14 @@
     [data-component="issue"]
       margin-left: 0
 
-    .issue_column
+    +b("issue_row")
       +column(5)
 
     [data-component="opinion_table"]
       +column(7)
 
   +gt($tablet-landscape)
-    .issue_column
+    +b("issue_row")
       +column(4)
 
     [data-component="opinion_table"]

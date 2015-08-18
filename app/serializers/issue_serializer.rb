@@ -14,6 +14,7 @@ class IssueSerializer < ActiveModel::Serializer
     :top_yes, 
     :top_no,
     :news_link,
+    :news_source,
     :news_title
 
   has_many :opinions

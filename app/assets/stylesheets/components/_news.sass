@@ -1,14 +1,11 @@
 [data-component="news"]
-  +column(12)
-
   h1
-    +heading_md
+    +heading_sm
 
-  h2
-    +heading_xs
+    +gt($tablet)
+      +heading_md
 
-  figure
-    +thumbnail-content
-
-  img
-    width: 150px
+    + p
+      margin-top: -15px
+      font-size: 0.85rem
+      color: map-get($gray, lighter)
