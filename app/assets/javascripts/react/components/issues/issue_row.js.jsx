@@ -7,17 +7,8 @@ var IssueRow = React.createClass({
       <div data-block="issue_row">
         <div className="issue_aside">
           <NewsTitle issue={ this.props.issue } />
+          <CTAs slug={ this.props.issue.slug } />
           { this.props.issue.news_link ? <h2>{ this.props.issue.name }. Do you agree?</h2> : "" }
-          <div className="ctas">
-            <a href={ "/issues/" + this.props.issue.slug + "/opinions/new#yes" }>
-              <Icon icon="thumbs-up" />
-              <span>YES</span>
-            </a>
-            <a href={ "/issues/" + this.props.issue.slug + "/opinions/new#no" }>
-              <Icon icon="thumbs-down" />
-              <span>NO</span>
-            </a>
-          </div>
           <div data-block="opinion_previews">
             <h1>Top Opinions</h1>
             <div className="this.props.issue">
