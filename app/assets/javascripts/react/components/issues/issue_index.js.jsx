@@ -39,22 +39,7 @@ var IssueIndex = React.createClass({
     var self = this;
     var issueCards = this.state.issues.map(function(row) {
       return (
-        <div data-block="issue_row">
-          <div className="issue_aside">
-            <NewsTitle issue={ row } />
-            <div data-block="opinion_previews">
-              <h1>Top Opinions</h1>
-              <div className="row">
-                { row.top_yes ? <OpinionPreview issue={ row } opinion={ row.top_yes } /> : <p data-component="opinion_preview"><em>{ "No yes votes yet!" }</em></p> }
-                { row.top_no ? <OpinionPreview issue={ row } opinion={ row.top_no } /> : <p data-component="opinion_preview"><em>{ "No no votes yet!" }</em></p> }
-              </div>
-            </div>
-          </div>
-
-          <div className="issue_card_container">
-            <IssueCard issue={row} key={row.id} getData={this.getData} />
-          </div>
-        </div>
+        <IssueRow issue={ row } getData={ this.getData } key={ row.id } />
       )
     }, this)
     return (
