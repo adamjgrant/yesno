@@ -29,6 +29,20 @@
   .field
     +form_group
 
+.twitter-button
+  +button(map-get($blue, twitter))
+  color: white
+
+  svg
+    width: 20px
+    height: 20px
+    fill: white
+
+  svg, span
+    display: inline-block
+    vertical-align: middle
+    line-height: normal
+
 // STICKY FOOTER
 
 +gt($tablet)
