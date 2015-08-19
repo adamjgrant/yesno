@@ -43,7 +43,7 @@ var Commenter = React.createClass({
         interaction: "User commented"
       });
       $YN.mixpanel("Commented");
-      if (typeof(cb) === "function") { cb(); }
+      // if (typeof(cb) === "function") { cb(); } // Why would we need this?
       this.getData();
     }.bind(this));
   },

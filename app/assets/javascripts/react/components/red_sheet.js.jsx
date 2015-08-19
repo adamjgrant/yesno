@@ -41,7 +41,6 @@ var RedSheet = React.createClass({
     $YN.post('/issues/' + this.props.issue.id + '/opinions', data, function() {
       this.props.getData();
       k$.status({ text: "Saved", type: "status-green" })
-      this.close();
 
       $YN.mixpanel("Expressed", {
         interaction: "User voted"
@@ -54,9 +53,11 @@ var RedSheet = React.createClass({
         $YN.mixpanel("Voted with statement", {
           vote: this.state.response.statement,
           issue: this.props.issue.name
+        }, function() {         
+          location.href = "/issues/" + this.props.issue.id;
         });
       }
-      location.href = "/issues/" + this.props.issue.id;
+      this.close();
     }.bind(this));
   },
   componentDidMount: function() {
@@ -80,14 +81,14 @@ var RedSheet = React.createClass({
             No
           </label>
           <p>Tell us why below</p>
-          <textarea 
+          <textarea
             placeholder="I believe this because..."
             onChange={ this.updateStatement }
             value={ this.state.response.statement }
             ref="talker"
           ></textarea>
-          <input 
-            type="submit" 
+          <input
+            type="submit"
             onClick={ this.saveOpinion }
             value="Save"
           />
