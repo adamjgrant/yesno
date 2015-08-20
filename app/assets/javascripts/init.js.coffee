@@ -66,7 +66,7 @@ $YN.constructPath = (path, args) ->
 
 # Mixpanel
 
-$YN.mixpanel = (event, action) ->
+$YN.mixpanel = (event, action, cb) ->
   if (typeof(mixpanel) != "undefined")
     id = k$.$('[data-user-id]').dataset.userId
     handle = k$.$('[data-user-handle]').dataset.userHandle
@@ -75,10 +75,12 @@ $YN.mixpanel = (event, action) ->
       "$firstname": handle
       "handle": handle
     )
-    mixpanel.track event, action
+    mixpanel.track event, action, cb
   else
     console.debug("A mixpanel event was requested but not sent.")
     console.debug(event, action)
+    if (typeof(cb) != "undefined")
+      cb()
 
 # BuddySystem
 `$YN.buddySystem = function(objects) {

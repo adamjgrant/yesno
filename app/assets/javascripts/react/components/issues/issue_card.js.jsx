@@ -9,12 +9,23 @@ var IssueCard = React.createClass({
       agree: undefined
     }
   },
-  openRedSheet: function(agree) {
-    var state = this.state;
-    state.showRedSheet = true;
-    state.agree = agree;
-    this.setState(state);
-    window.scrollTo(0, 0);
+  openRedSheet: function(agree, newPage) {
+    var issue = this.props.issue
+    $YN.mixpanel("Pressed Vote Button", {
+      issue: issue
+    }, function() {
+      if (newPage) {
+        var url = "/issues/" + issue.id + "/opinions/new#" + ( agree ? "yes" : "no" );
+        location.href = url
+      }
+      else {
+        var state = this.state;
+        state.showRedSheet = true;
+        state.agree = agree;
+        this.setState(state);
+        window.scrollTo(0, 0);
+      }
+    }.bind(this));
   },
   updateAgree: function(agree) {
     var state = this.state;
@@ -56,7 +67,7 @@ var IssueCard = React.createClass({
         <a
           key={ "d" + issue.id }
           className="cta hide-logged-out show-mobile"
-          href={ "/issues/" + issue.id + "/opinions/new#yes" }
+          onClick={ this.openRedSheet.bind(null, true, true) }
         >
           <Icon icon="thumbs-up" />
         </a>,
@@ -64,7 +75,7 @@ var IssueCard = React.createClass({
         <div
           key={ "c" + issue.id }
           className="cta hide-logged-out hide-mobile"
-          href=""
+          href="#"
           onClick={ this.openRedSheet.bind(null, false) }
         >
           <Icon icon="thumbs-down" />
@@ -72,7 +83,7 @@ var IssueCard = React.createClass({
         <a
           key={ "e" + issue.id }
           className="cta hide-logged-out show-mobile"
-          href={ "/issues/" + issue.id + "/opinions/new#no" }
+          onClick={ this.openRedSheet.bind(null, false, true) }
         >
           <Icon icon="thumbs-down" />
         </a>
