@@ -1,0 +1,10 @@
+button#mixpanel-ignore Ignore me on Mixpanel
+
+- content_for :post_js
+    | k$.$('#mixpanel-ignore').addEventListener('click', function() {
+    |   mixpanel.register({"$ignore":true});
+    |   k$.status({
+    |     text: "Ignored!",
+    |     type: "status-green"
+    |   });
+    | });
