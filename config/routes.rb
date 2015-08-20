@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   end
 
   get '/notifications', to: 'profiles#show', as: :notifications
+  get '/mixpanel-ignore', to: 'pages#mixpanel_ignore'
 
   post '/comments/create/(:parent_id)', to: 'comments#create', as: :new_comment
   put '/comments/(:id)', to: 'comments#update'
