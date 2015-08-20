@@ -8,7 +8,7 @@ var IssueRow = React.createClass({
         <div className="issue_aside">
           <NewsTitle issue={ this.props.issue } />
           { this.props.issue.news_link ? <h2>{ this.props.issue.name }. Do you agree?</h2> : "" }
-          <CTAs slug={ this.props.issue.slug } />
+          <CTAs issue={ this.props.issue } />
           <div data-block="opinion_previews">
             <h1>Top Opinions</h1>
             <div className="this.props.issue">

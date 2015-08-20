@@ -24,7 +24,7 @@ var OpinionTable = React.createClass({
       <section data-component="opinion_table">
         <p className="description">{ this.props.issue.description }</p>
         { this.props.issue.news_link ? <h2>{ this.props.issue.name }. Do you agree?</h2> : "" }
-        <CTAs slug={ this.props.issue.slug } />
+        <CTAs issue={ this.props.issue } />
         <h1>Opinions</h1>
         <p><small>
           <a href="#" className="hide-logged-out hide-mobile" onClick={ this.openRedSheet.bind(null, false) }>Add your opinion</a>

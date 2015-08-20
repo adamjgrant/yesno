@@ -16,7 +16,7 @@ var IssueCard = React.createClass({
     }, function() {
       if (newPage) {
         var url = "/issues/" + issue.id + "/opinions/new#" + ( agree ? "yes" : "no" );
-        location.href = url
+        location.href = url;
       }
       else {
         var state = this.state;
