@@ -11,7 +11,7 @@ var IssueRow = React.createClass({
           <CTAs issue={ this.props.issue } />
           <div data-block="opinion_previews">
             <h1>Top Opinions</h1>
-            <div className="this.props.issue">
+            <div className="row">
               { this.props.issue.top_yes ? <OpinionPreview issue={ this.props.issue } opinion={ this.props.issue.top_yes } /> : <p data-component="opinion_preview"><em>{ "No yes votes yet!" }</em></p> }
               { this.props.issue.top_no ? <OpinionPreview issue={ this.props.issue } opinion={ this.props.issue.top_no } /> : <p data-component="opinion_preview"><em>{ "No no votes yet!" }</em></p> }
             </div>
