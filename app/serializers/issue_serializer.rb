@@ -48,12 +48,12 @@ class IssueSerializer < ActiveModel::Serializer
   end
 
   def top_yes
-    opinion = object.opinions.where(agree: true).order("cached_votes_score DESC").last
+    opinion = object.opinions.where(agree: true).where.not(statement: "null").order("cached_votes_score DESC").last
     OpinionSerializer.new(opinion).serializable_hash
   end
 
   def top_no
-    opinion = object.opinions.where(agree: false).order("cached_votes_score DESC").last
+    opinion = object.opinions.where(agree: false).where.not(statement: "null").order("cached_votes_score DESC").last
     OpinionSerializer.new(opinion).serializable_hash
   end
 end
