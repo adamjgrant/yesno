@@ -12,6 +12,7 @@
 //
 //= require kickstart_rails
 //= require init
+//= require init2
 //= require react
 //= require_tree ./pages/
 //= require_tree ./react/components/
