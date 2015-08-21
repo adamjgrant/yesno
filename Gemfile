@@ -19,6 +19,7 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'react-rails', '~> 0.13.0.0'
 gem 'redis'
+gem 'sinatra'
 gem 'sass', '~> 3.4'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'sidekiq'
