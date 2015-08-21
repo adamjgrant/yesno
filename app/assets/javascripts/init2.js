@@ -48,3 +48,19 @@ $tr.Spec.prototype.return = function() {
   }
 }
 
+// OVERRIDES
+
+$tr.pass = function() {
+  // Suppress if on production
+  if (typeof(mixpanel) === "undefined") {
+    console.log("%cTESTRUNNER PASSED: " + message, "color: green");
+  }
+}
+
+$tr.fail = function(args) {
+  console.error("TESTRUNNER FAILED: " + message);
+  console.error(args);
+  $YN.mixpanel("Error", {
+    args: JSON.stringify(args)
+  });
+}
